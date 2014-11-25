@@ -24,7 +24,6 @@ struct AppConstant {
     static let MIXPANEL_TOKEN = "b66f535a8b703ce67e53b646b99de279"
     static let GOOGLE_ANALYTICS_ID = "UA-53532539-1"
 
-    static let BUILD_KILLED_MESSAGE = "Client update required, min build:"
     static let CLIENT_BUILD_HEADER_KEY = "X-LeExplorer-Client"
     static let CLIENT_NAME = "LeExplorer-iOS"
 

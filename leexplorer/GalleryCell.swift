@@ -12,9 +12,9 @@ class GalleryCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     
-    var gallery: String! {
+    var gallery: Gallery! {
         didSet {
-            nameLabel.text = gallery
+            nameLabel.text = gallery.name
         }
     }
     

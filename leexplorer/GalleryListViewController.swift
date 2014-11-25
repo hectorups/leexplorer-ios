@@ -14,13 +14,14 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     let GALLERY_CELL_HEIGHT: CGFloat = 300
     
-    var galleries: [String] = ["asian museum", "bam museum", "picasso"]
+    var galleries: [Gallery] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         setupTableView()
+        loadGalleries()
     }
     
     func setupTableView() {
@@ -48,6 +49,16 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         var cell = tableView.dequeueReusableCellWithIdentifier("GalleryCell") as GalleryCell
         cell.gallery = self.galleries[indexPath.row]
         return cell
+    }
+    
+    func loadGalleries() {
+        LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
+            LELog.d(galleries.count)
+            self.galleries = galleries
+            self.tableView.reloadData()
+        }, failure: { (operation, error) -> Void in
+            LELog.e(error)
+        })
     }
 }
 

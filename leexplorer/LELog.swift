@@ -15,4 +15,8 @@ class LELog {
             println(object)
         }
     }
+    
+    class func e(object: AnyObject!) {
+        LELog.d(object)
+    }
 }

@@ -24,6 +24,14 @@ class LeexplorerApi: AFHTTPSessionManager {
         super.init(baseURL: url)
         self.requestSerializer = AFJSONRequestSerializer(writingOptions: nil)
     }
+    
+    override init!(baseURL url: NSURL!, sessionConfiguration configuration: NSURLSessionConfiguration!) {
+        super.init(baseURL: url, sessionConfiguration: configuration)
+    }
+    
+    override init!(sessionConfiguration configuration: NSURLSessionConfiguration!) {
+        super.init(sessionConfiguration: configuration)
+    }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,19 +41,35 @@ class LeexplorerApi: AFHTTPSessionManager {
 
     override func dataTaskWithRequest(request: NSURLRequest!, completionHandler: ((NSURLResponse!, AnyObject!, NSError!) -> Void)!) -> NSURLSessionDataTask! {
         var mutableRequest = request as NSMutableURLRequest
+        
         mutableRequest.addValue("\(AppConstant.CLIENT_NAME)/\(AppConstant.CLIENT_VERSION)",
             forHTTPHeaderField: AppConstant.CLIENT_BUILD_HEADER_KEY)
         
         return super.dataTaskWithRequest(mutableRequest, completionHandler: completionHandler)
+    }
+    
+    // MARK: - LE ENDPOINTS
+    
+    func getGalleries(success: (galleries: [Gallery]) -> Void, failure: FailHandler) {
+        self.GET("/gallery", parameters: nil , success: { (_, collection) -> Void in
+            LELog.d("galleries: \(collection.count)")
+            var galleries: [Gallery] = []
+            for galleryData in collection as [NSDictionary] {
+                galleries.append(Gallery.createFromJSON(galleryData))
+            }
+            
+            success(galleries: galleries)
+            
+        }, failure)
     }
 
    
     // MARK: - LE API
     
     override func GET(URLString: String!, parameters: AnyObject!, success: ((NSURLSessionDataTask!, AnyObject!) -> Void)!, failure: ((NSURLSessionDataTask!, NSError!) -> Void)!) -> NSURLSessionDataTask! {
-        LELog.d("GET API call: \(URLString)")
+        LELog.d("GET: \(self.baseURL)\(URLString)")
         LELog.d(parameters)
-        return self.GET(URLString, parameters: parameters, success: success, failure: failure)
+        return super.GET(URLString, parameters: parameters, success: success, failure: failure)
     }
     
 }

@@ -21,6 +21,8 @@
 		9574A3671A24410900399531 /* NibDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3661A24410900399531 /* NibDesignable.swift */; };
 		9574A3691A24417400399531 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3681A24417400399531 /* GalleryCell.swift */; };
 		9574A36D1A24470300399531 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9574A36C1A24470300399531 /* GalleryCell.xib */; };
+		9574A3701A24526A00399531 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A36F1A24526A00399531 /* Gallery.swift */; };
+		95CD75441A24F7EA00974B3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95CD75431A24F7EA00974B3C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		9574A3661A24410900399531 /* NibDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibDesignable.swift; sourceTree = "<group>"; };
 		9574A3681A24417400399531 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		9574A36C1A24470300399531 /* GalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
+		9574A36F1A24526A00399531 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		95CD75431A24F7EA00974B3C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 			children = (
 				9574A35C1A24277D00399531 /* leexplorer-Bridging-Header.h */,
 				9574A3341A24261B00399531 /* AppDelegate.swift */,
+				95CD75431A24F7EA00974B3C /* Localizable.strings */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */,
+				9574A36F1A24526A00399531 /* Gallery.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95CD75441A24F7EA00974B3C /* Localizable.strings in Resources */,
 				9574A36D1A24470300399531 /* GalleryCell.xib in Resources */,
 				9574A33D1A24261B00399531 /* Main.storyboard in Resources */,
 				9574A3421A24261B00399531 /* LaunchScreen.xib in Resources */,
@@ -344,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,
+				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
 				9574A3671A24410900399531 /* NibDesignable.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,
