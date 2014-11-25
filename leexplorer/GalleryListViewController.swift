@@ -12,13 +12,13 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet var tableView: UITableView!
     
-    let GALLERY_CELL_HEIGHT: CGFloat = 300
+    let GALLERY_CELL_HEIGHT: CGFloat = 220
     
     var galleries: [Gallery] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = NSLocalizedString("GALLERY_LIST_TITLE", comment: "title")
         
         setupTableView()
         loadGalleries()
@@ -41,14 +41,15 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         return self.galleries.count
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return GALLERY_CELL_HEIGHT
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("GalleryCell") as GalleryCell
+        cell.height = GALLERY_CELL_HEIGHT
         cell.gallery = self.galleries[indexPath.row]
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return GALLERY_CELL_HEIGHT
     }
     
     func loadGalleries() {
