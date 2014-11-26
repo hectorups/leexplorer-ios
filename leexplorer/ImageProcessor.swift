@@ -32,7 +32,7 @@ class ImageProcessor {
     
     // MARK: ImageProcessor
     
-    class func urlForImageFill(image: Image, width: Int, height: Int, scaleForDevice: Bool) -> NSURL {
+    class func urlForImageFill(image: Image, width: Int, height: Int, scaleForDevice: Bool = true) -> NSURL {
         return urlForImage(image, width: width, height: height, crop: .LFILL, scaleForDevice: scaleForDevice)
     }
     

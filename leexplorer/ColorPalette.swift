@@ -16,24 +16,27 @@ enum ColorPallete {
     MidGrey,
     LightGreyBg,
     Blue,
-    AppBg
+    AppBg,
+    Clear
     
     func get() -> UIColor {
         switch self {
         case .White:
-            return UIColor(hexString: "#FFFFFE");
+            return UIColor(hexString: "#FFFFFE")
         case .Black:
-            return UIColor(hexString: "#333333");
+            return UIColor(hexString: "#333333")
         case .DarkGrey:
-            return UIColor(hexString: "#747474");
+            return UIColor(hexString: "#747474")
         case .MidGrey:
-            return UIColor(hexString: "#ABABAB");
+            return UIColor(hexString: "#ABABAB")
         case .LightGreyBg:
-            return UIColor(hexString: "#F1F4F2");
+            return UIColor(hexString: "#F1F4F2")
         case .Blue:
-            return UIColor(hexString: "#0098C6");
+            return UIColor(hexString: "#0098C6")
         case AppBg:
             return UIColor(hexString: "#F0F0F0")
+        case Clear:
+            return UIColor.clearColor()
         }
     }
     

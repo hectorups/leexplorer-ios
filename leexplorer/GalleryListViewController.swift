@@ -66,5 +66,13 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     func handleGalleryTab(sender: GalleryCell) {
         performSegueWithIdentifier(Segue.ShowGalleryProfile.rawValue, sender: sender)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segue.ShowGalleryProfile.rawValue {
+            var controller = segue.destinationViewController as GalleryProfileViewController
+            var cell = sender as GalleryCell
+            controller.gallery = cell.gallery
+        }
+    }
 }
 

@@ -35,6 +35,12 @@ class Gallery {
         gallery.type = data["type"] as String
         gallery.latitude = data["latitude"] as Double
         gallery.longitude = data["longitude"] as Double
+        
+        gallery.languages = []
+        for language in data["languages"] as [String] {
+            gallery.languages.append(language)
+        }
+        
         gallery.hours = data["hours"] as String
         gallery.priceDescription = data["price_description"] as String
         gallery.priceReference = data["price_reference"] as Int

@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4iP-YA-9fh">
-                                <rect key="frame" x="7" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4iP-YA-9fh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -33,30 +33,44 @@
                     <navigationItem key="navigationItem" id="tLy-pk-aNc"/>
                     <connections>
                         <outlet property="tableView" destination="4iP-YA-9fh" id="mW6-Ib-S4a"/>
-                        <segue destination="khd-Oh-mSg" kind="show" identifier="ShowGalleryProfile" id="tRi-Jf-ONB"/>
+                        <segue destination="sxT-XE-v6r" kind="show" identifier="ShowGalleryProfile" id="cpP-nh-obi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="951" y="136"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="cFI-bj-PJk">
+        <!--Gallery Profile View Controller-->
+        <scene sceneID="KEF-Sg-O4b">
             <objects>
-                <viewController id="khd-Oh-mSg" sceneMemberID="viewController">
+                <viewController id="sxT-XE-v6r" customClass="GalleryProfileViewController" customModule="leexplorer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="47G-ej-cKa"/>
-                        <viewControllerLayoutGuide type="bottom" id="Feh-sL-Mqu"/>
+                        <viewControllerLayoutGuide type="top" id="6Gn-hB-u6I"/>
+                        <viewControllerLayoutGuide type="bottom" id="a3U-r5-01L"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Caf-oG-Y1P">
+                    <view key="view" contentMode="scaleToFill" id="gbk-Pb-WYE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-Kz-nWw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="b0E-Kz-nWw" secondAttribute="trailing" id="Aej-Bl-Kny"/>
+                            <constraint firstItem="b0E-Kz-nWw" firstAttribute="top" secondItem="gbk-Pb-WYE" secondAttribute="top" id="HTR-oz-nOV"/>
+                            <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="b0E-Kz-nWw" secondAttribute="bottom" id="MCe-o0-LXB"/>
+                            <constraint firstItem="b0E-Kz-nWw" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="wyO-dT-o24"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="b0E-Kz-nWw" id="va3-cp-Rzx"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qcy-HP-eaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qx-tU-geo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="136"/>
+            <point key="canvasLocation" x="1625" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a8l-xd-bIj">

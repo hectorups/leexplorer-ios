@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 protocol GalleryCellDelegate: class {
     func handleGalleryTab(sender: GalleryCell)
 }

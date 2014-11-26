@@ -8,3 +8,8 @@
 
 // Gallery List VC
 "GALLERY_LIST_TITLE" = "LeExplorer Collections";
+
+// Gallery Profile VC
+"HOURS" = "Hours";
+"PRICE" = "Price";
+"DESCRIPTION" = "Description";

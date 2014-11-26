@@ -7,3 +7,4 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "SVProgressHUD.h"
 #import "HexColor.h"
+#import <LBBlurredImage/UIImageView+LBBlurredImage.h>
