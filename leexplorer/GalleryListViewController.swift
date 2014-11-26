@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GalleryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GalleryCellDelegate {
 
     @IBOutlet var tableView: UITableView!
     
@@ -45,6 +45,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         var cell = tableView.dequeueReusableCellWithIdentifier("GalleryCell") as GalleryCell
         cell.height = GALLERY_CELL_HEIGHT
         cell.gallery = self.galleries[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -60,6 +61,10 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         }, failure: { (operation, error) -> Void in
             LELog.e(error)
         })
+    }
+    
+    func handleGalleryTab(sender: GalleryCell) {
+        performSegueWithIdentifier(Segue.ShowGalleryProfile.rawValue, sender: sender)
     }
 }
 

@@ -30,3 +30,9 @@ struct AppConstant {
     static let MIN_METRES_FOR_AUTOPLAY = 20
     static let MILSEC_ARTWORK_REFRESH = 30000
 }
+
+enum Segue: String {
+    case ShowGalleryProfile="ShowGalleryProfile",
+        ShowArtworkList="ShowArtworkList",
+        ShowArtworkProfile="ShowArtworkProfile"
+}

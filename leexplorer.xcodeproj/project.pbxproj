@@ -26,6 +26,7 @@
 		95CD75461A24FBEE00974B3C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75451A24FBEE00974B3C /* Image.swift */; };
 		95CD75481A25369200974B3C /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75471A25369200974B3C /* ImageProcessor.swift */; };
 		95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FE11A25439C00E3B655 /* ColorPalette.swift */; };
+		95D00FE61A255C0600E3B655 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FE51A255C0600E3B655 /* GalleryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		95CD75451A24FBEE00974B3C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		95CD75471A25369200974B3C /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		95D00FE11A25439C00E3B655 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		95D00FE51A255C0600E3B655 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9574A3391A24261B00399531 /* GalleryListViewController.swift */,
+				95D00FE51A255C0600E3B655 /* GalleryViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
 				9574A3671A24410900399531 /* NibDesignable.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
+				95D00FE61A255C0600E3B655 /* GalleryViewController.swift in Sources */,
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,
 				9574A3691A24417400399531 /* GalleryCell.swift in Sources */,
 				9574A3351A24261B00399531 /* AppDelegate.swift in Sources */,

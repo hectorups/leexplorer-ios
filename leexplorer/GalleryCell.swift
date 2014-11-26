@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol GalleryCellDelegate: class {
+    func handleGalleryTab(sender: GalleryCell)
+}
+
 class GalleryCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
@@ -17,6 +21,8 @@ class GalleryCell: UITableViewCell {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var infoView: UIView!
     @IBOutlet var icons: [UIImageView]!
+    
+    weak var delegate: GalleryCellDelegate?
 
     
     var height: CGFloat!
@@ -80,7 +86,7 @@ class GalleryCell: UITableViewCell {
     }
     
     func didTabCell(sender: UITapGestureRecognizer) {
-        LELog.d("did tab gallery")
+        delegate?.handleGalleryTab(self)
     }
     
 }
