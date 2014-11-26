@@ -56,21 +56,58 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uO8-eB-kKQ">
+                                <rect key="frame" x="0.0" y="552" width="600" height="48"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="mNP-kU-bmv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Explore Collection">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8QI-or-vBh" kind="show" identifier="ShowArtworkList" id="G9I-OR-fRC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b0E-Kz-nWw" secondAttribute="trailing" id="Aej-Bl-Kny"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="top" secondItem="gbk-Pb-WYE" secondAttribute="top" id="HTR-oz-nOV"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="b0E-Kz-nWw" secondAttribute="bottom" id="MCe-o0-LXB"/>
+                            <constraint firstAttribute="trailing" secondItem="uO8-eB-kKQ" secondAttribute="trailing" id="ZnL-h1-gmn"/>
+                            <constraint firstItem="uO8-eB-kKQ" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="dO8-6P-YIJ"/>
+                            <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="uO8-eB-kKQ" secondAttribute="bottom" id="pKl-ZH-Ym4"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="wyO-dT-o24"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="exploreCollectionButton" destination="uO8-eB-kKQ" id="5E0-9G-eTJ"/>
                         <outlet property="tableView" destination="b0E-Kz-nWw" id="va3-cp-Rzx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qx-tU-geo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1625" y="141"/>
+        </scene>
+        <!--Artwork List View Controller-->
+        <scene sceneID="aWi-5B-WFx">
+            <objects>
+                <viewController id="8QI-or-vBh" customClass="ArtworkListViewController" customModule="leexplorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eux-bx-awJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="dMV-Oq-RMu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x6T-2E-HAH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9g-lO-khC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2334" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a8l-xd-bIj">

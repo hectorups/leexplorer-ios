@@ -33,6 +33,7 @@
 		95D00FFB1A2588C600E3B655 /* GalleryProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D00FFA1A2588C600E3B655 /* GalleryProfileHeaderView.xib */; };
 		95D00FFE1A25B11700E3B655 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95D00FFD1A25B11700E3B655 /* QuartzCore.framework */; };
 		95D010001A26465700E3B655 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FFF1A26465700E3B655 /* GradientView.swift */; };
+		95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D010011A266BD200E3B655 /* ArtworkListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		95D00FFA1A2588C600E3B655 /* GalleryProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryProfileHeaderView.xib; sourceTree = "<group>"; };
 		95D00FFD1A25B11700E3B655 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		95D00FFF1A26465700E3B655 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		95D010011A266BD200E3B655 /* ArtworkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				9574A3391A24261B00399531 /* GalleryListViewController.swift */,
 				95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */,
+				95D010011A266BD200E3B655 /* ArtworkListViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */,
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,
 				95CD75481A25369200974B3C /* ImageProcessor.swift in Sources */,
 				95D00FF91A2588B200E3B655 /* GalleryProfileHeaderView.swift in Sources */,

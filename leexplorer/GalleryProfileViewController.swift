@@ -14,6 +14,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     var gallery: Gallery!
     var profileHeaderView: GalleryProfileHeaderView!
     var headerOriginalWidth: CGFloat!
+    @IBOutlet var exploreCollectionButton: UIButton!
     
     let HEADER_HEIGHT: CGFloat = 220.0
     
@@ -70,8 +71,14 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         let transparentView = UIView(frame: headerFrame)
         transparentView.backgroundColor = UIColor.clearColor()
         tableView.tableHeaderView = transparentView
+        let transparentFooterView = UIView(frame: exploreCollectionButton.frame)
+        transparentFooterView.backgroundColor = UIColor.clearColor()
+        tableView.tableFooterView = transparentFooterView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
+        
+        exploreCollectionButton.backgroundColor = ColorPallete.Blue.get().colorWithAlphaComponent(0.95)
+        exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,5 +109,14 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segue.ShowArtworkList.rawValue {
+            var controller = segue.destinationViewController as ArtworkListViewController
+            controller.gallery = gallery
+        }
+    }
+    
+
 
 }
