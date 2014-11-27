@@ -65,7 +65,6 @@ class LeexplorerApi: AFHTTPSessionManager {
     
     func getGalleryArtworks(gallery: Gallery, success: (artworks: [Artwork]) -> Void, failure: FailHandler) {
         self.GET("/gallery/\(gallery.id)/artworks", parameters: nil , success: { (_, collection) -> Void in
-            println(collection)
             var artworks: [Artwork] = []
             for artworkData in collection as [NSDictionary] {
                 artworks.append(Artwork.createFromJSON(artworkData))

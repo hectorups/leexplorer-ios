@@ -17,6 +17,8 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet var artworkNameLabel: UILabel!
     @IBOutlet var separatorLabel: UILabel!
     
+    
+    
     var artwork: Artwork! {
         didSet {
             var imageUrl = ImageProcessor.urlForImageFill(artwork.image,
@@ -30,7 +32,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
             artworkNameLabel.text = artwork.name
             
             if let publishedAt = artwork.publishedAt {
-                dateLabel.text = "date.."
+                dateLabel.text = NSDateFormatter.leShared.stringFromDate(publishedAt)
             } else {
                 separatorLabel.hidden = true
             }

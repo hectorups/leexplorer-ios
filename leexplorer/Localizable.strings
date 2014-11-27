@@ -15,5 +15,8 @@
 "DESCRIPTION" = "Description";
 "EXPLORE_COLLECTION" = "Explore Collection";
 
+// Artwork List VC
+"ARTWORKS" = "Artworks";
+
 
 // Artwork Profile VC

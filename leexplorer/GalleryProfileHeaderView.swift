@@ -38,7 +38,7 @@ class GalleryProfileHeaderView: NibDesignable {
         imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil
             , success: { (request, response, image) -> Void in
                 self.imageView.image = image
-                self.blurredImageView.setImageToBlur(image, completionBlock: nil)
+                self.blurredImageView.setImageToBlur(image, blurRadius: 8.0, completionBlock: nil)
             }, failure: nil)
         
         addressLabel.text = gallery.address
@@ -78,8 +78,6 @@ class GalleryProfileHeaderView: NibDesignable {
         } else if offset > 0 {
             center.y = (headerHeight / 2) - offset
         }
-        
-        
     }
     
 }

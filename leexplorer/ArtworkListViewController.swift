@@ -15,6 +15,8 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     var artworks: [Artwork] = []
     
     override func viewDidLoad() {
+        self.title = NSLocalizedString("ARTWORKS", comment: "")
+        
         setupCollectionView()
         
         loadArtworks()

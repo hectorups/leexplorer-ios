@@ -2,6 +2,6 @@ pod "AFNetworking"
 pod "Cloudinary"
 pod "SVProgressHUD", :head
 pod "HexColors", "~> 2.2"
-pod "LBBlurredImage"
+pod "LBBlurredImage", :git => "git@github.com:lukabernardi/LBBlurredImage.git"
 pod "CHTCollectionViewWaterfallLayout"
 

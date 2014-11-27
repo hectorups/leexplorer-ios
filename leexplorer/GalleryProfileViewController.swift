@@ -81,9 +81,19 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = tableView.contentOffset.y
+        
+        profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segue.ShowArtworkList.rawValue {
+            var controller = segue.destinationViewController as ArtworkListViewController
+            controller.gallery = gallery
+        }
     }
 
     // MARK: - Table view data source
@@ -101,20 +111,6 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         cell.sectionText = section.text(gallery)
 
         return cell
-    }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offset = tableView.contentOffset.y
-        
-        profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Segue.ShowArtworkList.rawValue {
-            var controller = segue.destinationViewController as ArtworkListViewController
-            controller.gallery = gallery
-        }
     }
     
 
