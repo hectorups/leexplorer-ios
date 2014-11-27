@@ -32,7 +32,9 @@ class Artwork {
         artwork.name = data["name"] as String
         
         if let publishedAtString = data["published_at"] as? String {
-            artwork.publishedAt = NSDate.leDateFromString(publishedAtString)!
+            if let publishedAt = NSDate.leDateFromString(publishedAtString) {
+                artwork.publishedAt = publishedAt
+            }
         }
         
         artwork.galleryId = data["gallery_id"] as String

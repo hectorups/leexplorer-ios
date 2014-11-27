@@ -108,33 +108,39 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="qof-b5-Myd" customClass="CHTCollectionViewWaterfallLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtworkCell" id="tUr-u3-zTh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtworkCollectionViewCell" id="tUr-u3-zTh" customClass="ArtworkCollectionViewCell" customModule="leexplorer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="286"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-14-Pac">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-14-Pac">
                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="286"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vG-Jb-IeG">
-                                                    <rect key="frame" x="0.0" y="226" width="353" height="60"/>
+                                                    <rect key="frame" x="0.0" y="232" width="353" height="54"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Author Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLy-Lb-vZA">
-                                                            <rect key="frame" x="8" y="36" width="80" height="16"/>
+                                                            <rect key="frame" x="8" y="30" width="80" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
+                                                            <rect key="frame" x="100" y="30" width="245" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIT-jk-fch">
-                                                            <rect key="frame" x="96" y="33" width="8" height="22"/>
+                                                            <rect key="frame" x="90" y="27" width="8" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
-                                                            <rect key="frame" x="112" y="36" width="233" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" misplaced="YES" text="Artwork Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssg-TH-xns">
+                                                            <rect key="frame" x="8" y="12" width="337" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -143,10 +149,13 @@
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="IBc-8R-jUt" secondAttribute="trailing" constant="8" id="03b-zZ-1nF"/>
-                                                        <constraint firstItem="QIT-jk-fch" firstAttribute="leading" secondItem="ZLy-Lb-vZA" secondAttribute="trailing" constant="8" id="Ke5-XH-J3S"/>
-                                                        <constraint firstItem="IBc-8R-jUt" firstAttribute="leading" secondItem="QIT-jk-fch" secondAttribute="trailing" constant="8" id="Lxb-Bd-MDX"/>
+                                                        <constraint firstItem="ssg-TH-xns" firstAttribute="top" secondItem="5vG-Jb-IeG" secondAttribute="top" constant="8" id="FOQ-aZ-QJD"/>
+                                                        <constraint firstItem="ssg-TH-xns" firstAttribute="leading" secondItem="5vG-Jb-IeG" secondAttribute="leading" constant="8" id="GHW-o2-Zxf"/>
+                                                        <constraint firstItem="QIT-jk-fch" firstAttribute="leading" secondItem="ZLy-Lb-vZA" secondAttribute="trailing" constant="2" id="Ke5-XH-J3S"/>
+                                                        <constraint firstItem="IBc-8R-jUt" firstAttribute="leading" secondItem="QIT-jk-fch" secondAttribute="trailing" constant="2" id="Lxb-Bd-MDX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ssg-TH-xns" secondAttribute="trailing" constant="8" id="NiG-cw-AgV"/>
                                                         <constraint firstItem="QIT-jk-fch" firstAttribute="centerY" secondItem="ZLy-Lb-vZA" secondAttribute="centerY" id="bHD-v6-mBC"/>
-                                                        <constraint firstAttribute="height" constant="60" id="oTj-Qr-4hr"/>
+                                                        <constraint firstAttribute="height" constant="54" id="oTj-Qr-4hr"/>
                                                         <constraint firstAttribute="bottom" secondItem="IBc-8R-jUt" secondAttribute="bottom" constant="8" id="qgM-Sj-XaF"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZLy-Lb-vZA" secondAttribute="bottom" constant="8" id="tbb-zM-Dsh"/>
                                                         <constraint firstItem="ZLy-Lb-vZA" firstAttribute="leading" secondItem="5vG-Jb-IeG" secondAttribute="leading" constant="8" id="zLL-Yo-cur"/>
@@ -165,6 +174,15 @@
                                             <constraint firstItem="VO7-14-Pac" firstAttribute="top" secondItem="tUr-u3-zTh" secondAttribute="top" id="xGj-rL-AGw"/>
                                         </constraints>
                                         <size key="customSize" width="353" height="286"/>
+                                        <connections>
+                                            <outlet property="artworkNameLabel" destination="ssg-TH-xns" id="bwJ-6a-BTF"/>
+                                            <outlet property="authorNameLabel" destination="ZLy-Lb-vZA" id="UTY-f0-bDe"/>
+                                            <outlet property="dateLabel" destination="IBc-8R-jUt" id="dzk-2G-0kZ"/>
+                                            <outlet property="imageView" destination="VO7-14-Pac" id="Rc9-bZ-gIc"/>
+                                            <outlet property="infoView" destination="5vG-Jb-IeG" id="cbE-A0-xYg"/>
+                                            <outlet property="separatorLabel" destination="QIT-jk-fch" id="L7y-7u-Kjk"/>
+                                            <segue destination="F1b-k8-5b6" kind="show" identifier="ShowArtworkProfile" id="Npn-lw-gv7"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -177,10 +195,31 @@
                             <constraint firstItem="oty-XA-gss" firstAttribute="leading" secondItem="x6T-2E-HAH" secondAttribute="leading" id="mUO-k5-UcH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="artworksCollectionView" destination="oty-XA-gss" id="grT-GY-UJK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9g-lO-khC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391" y="141"/>
+        </scene>
+        <!--Artwork Profile View Controller-->
+        <scene sceneID="CYp-pd-nQ4">
+            <objects>
+                <viewController id="F1b-k8-5b6" customClass="ArtworkProfileViewController" customModule="leexplorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h8Q-5D-ZnT"/>
+                        <viewControllerLayoutGuide type="bottom" id="hqQ-Gf-Clv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nSy-IR-Fp6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yjC-mx-eH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a8l-xd-bIj">

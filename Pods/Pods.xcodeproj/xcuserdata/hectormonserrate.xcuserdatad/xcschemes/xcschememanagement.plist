@@ -4,37 +4,37 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-leexplorer-AFNetworking.xcscheme</key>
+		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer-CHTCollectionViewWaterfallLayout.xcscheme</key>
+		<key>Pods-CHTCollectionViewWaterfallLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer-Cloudinary.xcscheme</key>
+		<key>Pods-Cloudinary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer-HexColors.xcscheme</key>
+		<key>Pods-HexColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer-LBBlurredImage.xcscheme</key>
+		<key>Pods-LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer-SVProgressHUD.xcscheme</key>
+		<key>Pods-SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-leexplorer.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2263FBBDCD2280F536ABE1EC</key>
+		<key>22834F278BF057428D643C15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>908B26FDDCAF3955F436E08E</key>
+		<key>3CDDA2D4F388A2C148189018</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A68F404491D260F3C6FFFF2E</key>
+		<key>4769171157A547D359E5EDD1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C95E58E6BBFF3E7CC0781C53</key>
+		<key>665D91ECCACE29E0CF90F89A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF57A7A694780C091CDDBE96</key>
+		<key>7E0E57CF59AD6A51341710CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E64B94E3E0E9130D07057C57</key>
+		<key>B9E6AD1B19D445AF5B22CB9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F57EC368B126B92AE62198F5</key>
+		<key>DBE112F53D353F88510626BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
