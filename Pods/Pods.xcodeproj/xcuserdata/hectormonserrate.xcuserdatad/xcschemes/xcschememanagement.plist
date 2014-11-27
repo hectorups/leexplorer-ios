@@ -4,32 +4,37 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
+		<key>Pods-leexplorer-AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Cloudinary.xcscheme</key>
+		<key>Pods-leexplorer-CHTCollectionViewWaterfallLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HexColors.xcscheme</key>
+		<key>Pods-leexplorer-Cloudinary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-LBBlurredImage.xcscheme</key>
+		<key>Pods-leexplorer-HexColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SVProgressHUD.xcscheme</key>
+		<key>Pods-leexplorer-LBBlurredImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-leexplorer-SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-leexplorer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C7FD573D7E4C9F31B1CC7F0</key>
+		<key>2263FBBDCD2280F536ABE1EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A4AF93BC2E1971B33A52D1F</key>
+		<key>908B26FDDCAF3955F436E08E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FA125C8401F7CAECCF04A6C</key>
+		<key>A68F404491D260F3C6FFFF2E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73D458DEB2FD042000EB3B2B</key>
+		<key>C95E58E6BBFF3E7CC0781C53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94F23840F999FBE76AA9B9FD</key>
+		<key>CF57A7A694780C091CDDBE96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC8C332CCBF4C4F68C4ED407</key>
+		<key>E64B94E3E0E9130D07057C57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F57EC368B126B92AE62198F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

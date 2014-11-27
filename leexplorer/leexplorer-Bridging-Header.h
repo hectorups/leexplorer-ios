@@ -8,3 +8,4 @@
 #import "SVProgressHUD.h"
 #import "HexColor.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
+#import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>

@@ -8,11 +8,20 @@
 
 import UIkit
 
-class ArtworkListViewController: UIViewController {
+class ArtworkListViewController: UIViewController, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     var gallery: Gallery!
     
     override func viewDidLoad() {
         
+        loadArtworks()
+    }
+    
+    func loadArtworks() {
+        LeexplorerApi.shared.getGalleryArtworks(gallery, success: { (artworks) -> Void in
+            
+        }) { (operation, error) -> Void in
+            LELog.d(error)
+        }
     }
 }

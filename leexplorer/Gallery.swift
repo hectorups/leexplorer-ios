@@ -44,14 +44,7 @@ class Gallery {
         gallery.hours = data["hours"] as String
         gallery.priceDescription = data["price_description"] as String
         gallery.priceReference = data["price_reference"] as Int
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        dateFormatter.locale = NSLocale.currentLocale()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ'"
-        if let updatedAt = data["updated_at"] as? String {
-            gallery.updatedAt = dateFormatter.dateFromString(updatedAt)
-        }
+        gallery.updatedAt = NSDate.leDateFromString(data["updatedAt"] as String)!
         
         let imagesData = data["images"] as [NSDictionary]
         gallery.images = []
