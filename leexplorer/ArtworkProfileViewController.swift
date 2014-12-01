@@ -13,6 +13,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var tableView: UITableView!
     @IBOutlet var playButton: MKButton!
     @IBOutlet var playIcon: UIImageView!
+    @IBOutlet var mediaPlayerView: MediaPlayerView!
+    @IBOutlet var mediaPlayerBottomConstraint: NSLayoutConstraint!
     
     
     let HEADER_HEIGHT: CGFloat = 220.0
@@ -28,6 +30,42 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         edgesForExtendedLayout = .None;
         
+        setupTableView()
+        setupPlayButton()
+        setupMediaPlayerView()
+    }
+    
+    // MARK - Setup Views
+    
+    func setupMediaPlayerView() {
+        mediaPlayerView.duration = 165.001
+        mediaPlayerView.currentPosition = 0.0
+        mediaPlayerView.tintColor = ColorPallete.Blue.get()
+        
+        if !MediaPlayerService.shared.isPlayingArtwork(artwork) {
+            mediaPlayerBottomConstraint.constant = -1 * mediaPlayerView.bounds.height
+        }
+    }
+    
+    func setupPlayButton() {
+        playIcon.tintColor = ColorPallete.White.get()
+        playButton.cornerRadius = 40.0
+        playButton.backgroundLayerCornerRadius = 40.0
+        playButton.maskEnabled = false
+        playButton.circleGrowRatioMax = 1.75
+        playButton.rippleLocation = .Center
+        playButton.aniDuration = 0.85
+        playButton.tintColor = ColorPallete.Blue.get()
+        
+        playButton.layer.shadowOpacity = 0.75
+        playButton.layer.shadowRadius = 3.5
+        playButton.layer.shadowColor = UIColor.blackColor().CGColor
+        playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
+        
+        playButton.hidden = MediaPlayerService.shared.isPlayingArtwork(artwork) || artwork.audio == nil
+    }
+    
+    func setupTableView() {
         let cellNib = UINib(nibName: "ProfileSectionCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "ProfileSectionCell")
         tableView.dataSource = self
@@ -43,23 +81,9 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         let transparentView = UIView(frame: headerFrame)
         transparentView.backgroundColor = UIColor.clearColor()
         tableView.tableHeaderView = transparentView
-
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        
-        playIcon.tintColor = ColorPallete.White.get()
-        playButton.cornerRadius = 40.0
-        playButton.backgroundLayerCornerRadius = 40.0
-        playButton.maskEnabled = false
-        playButton.circleGrowRatioMax = 1.75
-        playButton.rippleLocation = .Center
-        playButton.aniDuration = 0.85
-        playButton.tintColor = ColorPallete.Blue.get()
-        
-        playButton.layer.shadowOpacity = 0.75
-        playButton.layer.shadowRadius = 3.5
-        playButton.layer.shadowColor = UIColor.blackColor().CGColor
-        playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -79,13 +103,26 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as ProfileSectionCell
         
         cell.title = NSLocalizedString("DESCRIPTION", comment: "")
-        cell.sectionText = artwork.description
+        cell.sectionText = artwork.desc
         
         return cell
     }
     
     @IBAction func didTabPlay(sender: AnyObject) {
-        MediaPlayerService.shared.playArtwork(artwork)
+//        MediaPlayerService.shared.playArtwork(artwork)
+        
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.playButton.alpha = 0.0
+        }) { (_) -> Void in
+           self.playButton.hidden = true
+        }
+        
+        UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+            self.mediaPlayerBottomConstraint.constant = 0
+            self.mediaPlayerView.layoutIfNeeded()
+        }, completion: nil)
+
+        
     }
 
 

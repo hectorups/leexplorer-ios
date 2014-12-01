@@ -50,6 +50,8 @@
 		95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */; };
 		95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */; };
 		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
+		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
+		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+leDateFromString.swift"; sourceTree = "<group>"; };
 		95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
 		95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
+		95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerView.xib; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -246,6 +250,8 @@
 				95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */,
 				95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */,
 				95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */,
+				95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */,
+				95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			files = (
 				95CD75441A24F7EA00974B3C /* Localizable.strings in Resources */,
 				9574A36D1A24470300399531 /* GalleryCell.xib in Resources */,
+				95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */,
 				9574A33D1A24261B00399531 /* Main.storyboard in Resources */,
 				9574A3421A24261B00399531 /* LaunchScreen.xib in Resources */,
 				95B7D27E1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib in Resources */,
@@ -490,6 +497,7 @@
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,
 				95D00FEC1A25692A00E3B655 /* GalleryProfileViewController.swift in Sources */,
 				95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */,
+				95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */,
 				9574A3691A24417400399531 /* GalleryCell.swift in Sources */,
 				9574A3351A24261B00399531 /* AppDelegate.swift in Sources */,
 				95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */,

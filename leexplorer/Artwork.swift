@@ -11,7 +11,7 @@ import Foundation
 class Artwork {
     var audio: Audio?
     var author: String?
-    var description: String?
+    var desc: String?
     var image: Image!
     var likesCount: Int!
     var name: String!
@@ -19,14 +19,18 @@ class Artwork {
     var galleryId: String!
     var major: Int?
     var minor: Int?
+    var id: String!
+    
     
     class func createFromJSON(data: NSDictionary) -> Artwork {
         var artwork =  Artwork()
+        
+        artwork.id = data["id"] as String
         if let audioData = data["audio"] as? NSDictionary {
             artwork.audio = Audio.createFromJSON(audioData)
         }
         artwork.author = data["author"] as? String
-        artwork.description = data["description"] as? String
+        artwork.desc = data["description"] as? String
         artwork.image = Image.createFromJSON(data["image"] as NSDictionary)
         artwork.likesCount = data["likes_count"] as Int
         artwork.name = data["name"] as String
@@ -43,4 +47,11 @@ class Artwork {
         
         return artwork
     }
+
+    
+}
+
+
+func == <R: Artwork>(left: R, right: R) -> Bool {
+    return left.id == right.id
 }

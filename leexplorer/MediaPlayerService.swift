@@ -83,6 +83,16 @@ class MediaPlayerService: NSObject {
         return playerItem!.tracks.first!.assetTrack!.asset.duration
     }
     
+    func isPlayingArtwork(artwork: Artwork) -> Bool {
+        if let playingArtwork = self.artwork {
+            if playingArtwork == artwork {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if context == &itemStatusContext {
             switch playerItem!.status {

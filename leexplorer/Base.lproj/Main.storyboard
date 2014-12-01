@@ -233,26 +233,39 @@
                                     <action selector="didTabPlay:" destination="F1b-k8-5b6" eventType="touchUpInside" id="erP-N5-H6n"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
-                                <rect key="frame" x="516" y="514" width="36" height="36"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
+                                <rect key="frame" x="519" y="514" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="BTt-8i-tEs"/>
                                     <constraint firstAttribute="height" constant="36" id="jxa-Pk-Bzz"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bd-cW-sMK" customClass="MediaPlayerView" customModule="leexplorer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="520" width="600" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="pJ3-cw-DnW"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="4bd-cW-sMK" secondAttribute="bottom" id="0bg-Z4-jE8"/>
                             <constraint firstItem="ien-eW-WLg" firstAttribute="centerX" secondItem="ofq-8r-wDT" secondAttribute="centerX" constant="-3" id="7RG-Vu-PgX"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="top" secondItem="nSy-IR-Fp6" secondAttribute="top" id="Q50-kf-aCH"/>
                             <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="ien-eW-WLg" secondAttribute="bottom" constant="38" id="QBO-NJ-1JI"/>
                             <constraint firstAttribute="trailing" secondItem="O8d-ab-IRK" secondAttribute="trailing" id="SF8-UZ-lzo"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="leading" secondItem="nSy-IR-Fp6" secondAttribute="leading" id="aJo-sz-IDC"/>
+                            <constraint firstItem="4bd-cW-sMK" firstAttribute="leading" secondItem="nSy-IR-Fp6" secondAttribute="leading" id="faR-yv-MUR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ien-eW-WLg" secondAttribute="trailing" constant="20" id="jDg-PP-igg"/>
+                            <constraint firstAttribute="trailing" secondItem="4bd-cW-sMK" secondAttribute="trailing" id="jxj-in-qpw"/>
                             <constraint firstItem="ien-eW-WLg" firstAttribute="centerY" secondItem="ofq-8r-wDT" secondAttribute="centerY" id="sFS-pV-f9w"/>
                             <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="O8d-ab-IRK" secondAttribute="bottom" id="zlX-a4-MWD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mediaPlayerBottomConstraint" destination="0bg-Z4-jE8" id="lkh-eF-Xhv"/>
+                        <outlet property="mediaPlayerView" destination="4bd-cW-sMK" id="NER-35-PTU"/>
                         <outlet property="playButton" destination="ien-eW-WLg" id="c3J-lq-5cw"/>
                         <outlet property="playIcon" destination="ofq-8r-wDT" id="HDN-vY-yys"/>
                         <outlet property="tableView" destination="O8d-ab-IRK" id="m0q-a1-mYX"/>
