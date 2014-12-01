@@ -14,7 +14,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     var gallery: Gallery!
     var profileHeaderView: GalleryProfileHeaderView!
     var headerOriginalWidth: CGFloat!
-    @IBOutlet var exploreCollectionButton: UIButton!
+    @IBOutlet var exploreCollectionButton: MKButton!
     
     let HEADER_HEIGHT: CGFloat = 220.0
     
@@ -53,8 +53,8 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         title = gallery.name
-        
         edgesForExtendedLayout = .None;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
 
         let cellNib = UINib(nibName: "ProfileSectionCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "ProfileSectionCell")
@@ -79,6 +79,9 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         exploreCollectionButton.backgroundColor = ColorPallete.Blue.get().colorWithAlphaComponent(0.95)
         exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
+        exploreCollectionButton.maskEnabled = true
+        exploreCollectionButton.rippleLocation = .TapLocation
+        exploreCollectionButton.circleLayerColor = ColorPallete.Blue.get()
     }
 
 

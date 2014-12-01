@@ -32,7 +32,7 @@ class GalleryProfileHeaderView: NibDesignable {
     
     
     func updateUI() {
-        var imageUrl = ImageProcessor.urlForImageFill(gallery.images.first!,
+        var imageUrl = MediaProcessor.urlForImageFill(gallery.images.first!,
             width: Int(bounds.width), height: Int(bounds.height))
         
         imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil

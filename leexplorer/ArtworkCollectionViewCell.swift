@@ -21,7 +21,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     
     var artwork: Artwork! {
         didSet {
-            var imageUrl = ImageProcessor.urlForImageFill(artwork.image,
+            var imageUrl = MediaProcessor.urlForImageFill(artwork.image,
                 width: Int(bounds.width), height: Int(bounds.height))
             
             imageView.setImageWithURL(imageUrl)
@@ -34,6 +34,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
             if let publishedAt = artwork.publishedAt {
                 dateLabel.text = NSDateFormatter.leShared.stringFromDate(publishedAt)
             } else {
+                dateLabel.hidden = true
                 separatorLabel.hidden = true
             }
         }

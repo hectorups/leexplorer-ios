@@ -63,7 +63,7 @@ class GalleryCell: UITableViewCell {
         for (index, image) in enumerate(gallery.images) {
             let rect = CGRectMake(CGFloat(index) * screenBounds.size.width, 0, screenBounds.size.width, height)
             var imageView = UIImageView(frame: rect)
-            var imageUrl = ImageProcessor.urlForImageFill(image, width: Int(bounds.width),
+            var imageUrl = MediaProcessor.urlForImageFill(image, width: Int(bounds.width),
                 height: Int(bounds.height), scaleForDevice: true)
             imageView.setImageWithURL(imageUrl)
             imageView.contentMode = .ScaleAspectFill

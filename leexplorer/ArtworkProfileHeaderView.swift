@@ -26,7 +26,7 @@ class ArtworkProfileHeaderView: NibDesignable {
     }
     
     func setupUI() {
-        var imageUrl = ImageProcessor.urlForImageFill(artwork.image,
+        var imageUrl = MediaProcessor.urlForImageFill(artwork.image,
             width: Int(bounds.width), height: Int(bounds.height))
         
         imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil
@@ -39,6 +39,7 @@ class ArtworkProfileHeaderView: NibDesignable {
         if let publishedAt = artwork.publishedAt {
             dateLabel.text = NSDateFormatter.leShared.stringFromDate(publishedAt)
         } else {
+            dateLabel.hidden = true
             separatorLabel.hidden = true
         }
         

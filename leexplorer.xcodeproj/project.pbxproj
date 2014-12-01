@@ -18,17 +18,24 @@
 		9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A35F1A24301F00399531 /* LeexplorerApi.swift */; };
 		9574A3621A2430CF00399531 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3611A2430CF00399531 /* Constants.swift */; };
 		9574A3641A243CBC00399531 /* LELog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3631A243CBC00399531 /* LELog.swift */; };
-		9574A3671A24410900399531 /* NibDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3661A24410900399531 /* NibDesignable.swift */; };
 		9574A3691A24417400399531 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3681A24417400399531 /* GalleryCell.swift */; };
 		9574A36D1A24470300399531 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9574A36C1A24470300399531 /* GalleryCell.xib */; };
 		9574A3701A24526A00399531 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A36F1A24526A00399531 /* Gallery.swift */; };
+		95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93771A27A5ED001F4DD9 /* MKButton.swift */; };
+		95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93781A27A5ED001F4DD9 /* MKColor.swift */; };
+		95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93791A27A5ED001F4DD9 /* MKLayer.swift */; };
+		95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */; };
+		95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */; };
+		95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937D1A27A5ED001F4DD9 /* NibDesignable.swift */; };
 		95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */; };
 		95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */; };
 		95B7D27E1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */; };
 		95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */; };
+		95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */; };
+		95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CABB031A2AA55B00F354B2 /* AVFoundation.framework */; };
 		95CD75441A24F7EA00974B3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95CD75431A24F7EA00974B3C /* Localizable.strings */; };
 		95CD75461A24FBEE00974B3C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75451A24FBEE00974B3C /* Image.swift */; };
-		95CD75481A25369200974B3C /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75471A25369200974B3C /* ImageProcessor.swift */; };
+		95CD75481A25369200974B3C /* MediaProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75471A25369200974B3C /* MediaProcessor.swift */; };
 		95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FE11A25439C00E3B655 /* ColorPalette.swift */; };
 		95D00FEC1A25692A00E3B655 /* GalleryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */; };
 		95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D00FF31A256BD700E3B655 /* ProfileSectionCell.swift */; };
@@ -42,6 +49,7 @@
 		95D010081A267EDA00E3B655 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D010071A267EDA00E3B655 /* Audio.swift */; };
 		95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */; };
 		95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */; };
+		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,17 +81,24 @@
 		9574A35F1A24301F00399531 /* LeexplorerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeexplorerApi.swift; sourceTree = "<group>"; };
 		9574A3611A2430CF00399531 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9574A3631A243CBC00399531 /* LELog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LELog.swift; sourceTree = "<group>"; };
-		9574A3661A24410900399531 /* NibDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibDesignable.swift; sourceTree = "<group>"; };
 		9574A3681A24417400399531 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		9574A36C1A24470300399531 /* GalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
 		9574A36F1A24526A00399531 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		95AD93771A27A5ED001F4DD9 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		95AD93781A27A5ED001F4DD9 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		95AD93791A27A5ED001F4DD9 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		95AD937D1A27A5ED001F4DD9 /* NibDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibDesignable.swift; sourceTree = "<group>"; };
 		95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkProfileViewController.swift; sourceTree = "<group>"; };
 		95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkProfileHeaderView.swift; sourceTree = "<group>"; };
 		95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtworkProfileHeaderView.xib; sourceTree = "<group>"; };
 		95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+leShared.swift"; sourceTree = "<group>"; };
+		95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerService.swift; sourceTree = "<group>"; };
+		95CABB031A2AA55B00F354B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		95CD75431A24F7EA00974B3C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		95CD75451A24FBEE00974B3C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		95CD75471A25369200974B3C /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		95CD75471A25369200974B3C /* MediaProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaProcessor.swift; sourceTree = "<group>"; };
 		95D00FE11A25439C00E3B655 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryProfileViewController.swift; sourceTree = "<group>"; };
 		95D00FF31A256BD700E3B655 /* ProfileSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSectionCell.swift; sourceTree = "<group>"; };
@@ -97,6 +112,7 @@
 		95D010071A267EDA00E3B655 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+leDateFromString.swift"; sourceTree = "<group>"; };
 		95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
+		95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
+				95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */,
 				95D00FFE1A25B11700E3B655 /* QuartzCore.framework in Frameworks */,
 				5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */,
 			);
@@ -123,6 +141,8 @@
 		2E2A5C072832B8CA30D73D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */,
+				95CABB031A2AA55B00F354B2 /* AVFoundation.framework */,
 				95D00FFD1A25B11700E3B655 /* QuartzCore.framework */,
 				50639E2347B4C9610E85F6F3 /* libPods.a */,
 				B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */,
@@ -153,6 +173,7 @@
 		9574A3311A24261B00399531 /* leexplorer */ = {
 			isa = PBXGroup;
 			children = (
+				95CABB001A2AA46B00F354B2 /* Services */,
 				95D010091A268D7A00E3B655 /* Extensions */,
 				9574A3651A2440F100399531 /* Libs */,
 				9574A3581A24264E00399531 /* Apis */,
@@ -160,7 +181,6 @@
 				9574A3571A24264400399531 /* Controllers */,
 				9574A35B1A24268300399531 /* Models */,
 				9574A3591A24265900399531 /* Views */,
-				9574A33E1A24261B00399531 /* Images.xcassets */,
 				9574A3321A24261B00399531 /* Supporting Files */,
 			);
 			path = leexplorer;
@@ -206,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				9574A35F1A24301F00399531 /* LeexplorerApi.swift */,
-				95CD75471A25369200974B3C /* ImageProcessor.swift */,
+				95CD75471A25369200974B3C /* MediaProcessor.swift */,
 			);
 			name = Apis;
 			sourceTree = "<group>";
@@ -233,6 +253,7 @@
 		9574A35A1A24266600399531 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9574A33E1A24261B00399531 /* Images.xcassets */,
 				9574A3611A2430CF00399531 /* Constants.swift */,
 				9574A3631A243CBC00399531 /* LELog.swift */,
 				9574A35C1A24277D00399531 /* leexplorer-Bridging-Header.h */,
@@ -258,9 +279,40 @@
 		9574A3651A2440F100399531 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				9574A3661A24410900399531 /* NibDesignable.swift */,
+				95AD93761A27A5ED001F4DD9 /* MaterialKit */,
+				95AD937C1A27A5ED001F4DD9 /* NibDesignable */,
 			);
 			name = Libs;
+			sourceTree = "<group>";
+		};
+		95AD93761A27A5ED001F4DD9 /* MaterialKit */ = {
+			isa = PBXGroup;
+			children = (
+				95AD93771A27A5ED001F4DD9 /* MKButton.swift */,
+				95AD93781A27A5ED001F4DD9 /* MKColor.swift */,
+				95AD93791A27A5ED001F4DD9 /* MKLayer.swift */,
+				95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */,
+				95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */,
+			);
+			name = MaterialKit;
+			path = Libs/MaterialKit;
+			sourceTree = "<group>";
+		};
+		95AD937C1A27A5ED001F4DD9 /* NibDesignable */ = {
+			isa = PBXGroup;
+			children = (
+				95AD937D1A27A5ED001F4DD9 /* NibDesignable.swift */,
+			);
+			name = NibDesignable;
+			path = Libs/NibDesignable;
+			sourceTree = "<group>";
+		};
+		95CABB001A2AA46B00F354B2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		95D010091A268D7A00E3B655 /* Extensions */ = {
@@ -422,14 +474,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */,
+				95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */,
+				95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */,
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,
-				95CD75481A25369200974B3C /* ImageProcessor.swift in Sources */,
+				95CD75481A25369200974B3C /* MediaProcessor.swift in Sources */,
 				95D00FF91A2588B200E3B655 /* GalleryProfileHeaderView.swift in Sources */,
 				95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */,
+				95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */,
 				95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */,
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
-				9574A3671A24410900399531 /* NibDesignable.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
+				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
 				95D010001A26465700E3B655 /* GradientView.swift in Sources */,
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,
@@ -440,9 +495,12 @@
 				95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */,
 				95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */,
 				9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */,
+				95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */,
 				9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */,
 				95CD75461A24FBEE00974B3C /* Image.swift in Sources */,
 				95D010061A266FBB00E3B655 /* Artwork.swift in Sources */,
+				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
+				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,
 			);

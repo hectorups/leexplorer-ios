@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ImageProcessor {
+class MediaProcessor {
     
     class var shared : CLCloudinary {
         struct Static {
@@ -54,6 +54,11 @@ class ImageProcessor {
         let format = Format.JPG.rawValue
         let url = shared.url("\(image.publicId).\(format)", options: ["transformation": transformation])
         
+        return NSURL(string: url)!
+    }
+    
+    class func urlForAudio(audio: Audio) -> NSURL {
+        let url = shared.url(audio.publicId, options: ["resource_type": "raw"])
         return NSURL(string: url)!
     }
     

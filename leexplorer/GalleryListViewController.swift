@@ -18,7 +18,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("GALLERY_LIST_TITLE", comment: "title")
+        self.title = NSLocalizedString("GALLERY_LIST_TITLE", comment: "")
         
         setupTableView()
         loadGalleries()

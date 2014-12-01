@@ -15,7 +15,8 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     var artworks: [Artwork] = []
     
     override func viewDidLoad() {
-        self.title = NSLocalizedString("ARTWORKS", comment: "")
+        title = NSLocalizedString("ARTWORKS", comment: "")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         setupCollectionView()
         

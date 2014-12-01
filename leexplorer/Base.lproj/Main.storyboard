@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Gallery List View Controller-->
@@ -56,7 +57,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uO8-eB-kKQ">
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uO8-eB-kKQ" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="552" width="600" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -127,7 +128,7 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
                                                             <rect key="frame" x="100" y="30" width="245" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -219,15 +220,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ien-eW-WLg" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
+                                <rect key="frame" x="504" y="502" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GLQ-eZ-tKb"/>
+                                    <constraint firstAttribute="width" constant="60" id="aYr-wF-Xjq"/>
+                                </constraints>
+                                <state key="normal" image="play_button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTabPlay:" destination="F1b-k8-5b6" eventType="touchUpInside" id="erP-N5-H6n"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
+                                <rect key="frame" x="516" y="514" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="BTt-8i-tEs"/>
+                                    <constraint firstAttribute="height" constant="36" id="jxa-Pk-Bzz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ien-eW-WLg" firstAttribute="centerX" secondItem="ofq-8r-wDT" secondAttribute="centerX" constant="-3" id="7RG-Vu-PgX"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="top" secondItem="nSy-IR-Fp6" secondAttribute="top" id="Q50-kf-aCH"/>
+                            <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="ien-eW-WLg" secondAttribute="bottom" constant="38" id="QBO-NJ-1JI"/>
                             <constraint firstAttribute="trailing" secondItem="O8d-ab-IRK" secondAttribute="trailing" id="SF8-UZ-lzo"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="leading" secondItem="nSy-IR-Fp6" secondAttribute="leading" id="aJo-sz-IDC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ien-eW-WLg" secondAttribute="trailing" constant="20" id="jDg-PP-igg"/>
+                            <constraint firstItem="ien-eW-WLg" firstAttribute="centerY" secondItem="ofq-8r-wDT" secondAttribute="centerY" id="sFS-pV-f9w"/>
                             <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="O8d-ab-IRK" secondAttribute="bottom" id="zlX-a4-MWD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="ien-eW-WLg" id="c3J-lq-5cw"/>
+                        <outlet property="playIcon" destination="ofq-8r-wDT" id="HDN-vY-yys"/>
                         <outlet property="tableView" destination="O8d-ab-IRK" id="m0q-a1-mYX"/>
                     </connections>
                 </viewController>
@@ -254,4 +281,8 @@
             <point key="canvasLocation" x="264" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play_button" width="60" height="60"/>
+        <image name="play_icon" width="60" height="60"/>
+    </resources>
 </document>

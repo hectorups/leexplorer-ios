@@ -18,8 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         LELog.d("APP VERSION: \(AppConstant.CLIENT_VERSION)")
+        initVisualAppearance()
         
         return true
+    }
+    
+    func initVisualAppearance() {
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.translucent = true
+        navigationBar.barStyle = .Default
+        navigationBar.tintColor = ColorPallete.Blue.get()
+        navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: ColorPallete.Blue.get()
+        ]
     }
 
 

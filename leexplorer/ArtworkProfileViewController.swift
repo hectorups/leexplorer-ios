@@ -11,6 +11,9 @@ import UIKit
 class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var playButton: MKButton!
+    @IBOutlet var playIcon: UIImageView!
+    
     
     let HEADER_HEIGHT: CGFloat = 220.0
     var artwork: Artwork!
@@ -21,6 +24,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         title = artwork.name
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         edgesForExtendedLayout = .None;
         
@@ -43,6 +47,19 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
+        playIcon.tintColor = ColorPallete.White.get()
+        playButton.cornerRadius = 40.0
+        playButton.backgroundLayerCornerRadius = 40.0
+        playButton.maskEnabled = false
+        playButton.circleGrowRatioMax = 1.75
+        playButton.rippleLocation = .Center
+        playButton.aniDuration = 0.85
+        playButton.tintColor = ColorPallete.Blue.get()
+        
+        playButton.layer.shadowOpacity = 0.75
+        playButton.layer.shadowRadius = 3.5
+        playButton.layer.shadowColor = UIColor.blackColor().CGColor
+        playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -67,6 +84,9 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    @IBAction func didTabPlay(sender: AnyObject) {
+        MediaPlayerService.shared.playArtwork(artwork)
+    }
 
 
 }
