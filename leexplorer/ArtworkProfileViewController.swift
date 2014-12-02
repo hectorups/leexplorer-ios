@@ -68,6 +68,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
         
         playButton.hidden = MediaPlayerService.shared.isPlayingArtwork(artwork) || artwork.audio == nil
+        playIcon.hidden = playButton.hidden
     }
     
     func setupTableView() {
@@ -162,8 +163,10 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         
         UIView.animateWithDuration(1.0, animations: { () -> Void in
             self.playButton.alpha = 0.0
+            self.playIcon.alpha = 0.0
         }) { (_) -> Void in
-           self.playButton.hidden = true
+            self.playButton.hidden = true
+            self.playIcon.hidden = self.playButton.hidden
         }
     }
     

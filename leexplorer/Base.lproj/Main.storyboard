@@ -267,7 +267,7 @@
                         <outlet property="mediaPlayerBottomConstraint" destination="0bg-Z4-jE8" id="lkh-eF-Xhv"/>
                         <outlet property="mediaPlayerView" destination="4bd-cW-sMK" id="NER-35-PTU"/>
                         <outlet property="playButton" destination="ien-eW-WLg" id="c3J-lq-5cw"/>
-                        <outlet property="playIcon" destination="ofq-8r-wDT" id="HDN-vY-yys"/>
+                        <outlet property="playIcon" destination="ofq-8r-wDT" id="XUV-wd-Mbg"/>
                         <outlet property="tableView" destination="O8d-ab-IRK" id="m0q-a1-mYX"/>
                     </connections>
                 </viewController>
