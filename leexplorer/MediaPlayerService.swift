@@ -13,11 +13,13 @@ import MediaPlayer
 class MediaPlayerService: NSObject {
     
     private var itemStatusContext = 0
-    
     private var audioPlayer: AVPlayer?
     private var playerItem: AVPlayerItem?
-    var artwork: Artwork?
-    var playbackObserver: AnyObject?
+    private var artwork: Artwork?
+    private var playbackObserver: AnyObject?
+    private var readyToCheck = false
+    
+    var paused = false
     
     class var shared : MediaPlayerService {
         struct Static {
@@ -39,36 +41,76 @@ class MediaPlayerService: NSObject {
     func playArtwork(artwork: Artwork) {
         var error: NSError?
         
+        if audioPlayer != nil {
+            stop()
+        }
+        
         let url = MediaProcessor.urlForAudio(artwork.audio!)
         LELog.d(url)
         
         self.artwork = artwork
+        
         playerItem = AVPlayerItem(URL: url)
-        NSNotificationCenter.defaultCenter().addObserverForName(AVPlayerItemDidPlayToEndTimeNotification, object: playerItem!, queue: nil) { (notification) -> Void in
+        NSNotificationCenter.defaultCenter().addObserverForName(AVPlayerItemDidPlayToEndTimeNotification, object: playerItem!, queue: nil) {[weak self] (notification) -> Void in
             LELog.d("Audio finished playing")
-            if let observer: AnyObject = self.playbackObserver {
-                self.audioPlayer?.removeTimeObserver(observer)
+            if let strongSelf = self {
+                let data = [
+                    "artworkId": strongSelf.artwork!.id
+                ]
+                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioCompleted.rawValue, object: strongSelf, userInfo: data)
+                strongSelf.stop()
             }
         }
         
         playerItem!.addObserver(self, forKeyPath: "status", options: nil, context: &itemStatusContext)
         
         audioPlayer = AVPlayer(playerItem: playerItem)
-        audioPlayer!.play()
-        
+        play()
+    }
+    
+    func hasArtworkTrack() -> Bool {
+        return artwork != nil
     }
     
     func play() {
+        paused = false
         audioPlayer?.play()
+        
+        let data = [
+            "artworkId": self.artwork!.id
+        ]
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioResumed.rawValue, object: self, userInfo: data)
     }
     
     func pause() {
+        paused = true
         audioPlayer?.pause()
+        
+        let data = [
+            "artworkId": self.artwork!.id
+        ]
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioPaused.rawValue, object: self, userInfo: data)
+    }
+    
+    func stop() {
+        pause()
+        playerItem?.removeObserver(self, forKeyPath: "status", context: &itemStatusContext)
+        if let observer: AnyObject = self.playbackObserver {
+            audioPlayer?.removeTimeObserver(observer)
+        }
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem!)
+        
+        readyToCheck = false
+        audioPlayer = nil
+        playerItem = nil
+        playbackObserver = nil
+        artwork = nil
     }
     
     
-    func seekToTime(time: CMTime) {
-        audioPlayer?.seekToTime(time)
+    func seekToTime(time: Float) {
+        var cmtime = CMTimeMakeWithSeconds(Float64(time), 1)
+        playerItem?.seekToTime(cmtime)
     }
 
     func isPlaying() -> Bool {
@@ -113,7 +155,7 @@ class MediaPlayerService: NSObject {
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
             MPMediaItemPropertyArtist: artwork!.author ?? "unknown",
             MPMediaItemPropertyTitle: artwork!.name,
-            MPNowPlayingInfoPropertyPlaybackRate: 1.0,
+//            MPNowPlayingInfoPropertyPlaybackRate: 1.0,
             MPMediaItemPropertyPlaybackDuration: CMTimeGetSeconds(self.currentTrackDuration())
         ]
         
@@ -123,12 +165,33 @@ class MediaPlayerService: NSObject {
     }
     
     private func trackTime() {
-        let interval = CMTimeMake(1, 1);
-        playbackObserver = audioPlayer?.addPeriodicTimeObserverForInterval(interval, queue: nil, usingBlock: { (time) -> Void in
-            let time = CMTimeGetSeconds(self.audioPlayer!.currentTime());
-            let total = CMTimeGetSeconds(self.currentTrackDuration())
-            LELog.d("Time: \(time) of \(total)")
+        let interval = CMTimeMake(1, 2);
+        readyToCheck = true
+        playbackObserver = audioPlayer?.addPeriodicTimeObserverForInterval(interval, queue: nil, usingBlock: { [weak self] (time) -> Void in
+            if let strongSelf = self {
+                if !strongSelf.readyToCheck {
+                    return
+                }
+                
+                let time = Float(CMTimeGetSeconds(strongSelf.playerItem!.currentTime()))
+                let duration = Float(CMTimeGetSeconds(strongSelf.currentTrackDuration()))
+                let rate = strongSelf.paused ? 0.0 : 1.0
+                LELog.d("Time: \(time) of \(duration)")
+                
+                var playingInfo = NSMutableDictionary(dictionary: MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo)
+                playingInfo.setValue(time, forKey: MPNowPlayingInfoPropertyElapsedPlaybackTime)
+                playingInfo.setValue(rate, forKey: MPNowPlayingInfoPropertyPlaybackRate)
+                MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = playingInfo
+                
+                let data = [
+                    "time": time,
+                    "duration": duration,
+                    "artworkId": strongSelf.artwork!.id
+                ]
+                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioProgressUpdate.rawValue, object: strongSelf, userInfo: data)
+            }
         })
     }
+    
     
 }

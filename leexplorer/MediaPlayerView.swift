@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol MediaPlayerViewDelegate: class {
+    func mediaPlayerView(mediaPlayerView: MediaPlayerView, play: Bool)
+    func mediaPlayerView(mediaPlayerView: MediaPlayerView, updatedValue: Float)
+}
+
 class MediaPlayerView: NibDesignable {
     @IBOutlet var playButton: UIButton!
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var currentPositionLabel: UILabel!
     @IBOutlet var progressSlider: UISlider!
+    weak var delegate: MediaPlayerViewDelegate?
     
     var duration: Float! {
         didSet {
@@ -24,9 +30,26 @@ class MediaPlayerView: NibDesignable {
     var currentPosition: Float! {
         didSet {
             currentPositionLabel.text = timeFormat(currentPosition)
-            progressSlider.value = currentPosition
+            if !editing {
+                self.progressSlider.value = self.currentPosition
+            }
         }
     }
+    
+    var paused: Bool! {
+        didSet {
+            var image = UIImage(named: "pause_icon") as UIImage?
+            if let paused = self.paused{
+                if paused {
+                    image = UIImage(named: "play_icon") as UIImage?
+                }
+            }
+            
+            playButton.setImage(image, forState: .Normal)
+        }
+    }
+    
+    private var editing = false
     
     override func tintColorDidChange() {
         progressSlider.tintColor = self.tintColor
@@ -65,4 +88,20 @@ class MediaPlayerView: NibDesignable {
         
         return NSString(format: "%ld:%02ld", roundedMinutes, roundedSeconds)
     }
+    
+    @IBAction func didTabPlayButton(sender: AnyObject) {
+        delegate?.mediaPlayerView(self, play: paused)
+    }
+    
+    @IBAction func didTouchUp(sender: AnyObject) {
+        println("didEndEditing")
+        delegate?.mediaPlayerView(self, updatedValue: progressSlider.value)
+        editing = false
+    }
+    
+    @IBAction func didTouchDown(sender: AnyObject) {
+        println("didBegingEditing")
+        editing = true
+    }
+    
 }

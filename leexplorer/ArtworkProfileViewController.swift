@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
+    UITableViewDataSource, MediaPlayerViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var playButton: MKButton!
@@ -33,17 +34,21 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         setupTableView()
         setupPlayButton()
         setupMediaPlayerView()
+        
+        setupNotifications()
     }
     
     // MARK - Setup Views
     
     func setupMediaPlayerView() {
-        mediaPlayerView.duration = 165.001
         mediaPlayerView.currentPosition = 0.0
         mediaPlayerView.tintColor = ColorPallete.Blue.get()
+        mediaPlayerView.delegate = self
         
         if !MediaPlayerService.shared.isPlayingArtwork(artwork) {
             mediaPlayerBottomConstraint.constant = -1 * mediaPlayerView.bounds.height
+        } else {
+            mediaPlayerView.paused = MediaPlayerService.shared.paused
         }
     }
     
@@ -92,6 +97,47 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
     }
     
+    // MARK - Setup Notifications
+    
+    func setupNotifications() {
+        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioProgressUpdate.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+            var time = notification.userInfo!["time"] as Float
+            var duration = notification.userInfo!["duration"] as Float
+            if let strongSelf = self {
+                if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
+                    strongSelf.showMediaPlayerTime(time, duration: duration)
+                }
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioCompleted.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+            var artworkId = notification.userInfo!["artworkId"] as String
+            if let strongSelf = self {
+                if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
+                    strongSelf.mediaPlayerAudioCompleted()
+                }
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioPaused.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+            var artworkId = notification.userInfo!["artworkId"] as String
+            if let strongSelf = self {
+                if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
+                    strongSelf.mediaPlayerAudioPaused()
+                }
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioResumed.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+            var artworkId = notification.userInfo!["artworkId"] as String
+            if let strongSelf = self {
+                if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
+                    strongSelf.mediaPlayerAudioResumed()
+                }
+            }
+        }
+    }
+    
     // MARK - UITableViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,22 +154,66 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    // MARK - Audio control
+    
+    
     @IBAction func didTabPlay(sender: AnyObject) {
-//        MediaPlayerService.shared.playArtwork(artwork)
+        MediaPlayerService.shared.playArtwork(artwork)
         
         UIView.animateWithDuration(1.0, animations: { () -> Void in
             self.playButton.alpha = 0.0
         }) { (_) -> Void in
            self.playButton.hidden = true
         }
-        
-        UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
-            self.mediaPlayerBottomConstraint.constant = 0
-            self.mediaPlayerView.layoutIfNeeded()
-        }, completion: nil)
-
-        
     }
-
+    
+    func showMediaPlayerTime(time: Float, duration: Float) {
+        self.mediaPlayerView.currentPosition = time
+        self.mediaPlayerView.duration = duration
+        
+        if mediaPlayerBottomConstraint.constant != 0 {
+            UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+                self.mediaPlayerBottomConstraint.constant = 0
+                self.mediaPlayerView.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
+    func mediaPlayerAudioCompleted() {
+        self.mediaPlayerView.currentPosition = 0.0
+    }
+    
+    func mediaPlayerAudioPaused() {
+        self.mediaPlayerView.paused = true
+    }
+    
+    func mediaPlayerAudioResumed() {
+        self.mediaPlayerView.paused = false
+    }
+    
+    // MARK - MediaPlayerViewDelegate
+    
+    func mediaPlayerView(mediaPlayerView: MediaPlayerView, play: Bool) {
+        if !MediaPlayerService.shared.isPlayingArtwork(artwork) {
+            if play {
+                MediaPlayerService.shared.playArtwork(artwork)
+            }
+            return
+        }
+        
+        if play {
+            MediaPlayerService.shared.play()
+        } else {
+            MediaPlayerService.shared.pause()
+        }
+    }
+    
+    func mediaPlayerView(mediaPlayerView: MediaPlayerView, updatedValue: Float) {
+        if !MediaPlayerService.shared.isPlayingArtwork(artwork) {
+            return
+        }
+        
+        MediaPlayerService.shared.seekToTime(updatedValue)
+    }
 
 }

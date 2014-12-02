@@ -36,3 +36,10 @@ enum Segue: String {
         ShowArtworkList="ShowArtworkList",
         ShowArtworkProfile="ShowArtworkProfile"
 }
+
+enum AppNotification: String {
+    case AudioProgressUpdate="AudioProgressUpdate",
+    AudioCompleted="AudioCompleted",
+    AudioPaused="AudioPaused",
+    AudioResumed="AudioResumed"
+}

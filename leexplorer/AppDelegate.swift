@@ -102,6 +102,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: - Audio Controls
+    override func remoteControlReceivedWithEvent(event: UIEvent) {
+        let type = event.subtype
+        LELog.d("received remote control \(type.rawValue)") // 101 = pause, 100 = play
+        
+        if !MediaPlayerService.shared.hasArtworkTrack() {
+            // Ignore, not our track
+            return
+        }
+        
+        switch type {
+        case .RemoteControlTogglePlayPause:
+            if MediaPlayerService.shared.paused {
+                MediaPlayerService.shared.play()
+            } else {
+                MediaPlayerService.shared.pause()
+            }
+        case .RemoteControlPlay:
+            MediaPlayerService.shared.play()
+        case .RemoteControlPause:
+            MediaPlayerService.shared.pause()
+        default:break
+        }
+        
+    }
 
 }
 
