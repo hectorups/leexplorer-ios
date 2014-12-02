@@ -18,7 +18,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var mediaPlayerBottomConstraint: NSLayoutConstraint!
     
     
-    let HEADER_HEIGHT: CGFloat = 220.0
+    let HEADER_HEIGHT: CGFloat = 240.0
     var artwork: Artwork!
     var headerOriginalWidth: CGFloat!
     var profileHeaderView: ArtworkProfileHeaderView!

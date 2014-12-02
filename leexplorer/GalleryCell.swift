@@ -67,7 +67,7 @@ class GalleryCell: UITableViewCell {
                 height: Int(bounds.height), scaleForDevice: true)
             imageView.setImageWithURL(imageUrl)
             imageView.contentMode = .ScaleAspectFill
-            imageView.clipsToBounds = false
+            imageView.clipsToBounds = true
             scrollView.addSubview(imageView)
         }
         

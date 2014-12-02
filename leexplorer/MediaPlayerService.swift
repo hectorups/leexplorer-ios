@@ -29,12 +29,14 @@ class MediaPlayerService: NSObject {
     }
     
     override init() {
+        super.init()
+        
         var session = AVAudioSession.sharedInstance()
 
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         session.setActive(true, error: nil)
         session.overrideOutputAudioPort(.None, error: nil)
-        
+
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     

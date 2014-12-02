@@ -12,7 +12,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet var tableView: UITableView!
     
-    let GALLERY_CELL_HEIGHT: CGFloat = 220
+    let GALLERY_CELL_HEIGHT: CGFloat = 240
     
     var galleries: [Gallery] = []
     

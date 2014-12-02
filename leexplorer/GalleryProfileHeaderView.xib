@@ -60,7 +60,7 @@
                                 <constraint firstAttribute="trailing" secondItem="V8M-uN-gHd" secondAttribute="trailing" constant="8" id="kRA-2N-che"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRO-mk-IGV">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRO-mk-IGV">
                             <rect key="frame" x="0.0" y="80" width="150" height="81"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building_icon" translatesAutoresizingMaskIntoConstraints="NO" id="K0H-8O-Ier">
