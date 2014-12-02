@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ALAlertBanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CHTCollectionViewWaterfallLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Cloudinary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-CrashlyticsFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,7 +39,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SVProgressHUD.xcscheme</key>
+		<key>Pods-Mixpanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>46D49E3D17A8EA1507D09C2A</key>
+		<key>118FA43DC3F68ADC9CA2FB21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B60606A7CA057CEBF360AB5</key>
+		<key>261F6E8D031FE61056252AD6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>602D30A407686249098864F0</key>
+		<key>7F2EAFE5FB1071ADC69D5DD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E5272FC8240B8111933B238</key>
+		<key>AF89C3B2E00F6B6455130C51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EC5C1A9FDBCA29F409199AC</key>
+		<key>B4C9332D8F7AD0AE70BFBB29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA50C3930421102F361DC007</key>
+		<key>BB4B972145E035E2B1196BB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0DF2C7046E92D1BB3D0EDBE</key>
+		<key>D8064A29686445802EAFF608</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC7F08D70A8471F06256B134</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA8D915C67CB85C1314728EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

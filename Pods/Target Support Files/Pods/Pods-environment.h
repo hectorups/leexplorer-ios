@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// ALAlertBanner
+#define COCOAPODS_POD_AVAILABLE_ALAlertBanner
+#define COCOAPODS_VERSION_MAJOR_ALAlertBanner 0
+#define COCOAPODS_VERSION_MINOR_ALAlertBanner 3
+#define COCOAPODS_VERSION_PATCH_ALAlertBanner 1
+
 // CHTCollectionViewWaterfallLayout
 #define COCOAPODS_POD_AVAILABLE_CHTCollectionViewWaterfallLayout
 #define COCOAPODS_VERSION_MAJOR_CHTCollectionViewWaterfallLayout 0
@@ -59,6 +65,13 @@
 #define COCOAPODS_VERSION_MAJOR_Cloudinary 1
 #define COCOAPODS_VERSION_MINOR_Cloudinary 0
 #define COCOAPODS_VERSION_PATCH_Cloudinary 12
+
+// CrashlyticsFramework
+#define COCOAPODS_POD_AVAILABLE_CrashlyticsFramework
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 2.2.5.2.
 
 // HexColors
 #define COCOAPODS_POD_AVAILABLE_HexColors
@@ -72,9 +85,15 @@
 #define COCOAPODS_VERSION_MINOR_LBBlurredImage 2
 #define COCOAPODS_VERSION_PATCH_LBBlurredImage 1
 
-// SVProgressHUD
-#define COCOAPODS_POD_AVAILABLE_SVProgressHUD
-#define COCOAPODS_VERSION_MAJOR_SVProgressHUD 1
-#define COCOAPODS_VERSION_MINOR_SVProgressHUD 0
-#define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
+// Mixpanel
+#define COCOAPODS_POD_AVAILABLE_Mixpanel
+#define COCOAPODS_VERSION_MAJOR_Mixpanel 2
+#define COCOAPODS_VERSION_MINOR_Mixpanel 6
+#define COCOAPODS_VERSION_PATCH_Mixpanel 0
+
+// Mixpanel/MPCategoryHelpers
+#define COCOAPODS_POD_AVAILABLE_Mixpanel_MPCategoryHelpers
+#define COCOAPODS_VERSION_MAJOR_Mixpanel_MPCategoryHelpers 2
+#define COCOAPODS_VERSION_MINOR_Mixpanel_MPCategoryHelpers 6
+#define COCOAPODS_VERSION_PATCH_Mixpanel_MPCategoryHelpers 0
 

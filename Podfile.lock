@@ -20,19 +20,25 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ALAlertBanner (0.3.1)
   - CHTCollectionViewWaterfallLayout (0.8)
   - Cloudinary (1.0.12)
+  - CrashlyticsFramework (2.2.5.2)
   - HexColors (2.2.1)
   - LBBlurredImage (0.2.1)
-  - SVProgressHUD (HEAD based on 1.0)
+  - Mixpanel (2.6.0):
+    - Mixpanel/MPCategoryHelpers
+  - Mixpanel/MPCategoryHelpers (2.6.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - ALAlertBanner (~> 0.3.1)
   - CHTCollectionViewWaterfallLayout
   - Cloudinary
+  - CrashlyticsFramework (~> 2.2.4)
   - HexColors (~> 2.2)
   - LBBlurredImage (from `git@github.com:lukabernardi/LBBlurredImage.git`)
-  - SVProgressHUD (HEAD)
+  - Mixpanel (~> 2.6.0)
 
 EXTERNAL SOURCES:
   LBBlurredImage:
@@ -40,10 +46,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
   CHTCollectionViewWaterfallLayout: 14b7950cbe45ae9297e7759148d69b022bac047d
   Cloudinary: 1f3859b17f1c111671a1acf1f0e2648c34d3a207
+  CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   LBBlurredImage: ad8cbf6783c6b2f30868e5eb6ce2eb1ee85f4988
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  Mixpanel: e919d14f07a34ee01f81f97e535b7a240af2f793
 
 COCOAPODS: 0.34.4

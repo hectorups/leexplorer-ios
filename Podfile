@@ -1,7 +1,11 @@
+platform :ios, '7.0'
+
 pod "AFNetworking"
 pod "Cloudinary"
-pod "SVProgressHUD", :head
 pod "HexColors", "~> 2.2"
 pod "LBBlurredImage", :git => "git@github.com:lukabernardi/LBBlurredImage.git"
 pod "CHTCollectionViewWaterfallLayout"
+pod "CrashlyticsFramework", "~> 2.2.4"
+pod "ALAlertBanner", "~> 0.3.1"
+pod "Mixpanel", "~> 2.6.0"
 

@@ -29,6 +29,8 @@ struct AppConstant {
 
     static let MIN_METRES_FOR_AUTOPLAY = 20
     static let MILSEC_ARTWORK_REFRESH = 30000
+    
+    static let CRASHLYTICS_KEY = "1025a1bd270d6c18391090e2fe20649783aa84e2"
 }
 
 enum Segue: String {

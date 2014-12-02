@@ -16,7 +16,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     var headerOriginalWidth: CGFloat!
     @IBOutlet var exploreCollectionButton: MKButton!
     
-    let HEADER_HEIGHT: CGFloat = 220.0
+    let HEADER_HEIGHT: CGFloat = 260.0
     
     enum Section: Int {
         case Hours=0, Price, Description

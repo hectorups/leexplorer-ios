@@ -117,6 +117,7 @@
 		95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerView.xib; sourceTree = "<group>"; };
+		95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CrashlyticsFramework.a"; path = "Pods/build/Debug-iphoneos/libPods-CrashlyticsFramework.a"; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +146,7 @@
 		2E2A5C072832B8CA30D73D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */,
 				95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */,
 				95CABB031A2AA55B00F354B2 /* AVFoundation.framework */,
 				95D00FFD1A25B11700E3B655 /* QuartzCore.framework */,
@@ -351,6 +353,7 @@
 				9574A32C1A24261B00399531 /* Frameworks */,
 				9574A32D1A24261B00399531 /* Resources */,
 				010FD31F5A5370EFBFDB0AE5 /* Copy Pods Resources */,
+				95F78E851A2E6861009F8554 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,6 +460,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		95F78E851A2E6861009F8554 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run 1025a1bd270d6c18391090e2fe20649783aa84e2 a087ab125f6725e223a87594b44e12290b0be718d2c59d19a2a41884d0539439";
 		};
 		9A3AC4F602F70F977F9B4537 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -635,9 +651,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = leexplorer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "leexplorer/leexplorer-Bridging-Header.h";
@@ -651,9 +675,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = leexplorer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "leexplorer/leexplorer-Bridging-Header.h";
 			};

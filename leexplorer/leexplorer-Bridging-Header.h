@@ -5,7 +5,7 @@
 #import <Cloudinary/Cloudinary.h>
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "SVProgressHUD.h"
 #import "HexColor.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
+#import "Crashlytics.h"
