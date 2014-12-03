@@ -53,6 +53,7 @@
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
 		95F78E971A2E9353009F8554 /* ProgressNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */; };
+		95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E981A2EA08D009F8554 /* EventReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		95F78E901A2E8C01009F8554 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		95F78E921A2E8C09009F8554 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressNavigationController.swift; sourceTree = "<group>"; };
+		95F78E981A2EA08D009F8554 /* EventReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReporter.swift; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -275,6 +277,7 @@
 				9574A3341A24261B00399531 /* AppDelegate.swift */,
 				95CD75431A24F7EA00974B3C /* Localizable.strings */,
 				95D00FE11A25439C00E3B655 /* ColorPalette.swift */,
+				95F78E981A2EA08D009F8554 /* EventReporter.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */,
 				9574A3691A24417400399531 /* GalleryCell.swift in Sources */,
 				9574A3351A24261B00399531 /* AppDelegate.swift in Sources */,
+				95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */,
 				95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */,
 				95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */,
 				9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */,

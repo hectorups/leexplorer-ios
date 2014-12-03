@@ -20,6 +20,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     
     let HEADER_HEIGHT: CGFloat = 260.0
     var artwork: Artwork!
+    var gallery: Gallery!
+    
     var headerOriginalWidth: CGFloat!
     var profileHeaderView: ArtworkProfileHeaderView!
     var progressNavigationController: ProgressNavigationController!
@@ -156,6 +158,10 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        progressNavigationController.stopAnimating()
+    }
+    
     // MARK - UITableViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -178,6 +184,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     @IBAction func didTabPlay(sender: AnyObject) {
         MediaPlayerService.shared.playArtwork(artwork)
         
+        playButton.userInteractionEnabled = false
         UIView.animateWithDuration(1.0, animations: { () -> Void in
             self.playButton.alpha = 0.0
             self.playIcon.alpha = 0.0
@@ -185,6 +192,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             self.playButton.hidden = true
             self.playIcon.hidden = self.playButton.hidden
         }
+        
+        EventReporter.shared.artworkAudioPlayed(artwork, gallery: gallery)
         
         progressNavigationController.startAnimating()
     }
@@ -194,7 +203,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         self.mediaPlayerView.duration = duration
         
         if mediaPlayerBottomConstraint.constant != 0 {
-            UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+            UIView.animateWithDuration(0.6, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
                 self.mediaPlayerBottomConstraint.constant = 0
                 self.mediaPlayerView.layoutIfNeeded()
             }, completion: nil)

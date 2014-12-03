@@ -81,6 +81,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             var controller = segue.destinationViewController as ArtworkProfileViewController
             let cell = sender as ArtworkCollectionViewCell
             controller.artwork = cell.artwork
+            controller.gallery = gallery
         }
     }
     

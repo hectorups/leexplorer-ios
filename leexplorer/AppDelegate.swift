@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Crashlytics.setValue(AppConstant.CLIENT_VERSION, forKey: "version")
         Crashlytics.setBoolValue(AppConstant.DEBUG, forKey: "debug")
         
+        Mixpanel.sharedInstanceWithToken(AppConstant.MIXPANEL_TOKEN)
+        
         setupImageCache()
         initVisualAppearance()
         
