@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50639E2347B4C9610E85F6F3 /* libPods.a */; };
+		952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715541A2ED001008D43EF /* Crashlytics.framework */; };
+		952715571A2ED001008D43EF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715551A2ED001008D43EF /* Fabric.framework */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
 		9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
@@ -70,6 +72,8 @@
 		44558FA7805968D613F04293 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		499297CF2F19DE4C5A5B4425 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50639E2347B4C9610E85F6F3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		952715541A2ED001008D43EF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		952715551A2ED001008D43EF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,9 +137,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
+				952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */,
 				95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */,
 				95D00FFE1A25B11700E3B655 /* QuartzCore.framework in Frameworks */,
 				5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */,
+				952715571A2ED001008D43EF /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,8 @@
 		9574A3261A24261B00399531 = {
 			isa = PBXGroup;
 			children = (
+				952715541A2ED001008D43EF /* Crashlytics.framework */,
+				952715551A2ED001008D43EF /* Fabric.framework */,
 				9574A3311A24261B00399531 /* leexplorer */,
 				9574A34A1A24261B00399531 /* leexplorerTests */,
 				9574A3301A24261B00399531 /* Products */,
@@ -482,7 +490,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run 1025a1bd270d6c18391090e2fe20649783aa84e2 a087ab125f6725e223a87594b44e12290b0be718d2c59d19a2a41884d0539439";
+			shellScript = "./Fabric.framework/run 784c2938b3665197590a2e58f88565ff7f11f7d9 81b9ad02d125d98b1c314cb9fd6b2b87c19d2b9bc4bf7eedc697d155dd9509bd";
 		};
 		9A3AC4F602F70F977F9B4537 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

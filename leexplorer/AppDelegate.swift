@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         LELog.d("APP VERSION: \(AppConstant.CLIENT_VERSION)")
-        Crashlytics.startWithAPIKey(AppConstant.CRASHLYTICS_KEY)
+        Fabric.with([Crashlytics()])
         Crashlytics.setValue(AppConstant.CLIENT_VERSION, forKey: "version")
         Crashlytics.setBoolValue(AppConstant.DEBUG, forKey: "debug")
         

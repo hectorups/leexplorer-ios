@@ -23,7 +23,6 @@ PODS:
   - ALAlertBanner (0.3.1)
   - CHTCollectionViewWaterfallLayout (0.8)
   - Cloudinary (1.0.12)
-  - CrashlyticsFramework (2.2.5.2)
   - GSIndeterminateProgressBar (0.1.0)
   - HexColors (2.2.1)
   - LBBlurredImage (0.2.1)
@@ -37,7 +36,6 @@ DEPENDENCIES:
   - ALAlertBanner (~> 0.3.1)
   - CHTCollectionViewWaterfallLayout
   - Cloudinary
-  - CrashlyticsFramework (~> 2.2.4)
   - GSIndeterminateProgressBar (from `git@github.com:hectorups/GSIndeterminateProgressBar.git`)
   - HexColors (~> 2.2)
   - LBBlurredImage (from `git@github.com:lukabernardi/LBBlurredImage.git`)
@@ -55,7 +53,6 @@ SPEC CHECKSUMS:
   ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
   CHTCollectionViewWaterfallLayout: 14b7950cbe45ae9297e7759148d69b022bac047d
   Cloudinary: 1f3859b17f1c111671a1acf1f0e2648c34d3a207
-  CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
   GSIndeterminateProgressBar: 9d065c95d6a882ba55e1db25b69d537ee059a5a5
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   LBBlurredImage: ad8cbf6783c6b2f30868e5eb6ce2eb1ee85f4988

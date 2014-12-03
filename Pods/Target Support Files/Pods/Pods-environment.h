@@ -66,13 +66,6 @@
 #define COCOAPODS_VERSION_MINOR_Cloudinary 0
 #define COCOAPODS_VERSION_PATCH_Cloudinary 12
 
-// CrashlyticsFramework
-#define COCOAPODS_POD_AVAILABLE_CrashlyticsFramework
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 2.2.5.2.
-
 // GSIndeterminateProgressBar
 #define COCOAPODS_POD_AVAILABLE_GSIndeterminateProgressBar
 #define COCOAPODS_VERSION_MAJOR_GSIndeterminateProgressBar 0
