@@ -68,7 +68,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         playButton.tintColor = ColorPallete.Blue.get()
         
         playButton.layer.shadowOpacity = 0.75
-        playButton.layer.shadowRadius = 3.5
+        playButton.layer.shadowRadius = 1.0
         playButton.layer.shadowColor = UIColor.blackColor().CGColor
         playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
         

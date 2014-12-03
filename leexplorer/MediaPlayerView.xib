@@ -19,14 +19,14 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mNo-fy-N2M">
-                    <rect key="frame" x="6" y="45" width="316" height="31"/>
+                    <rect key="frame" x="6" y="45" width="307" height="31"/>
                     <connections>
                         <action selector="didTouchDown:" destination="-1" eventType="touchDown" id="Uuv-ry-bRV"/>
                         <action selector="didTouchUp:" destination="-1" eventType="touchUpInside" id="mxg-Gd-gWN"/>
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3g-YH-7r3">
-                    <rect key="frame" x="292" y="26" width="29" height="17"/>
+                    <rect key="frame" x="282" y="26" width="29" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -38,10 +38,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-Z0-IZ6">
-                    <rect key="frame" x="328" y="45" width="30" height="30"/>
+                    <rect key="frame" x="323" y="43" width="35" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="8wa-WT-kKk"/>
-                        <constraint firstAttribute="width" constant="30" id="JVW-Cu-LiL"/>
+                        <constraint firstAttribute="height" constant="35" id="8wa-WT-kKk"/>
+                        <constraint firstAttribute="width" constant="35" id="JVW-Cu-LiL"/>
                     </constraints>
                     <state key="normal" image="play_icon">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,11 +57,11 @@
                 <constraint firstItem="mNo-fy-N2M" firstAttribute="top" secondItem="35c-zu-IZ2" secondAttribute="bottom" constant="2" id="HAc-eX-l3h"/>
                 <constraint firstAttribute="trailing" secondItem="fgB-Z0-IZ6" secondAttribute="trailing" constant="8" id="ab6-Xe-629"/>
                 <constraint firstItem="fgB-Z0-IZ6" firstAttribute="centerY" secondItem="mNo-fy-N2M" secondAttribute="centerY" id="diJ-Yd-qCU"/>
-                <constraint firstItem="fgB-Z0-IZ6" firstAttribute="leading" secondItem="mNo-fy-N2M" secondAttribute="trailing" constant="8" id="hkN-vl-gmL"/>
+                <constraint firstItem="fgB-Z0-IZ6" firstAttribute="leading" secondItem="mNo-fy-N2M" secondAttribute="trailing" constant="12" id="hkN-vl-gmL"/>
                 <constraint firstItem="mNo-fy-N2M" firstAttribute="leading" secondItem="4hu-8F-xBe" secondAttribute="leading" constant="8" id="mnC-7H-Ms3"/>
                 <constraint firstItem="mNo-fy-N2M" firstAttribute="top" secondItem="O3g-YH-7r3" secondAttribute="bottom" constant="2" id="w87-sw-bka"/>
                 <constraint firstAttribute="centerY" secondItem="mNo-fy-N2M" secondAttribute="centerY" constant="-2" id="wlh-32-FRG"/>
-                <constraint firstItem="fgB-Z0-IZ6" firstAttribute="leading" secondItem="O3g-YH-7r3" secondAttribute="trailing" constant="8" id="x4L-y9-csE"/>
+                <constraint firstItem="fgB-Z0-IZ6" firstAttribute="leading" secondItem="O3g-YH-7r3" secondAttribute="trailing" constant="12" id="x4L-y9-csE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

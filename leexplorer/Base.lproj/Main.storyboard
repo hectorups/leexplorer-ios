@@ -122,26 +122,26 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vG-Jb-IeG">
                                                     <rect key="frame" x="0.0" y="232" width="353" height="54"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" misplaced="YES" text="Author Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLy-Lb-vZA">
-                                                            <rect key="frame" x="8" y="30" width="80" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Author Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLy-Lb-vZA">
+                                                            <rect key="frame" x="8" y="29" width="85" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
-                                                            <rect key="frame" x="99" y="30" width="246" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
+                                                            <rect key="frame" x="105" y="29" width="240" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIT-jk-fch">
-                                                            <rect key="frame" x="89" y="27" width="8" height="22"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIT-jk-fch">
+                                                            <rect key="frame" x="95" y="26" width="8" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" misplaced="YES" text="Artwork Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssg-TH-xns">
-                                                            <rect key="frame" x="8" y="12" width="337" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Artwork Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssg-TH-xns">
+                                                            <rect key="frame" x="8" y="8" width="337" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -221,10 +221,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ien-eW-WLg" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
-                                <rect key="frame" x="504" y="502" width="60" height="60"/>
+                                <rect key="frame" x="509" y="515" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="GLQ-eZ-tKb"/>
-                                    <constraint firstAttribute="width" constant="60" id="aYr-wF-Xjq"/>
+                                    <constraint firstAttribute="height" constant="55" id="GLQ-eZ-tKb"/>
+                                    <constraint firstAttribute="width" constant="55" id="aYr-wF-Xjq"/>
                                 </constraints>
                                 <state key="normal" image="play_button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,10 +234,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
-                                <rect key="frame" x="519" y="514" width="36" height="36"/>
+                                <rect key="frame" x="523" y="526" width="34" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="BTt-8i-tEs"/>
-                                    <constraint firstAttribute="height" constant="36" id="jxa-Pk-Bzz"/>
+                                    <constraint firstAttribute="width" constant="34" id="BTt-8i-tEs"/>
+                                    <constraint firstAttribute="height" constant="34" id="jxa-Pk-Bzz"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bd-cW-sMK" customClass="MediaPlayerView" customModule="leexplorer" customModuleProvider="target">
@@ -253,7 +253,7 @@
                             <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="4bd-cW-sMK" secondAttribute="bottom" id="0bg-Z4-jE8"/>
                             <constraint firstItem="ien-eW-WLg" firstAttribute="centerX" secondItem="ofq-8r-wDT" secondAttribute="centerX" constant="-3" id="7RG-Vu-PgX"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="top" secondItem="nSy-IR-Fp6" secondAttribute="top" id="Q50-kf-aCH"/>
-                            <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="ien-eW-WLg" secondAttribute="bottom" constant="38" id="QBO-NJ-1JI"/>
+                            <constraint firstItem="hqQ-Gf-Clv" firstAttribute="top" secondItem="ien-eW-WLg" secondAttribute="bottom" constant="30" id="QBO-NJ-1JI"/>
                             <constraint firstAttribute="trailing" secondItem="O8d-ab-IRK" secondAttribute="trailing" id="SF8-UZ-lzo"/>
                             <constraint firstItem="O8d-ab-IRK" firstAttribute="leading" secondItem="nSy-IR-Fp6" secondAttribute="leading" id="aJo-sz-IDC"/>
                             <constraint firstItem="4bd-cW-sMK" firstAttribute="leading" secondItem="nSy-IR-Fp6" secondAttribute="leading" id="faR-yv-MUR"/>

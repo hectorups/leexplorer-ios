@@ -269,7 +269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "mediaPlayerAudioStarted()"
+            landmarkName = "showMediaPlayerTime(_:duration:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
