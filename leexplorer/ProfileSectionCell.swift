@@ -27,4 +27,18 @@ class ProfileSectionCell: UITableViewCell {
         }
     }
     
+    class func heightWithText(text: String) -> CGFloat {
+        let nsText = NSString(string: text)
+        
+        let font = UIFont.systemFontOfSize(18.0)
+        let screenSize = UIScreen.mainScreen().bounds.size
+        let width = screenSize.width - 16
+        let labelRect = nsText.boundingRectWithSize(CGSizeMake(CGFloat(width), CGFloat(MAXFLOAT)),
+            options: .UsesLineFragmentOrigin,
+            attributes: [NSFontAttributeName: font],
+            context: nil)
+        
+        return labelRect.size.height + 27 + 28
+    }
+    
 }

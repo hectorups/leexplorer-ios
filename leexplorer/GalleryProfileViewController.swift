@@ -116,6 +116,10 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let section = Section(rawValue: indexPath.item)!
+        
+        return ProfileSectionCell.heightWithText(section.text(gallery))
+    }
 
 }

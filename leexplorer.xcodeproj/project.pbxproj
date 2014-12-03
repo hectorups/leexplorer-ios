@@ -10,6 +10,10 @@
 		5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50639E2347B4C9610E85F6F3 /* libPods.a */; };
 		952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715541A2ED001008D43EF /* Crashlytics.framework */; };
 		952715571A2ED001008D43EF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715551A2ED001008D43EF /* Fabric.framework */; };
+		952715591A2EDB05008D43EF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715581A2EDB05008D43EF /* CoreLocation.framework */; };
+		9527155B1A2EDF58008D43EF /* SDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155A1A2EDF58008D43EF /* SDKVersion.swift */; };
+		9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */; };
+		9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
 		9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
@@ -74,6 +78,10 @@
 		50639E2347B4C9610E85F6F3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		952715541A2ED001008D43EF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		952715551A2ED001008D43EF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		952715581A2EDB05008D43EF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9527155A1A2EDF58008D43EF /* SDKVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKVersion.swift; sourceTree = "<group>"; };
+		9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				952715591A2EDB05008D43EF /* CoreLocation.framework in Frameworks */,
 				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
 				952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */,
 				95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */,
@@ -158,6 +167,7 @@
 		2E2A5C072832B8CA30D73D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				952715581A2EDB05008D43EF /* CoreLocation.framework */,
 				95F78E921A2E8C09009F8554 /* Accelerate.framework */,
 				95F78E901A2E8C01009F8554 /* CoreGraphics.framework */,
 				95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */,
@@ -286,6 +296,7 @@
 				95CD75431A24F7EA00974B3C /* Localizable.strings */,
 				95D00FE11A25439C00E3B655 /* ColorPalette.swift */,
 				95F78E981A2EA08D009F8554 /* EventReporter.swift */,
+				9527155A1A2EDF58008D43EF /* SDKVersion.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -346,6 +357,8 @@
 			children = (
 				95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */,
 				95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */,
+				9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */,
+				9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -411,6 +424,11 @@
 				TargetAttributes = {
 					9574A32E1A24261B00399531 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					9574A3461A24261B00399531 = {
 						CreatedOnToolsVersion = 6.1;
@@ -519,14 +537,17 @@
 				95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */,
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,
 				95CD75481A25369200974B3C /* MediaProcessor.swift in Sources */,
+				9527155B1A2EDF58008D43EF /* SDKVersion.swift in Sources */,
 				95D00FF91A2588B200E3B655 /* GalleryProfileHeaderView.swift in Sources */,
 				95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */,
+				9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */,
 				95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */,
 				95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */,
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
 				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
+				9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */,
 				95D010001A26465700E3B655 /* GradientView.swift in Sources */,
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,
 				95D00FEC1A25692A00E3B655 /* GalleryProfileViewController.swift in Sources */,
@@ -670,6 +691,7 @@
 			baseConfigurationReference = 44558FA7805968D613F04293 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,6 +716,7 @@
 			baseConfigurationReference = 499297CF2F19DE4C5A5B4425 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

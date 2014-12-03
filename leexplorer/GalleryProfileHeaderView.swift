@@ -46,6 +46,7 @@ class GalleryProfileHeaderView: NibDesignable {
         languagesLabel.text = ", ".join(gallery.languages)
         
         for icon in icons {
+            icon.fixTemplateImage()
             icon.tintColor = ColorPallete.White.get()
         }
         

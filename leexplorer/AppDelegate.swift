@@ -39,7 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initVisualAppearance() {
         let navigationBar = UINavigationBar.appearance()
-        navigationBar.translucent = true
+        if SDKVersion.greaterOrEqualTo("8.0") {
+            navigationBar.translucent = true
+        }
+        
+        
         navigationBar.barStyle = .Default
         navigationBar.tintColor = ColorPallete.Blue.get()
         navigationBar.titleTextAttributes = [

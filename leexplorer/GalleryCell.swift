@@ -45,6 +45,7 @@ class GalleryCell: UITableViewCell {
         type.text = gallery.type
         
         for icon in icons {
+            icon.fixTemplateImage()
             icon.tintColor = ColorPallete.White.get()
         }
         

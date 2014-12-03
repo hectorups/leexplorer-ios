@@ -58,6 +58,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func setupPlayButton() {
+        playIcon.fixTemplateImage()
         playIcon.tintColor = ColorPallete.White.get()
         playButton.cornerRadius = 40.0
         playButton.backgroundLayerCornerRadius = 40.0
@@ -65,6 +66,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         playButton.circleGrowRatioMax = 1.75
         playButton.rippleLocation = .Center
         playButton.aniDuration = 0.85
+        playButton.fixTemplateImage()
         playButton.tintColor = ColorPallete.Blue.get()
         
         playButton.layer.shadowOpacity = 0.75
@@ -176,6 +178,11 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         cell.sectionText = artwork.desc
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return ProfileSectionCell.heightWithText(artwork.desc!)
     }
     
     // MARK - Audio control
