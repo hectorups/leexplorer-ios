@@ -24,8 +24,10 @@ PODS:
   - CHTCollectionViewWaterfallLayout (0.8)
   - Cloudinary (1.0.12)
   - CrashlyticsFramework (2.2.5.2)
+  - GSIndeterminateProgressBar (0.1.0)
   - HexColors (2.2.1)
   - LBBlurredImage (0.2.1)
+  - MBProgressHUD (0.9)
   - Mixpanel (2.6.0):
     - Mixpanel/MPCategoryHelpers
   - Mixpanel/MPCategoryHelpers (2.6.0)
@@ -36,11 +38,15 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout
   - Cloudinary
   - CrashlyticsFramework (~> 2.2.4)
+  - GSIndeterminateProgressBar (from `git@github.com:hectorups/GSIndeterminateProgressBar.git`)
   - HexColors (~> 2.2)
   - LBBlurredImage (from `git@github.com:lukabernardi/LBBlurredImage.git`)
+  - MBProgressHUD (~> 0.8)
   - Mixpanel (~> 2.6.0)
 
 EXTERNAL SOURCES:
+  GSIndeterminateProgressBar:
+    :git: git@github.com:hectorups/GSIndeterminateProgressBar.git
   LBBlurredImage:
     :git: git@github.com:lukabernardi/LBBlurredImage.git
 
@@ -50,8 +56,10 @@ SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: 14b7950cbe45ae9297e7759148d69b022bac047d
   Cloudinary: 1f3859b17f1c111671a1acf1f0e2648c34d3a207
   CrashlyticsFramework: 4e91082f3019bea7e718e1b67b0a3b56729dbc5d
+  GSIndeterminateProgressBar: 9d065c95d6a882ba55e1db25b69d537ee059a5a5
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   LBBlurredImage: ad8cbf6783c6b2f30868e5eb6ce2eb1ee85f4988
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   Mixpanel: e919d14f07a34ee01f81f97e535b7a240af2f793
 
 COCOAPODS: 0.34.4

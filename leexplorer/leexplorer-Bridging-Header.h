@@ -5,7 +5,9 @@
 #import <Cloudinary/Cloudinary.h>
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "HexColor.h"
+#import <HexColors/HexColor.h>
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
-#import "Crashlytics.h"
+#import <CrashlyticsFramework/Crashlytics.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <GSIndeterminateProgressBar/GSIndeterminateProgressView.h>

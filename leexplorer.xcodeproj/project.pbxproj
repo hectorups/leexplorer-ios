@@ -52,6 +52,7 @@
 		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
+		95F78E971A2E9353009F8554 /* ProgressNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,9 @@
 		95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerView.xib; sourceTree = "<group>"; };
 		95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CrashlyticsFramework.a"; path = "Pods/build/Debug-iphoneos/libPods-CrashlyticsFramework.a"; sourceTree = "<group>"; };
+		95F78E901A2E8C01009F8554 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95F78E921A2E8C09009F8554 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressNavigationController.swift; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,8 @@
 		2E2A5C072832B8CA30D73D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95F78E921A2E8C09009F8554 /* Accelerate.framework */,
+				95F78E901A2E8C01009F8554 /* CoreGraphics.framework */,
 				95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */,
 				95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */,
 				95CABB031A2AA55B00F354B2 /* AVFoundation.framework */,
@@ -224,6 +230,7 @@
 				95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */,
 				95D010011A266BD200E3B655 /* ArtworkListViewController.swift */,
 				95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */,
+				95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -526,6 +533,7 @@
 				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
 				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
+				95F78E971A2E9353009F8554 /* ProgressNavigationController.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

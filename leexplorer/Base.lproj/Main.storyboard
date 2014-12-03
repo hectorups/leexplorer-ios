@@ -275,10 +275,10 @@
             </objects>
             <point key="canvasLocation" x="3084" y="141"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Progress Navigation Controller-->
         <scene sceneID="a8l-xd-bIj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1CM-a7-hjA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1CM-a7-hjA" customClass="ProgressNavigationController" customModule="leexplorer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n3E-C5-SFi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -43,5 +43,6 @@ enum AppNotification: String {
     case AudioProgressUpdate="AudioProgressUpdate",
     AudioCompleted="AudioCompleted",
     AudioPaused="AudioPaused",
-    AudioResumed="AudioResumed"
+    AudioResumed="AudioResumed",
+    AudioStarted="AudioStarted"
 }

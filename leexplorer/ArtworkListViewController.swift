@@ -37,11 +37,14 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func loadArtworks() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         LeexplorerApi.shared.getGalleryArtworks(gallery, success: { (artworks) -> Void in
             self.artworks = artworks
             self.artworksCollectionView.reloadData()
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }) { (operation, error) -> Void in
             LELog.d(error)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
     }
     

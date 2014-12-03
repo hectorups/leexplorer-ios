@@ -22,6 +22,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     var artwork: Artwork!
     var headerOriginalWidth: CGFloat!
     var profileHeaderView: ArtworkProfileHeaderView!
+    var progressNavigationController: ProgressNavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         edgesForExtendedLayout = .None;
+        
+        progressNavigationController = navigationController as ProgressNavigationController
         
         setupTableView()
         setupPlayButton()
@@ -111,6 +114,15 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
+        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioStarted.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+            var artworkId = notification.userInfo!["artworkId"] as String
+            if let strongSelf = self {
+                if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
+                    strongSelf.mediaPlayerAudioStarted()
+                }
+            }
+        }
+        
         NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioCompleted.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
             var artworkId = notification.userInfo!["artworkId"] as String
             if let strongSelf = self {
@@ -137,6 +149,11 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
                 }
             }
         }
+    }
+    
+    deinit {
+        LELog.d("ArtworkProfileViewController deinit")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK - UITableViewDelegate
@@ -168,6 +185,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             self.playButton.hidden = true
             self.playIcon.hidden = self.playButton.hidden
         }
+        
+        progressNavigationController.startAnimating()
     }
     
     func showMediaPlayerTime(time: Float, duration: Float) {
@@ -180,6 +199,10 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
                 self.mediaPlayerView.layoutIfNeeded()
             }, completion: nil)
         }
+    }
+    
+    func mediaPlayerAudioStarted() {
+        progressNavigationController.stopAnimating()
     }
     
     func mediaPlayerAudioCompleted() {
@@ -204,6 +227,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             return
         }
         
+        LELog.d("DidTabPlay, play: \(play)")
         if play {
             MediaPlayerService.shared.play()
         } else {

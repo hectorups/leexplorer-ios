@@ -142,6 +142,7 @@ class MediaPlayerService: NSObject {
             switch playerItem!.status {
             case .ReadyToPlay:
                 LELog.d("Ready to play")
+                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioStarted.rawValue, object: self, userInfo: ["artworkId": artwork!.id])
                 trackAudio()
             default:
                 LELog.d("Status change for audioplayer")
@@ -178,7 +179,7 @@ class MediaPlayerService: NSObject {
                 let time = Float(CMTimeGetSeconds(strongSelf.playerItem!.currentTime()))
                 let duration = Float(CMTimeGetSeconds(strongSelf.currentTrackDuration()))
                 let rate = strongSelf.paused ? 0.0 : 1.0
-                LELog.d("Time: \(time) of \(duration)")
+                //LELog.d("Time: \(time) of \(duration)")
                 
                 var playingInfo = NSMutableDictionary(dictionary: MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo)
                 playingInfo.setValue(time, forKey: MPNowPlayingInfoPropertyElapsedPlaybackTime)

@@ -29,12 +29,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GSIndeterminateProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HexColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>118FA43DC3F68ADC9CA2FB21</key>
+		<key>22826C5FB35CE4D24D0B9F8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>261F6E8D031FE61056252AD6</key>
+		<key>367DE17BE1F2B79080076E15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F2EAFE5FB1071ADC69D5DD7</key>
+		<key>49FB9BBC9DFE17516626788B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF89C3B2E00F6B6455130C51</key>
+		<key>5355A239274AA873AF71B2B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4C9332D8F7AD0AE70BFBB29</key>
+		<key>8963344125BB3F402518CB93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB4B972145E035E2B1196BB1</key>
+		<key>8CC0B7C0D1D13CC69AB2A12B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8064A29686445802EAFF608</key>
+		<key>9657F6E1BB8AB282E24D51A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC7F08D70A8471F06256B134</key>
+		<key>BA38ABF1216C48E61D5CC954</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA8D915C67CB85C1314728EA</key>
+		<key>D7CA372EF00B18BE88F361EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F46509C565C733734C8C672D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7FEF789FE6194D6A563A6FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
