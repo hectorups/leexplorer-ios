@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 import Fabric
 import Crashlytics
+import CoreBluetooth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,6 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initVisualAppearance()
         
         return true
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        if BLEService.shared.centralManager.state == .PoweredOn {
+            BLEService.shared.monitorRegion()
+        }
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        self.saveContext()
     }
     
     func setupImageCache() {
@@ -49,13 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: ColorPallete.Blue.get()
         ]
-    }
-
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
     }
 
     // MARK: - Core Data stack

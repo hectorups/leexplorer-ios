@@ -17,15 +17,14 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var mediaPlayerView: MediaPlayerView!
     @IBOutlet var mediaPlayerBottomConstraint: NSLayoutConstraint!
     
-    private let notificationManager = NotificationManager()
-    
     let HEADER_HEIGHT: CGFloat = 260.0
     var artwork: Artwork!
     var gallery: Gallery!
     
-    var headerOriginalWidth: CGFloat!
-    var profileHeaderView: ArtworkProfileHeaderView!
-    var progressNavigationController: ProgressNavigationController!
+    private let notificationManager = NotificationManager()
+    private var headerOriginalWidth: CGFloat!
+    private var profileHeaderView: ArtworkProfileHeaderView!
+    private var progressNavigationController: ProgressNavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

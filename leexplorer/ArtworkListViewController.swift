@@ -7,6 +7,7 @@
 //
 
 import UIkit
+import CoreLocation
 
 class ArtworkListViewController: UIViewController, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
@@ -14,16 +15,32 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     var gallery: Gallery!
     var artworks: [Artwork] = []
     
+    private let notificationManager = NotificationManager()
+    
     override func viewDidLoad() {
         title = NSLocalizedString("ARTWORKS", comment: "")
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         setupCollectionView()
-        
+        setupNotifications()
         loadArtworks()
     }
     
+    deinit {
+        LELog.d("ArtworkListViewController deinit")
+        notificationManager.deregisterAll()
+    }
+    
     // MARK - SETUP
+    
+    func setupNotifications() {
+        notificationManager.registerObserver(.BeaconsFound) { [weak self] (notification) -> Void in
+            if let strongSelf = self {
+                var beacons = notification.userInfo!["beacons"] as [CLBeacon]
+                LELog.d("Beacons found: \(beacons.count)")
+            }
+        }
+    }
     
     func setupCollectionView() {
         var layout = artworksCollectionView.collectionViewLayout as CHTCollectionViewWaterfallLayout
