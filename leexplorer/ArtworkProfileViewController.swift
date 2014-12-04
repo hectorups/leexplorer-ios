@@ -17,6 +17,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var mediaPlayerView: MediaPlayerView!
     @IBOutlet var mediaPlayerBottomConstraint: NSLayoutConstraint!
     
+    private let notificationManager = NotificationManager()
     
     let HEADER_HEIGHT: CGFloat = 260.0
     var artwork: Artwork!
@@ -41,6 +42,15 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         setupMediaPlayerView()
         
         setupNotifications()
+    }
+    
+    deinit {
+        LELog.d("ArtworkProfileViewController deinit")
+        notificationManager.deregisterAll()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        progressNavigationController.stopAnimating()
     }
     
     // MARK - Setup Views
@@ -108,7 +118,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     // MARK - Setup Notifications
     
     func setupNotifications() {
-        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioProgressUpdate.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+        notificationManager.registerObserver(.AudioProgressUpdate) { [weak self] (notification) -> Void in
             var time = notification.userInfo!["time"] as Float
             var duration = notification.userInfo!["duration"] as Float
             if let strongSelf = self {
@@ -118,7 +128,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioStarted.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+        notificationManager.registerObserver(.AudioStarted) { [weak self] (notification) -> Void in
             var artworkId = notification.userInfo!["artworkId"] as String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
@@ -127,7 +137,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioCompleted.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+        notificationManager.registerObserver(.AudioCompleted) { [weak self] (notification) -> Void in
             var artworkId = notification.userInfo!["artworkId"] as String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
@@ -136,7 +146,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioPaused.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+        notificationManager.registerObserver(.AudioPaused) { [weak self] (notification) -> Void in
             var artworkId = notification.userInfo!["artworkId"] as String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
@@ -145,7 +155,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(AppNotification.AudioResumed.rawValue, object: nil, queue: nil) { [weak self] (notification) -> Void in
+        notificationManager.registerObserver(.AudioResumed) { [weak self] (notification) -> Void in
             var artworkId = notification.userInfo!["artworkId"] as String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
@@ -153,15 +163,6 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
                 }
             }
         }
-    }
-    
-    deinit {
-        LELog.d("ArtworkProfileViewController deinit")
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        progressNavigationController.stopAnimating()
     }
     
     // MARK - UITableViewDelegate

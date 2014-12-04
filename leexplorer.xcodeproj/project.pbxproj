@@ -14,6 +14,7 @@
 		9527155B1A2EDF58008D43EF /* SDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155A1A2EDF58008D43EF /* SDKVersion.swift */; };
 		9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */; };
 		9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */; };
+		9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DFF61A30FCAF002E32AE /* NotificationManager.swift */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
 		9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
@@ -82,6 +83,7 @@
 		9527155A1A2EDF58008D43EF /* SDKVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKVersion.swift; sourceTree = "<group>"; };
 		9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		9539DFF61A30FCAF002E32AE /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */,
 				9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */,
 				9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */,
+				9539DFF61A30FCAF002E32AE /* NotificationManager.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				9527155B1A2EDF58008D43EF /* SDKVersion.swift in Sources */,
 				95D00FF91A2588B200E3B655 /* GalleryProfileHeaderView.swift in Sources */,
 				95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */,
+				9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */,
 				9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */,
 				95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */,
 				95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */,
