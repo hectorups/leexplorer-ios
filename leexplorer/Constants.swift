@@ -18,7 +18,7 @@ struct AppConstant {
         static let LEEXPLORER_ENDPOINT = "https://leexplorer.herokuapp.com"
     #endif
 
-    static let LE_UUID = "BA7560F2-68FE-4A26-B280-DB70780AB981" //"9133edc4-a87c-5529-befa-4f75f31a45d4"
+    static let LE_UUID = "9133edc4-a87c-5529-befa-4f75f31a45d4"
 
     static let CLOUDINARY_CLOUD_NAME = "leexplorer"
     static let MIXPANEL_TOKEN = "b66f535a8b703ce67e53b646b99de279"

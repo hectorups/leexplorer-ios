@@ -142,11 +142,33 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArtworkCollectionViewCell", forIndexPath: indexPath) as ArtworkCollectionViewCell
         
-        cell.artwork = artworks[indexPath.row]
-        cell.hasBeacon = false
+        let artwork = artworks[indexPath.row]
+        cell.artwork = artwork
+        cell.hasBeacon = accuracyForArtwork(artwork) != nil
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("Selected cell")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        cell.startAnimating()
+    }
+    
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        println("hilighted cell")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        cell.startAnimating()
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        println("didUnhighlightItemAtIndexPath")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        cell.startAnimating()
+    }
+    
+    // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segue.ShowArtworkProfile.rawValue {

@@ -44,14 +44,13 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startMonitoringForRegion(Region)
         locationManager.requestStateForRegion(Region)
-        locationManager.startUpdatingLocation()
     }
     
     
     // MARK: CBCentralManagerDelegate
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
-        println("ble status changed: \(central.state.rawValue)")
+        LELog.d("ble status changed: \(central.state.rawValue)")
         if central.state == .PoweredOn {
             monitorRegion()
         }
@@ -60,6 +59,8 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
     // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+        
+//        LELog.d("Beacons found: \(beacons.count)")
         let foundBeacons = (beacons as [CLBeacon])
         let data = ["beacons": foundBeacons]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.BeaconsFound.rawValue, object: self, userInfo: data)
@@ -67,6 +68,7 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
     
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
         // Updated state
+        LELog.d("Region state: \(state.rawValue)")
         if state == .Inside {
             locationManager.startRangingBeaconsInRegion(region as CLBeaconRegion)
         }

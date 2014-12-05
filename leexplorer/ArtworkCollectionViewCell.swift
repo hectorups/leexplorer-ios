@@ -24,8 +24,6 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
-    
     var artwork: Artwork! {
         didSet {
             var imageUrl = MediaProcessor.urlForImageFill(artwork.image,
@@ -58,8 +56,11 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
         signalImageView.animationImages = animationImages
         signalImageView.animationDuration = 0.9
         signalImageView.animationRepeatCount = 0
-        signalImageView.startAnimating()
+        startAnimating()
     }
     
+    func startAnimating() {
+        signalImageView.startAnimating()
+    }
     
 }

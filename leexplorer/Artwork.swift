@@ -50,7 +50,11 @@ class Artwork {
     }
     
     func belongsToBeacon(beacon: CLBeacon) -> Bool {
-        return beacon.major == major && beacon.minor == minor
+        if major == nil {
+            return false
+        }
+        
+        return beacon.major == major! && beacon.minor == minor!
     }
 
     
