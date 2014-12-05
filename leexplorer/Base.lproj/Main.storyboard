@@ -129,13 +129,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
-                                                            <rect key="frame" x="104" y="29" width="241" height="17"/>
+                                                            <rect key="frame" x="104" y="29" width="240.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIT-jk-fch">
-                                                            <rect key="frame" x="95" y="26" width="8" height="23"/>
+                                                            <rect key="frame" x="95" y="26" width="7.5" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7P-sK-4IK">
-                                                    <rect key="frame" x="320" y="44" width="25" height="15"/>
+                                                    <rect key="frame" x="320" y="44" width="24.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -206,17 +206,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1i-MY-LGw" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
+                                <rect key="frame" x="509" y="515" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="3X6-9j-eRt"/>
+                                    <constraint firstAttribute="width" constant="55" id="kOM-9F-TbZ"/>
+                                </constraints>
+                                <state key="normal" image="blue_circle">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_action_autoplay" translatesAutoresizingMaskIntoConstraints="NO" id="zxK-3R-Xe1">
+                                <rect key="frame" x="522" y="528" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4PR-w2-AAZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="5RT-W2-VG6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zxK-3R-Xe1" firstAttribute="centerY" secondItem="e1i-MY-LGw" secondAttribute="centerY" id="0dz-vO-NXD"/>
                             <constraint firstAttribute="trailing" secondItem="oty-XA-gss" secondAttribute="trailing" id="CGg-Uc-OB7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e1i-MY-LGw" secondAttribute="trailing" constant="20" id="EfN-B0-5IW"/>
                             <constraint firstItem="oty-XA-gss" firstAttribute="top" secondItem="x6T-2E-HAH" secondAttribute="top" id="OtR-WI-ce1"/>
                             <constraint firstItem="dMV-Oq-RMu" firstAttribute="top" secondItem="oty-XA-gss" secondAttribute="bottom" id="Wqz-fg-Fxw"/>
+                            <constraint firstItem="dMV-Oq-RMu" firstAttribute="top" secondItem="e1i-MY-LGw" secondAttribute="bottom" constant="30" id="eaH-ug-2c1"/>
                             <constraint firstItem="oty-XA-gss" firstAttribute="leading" secondItem="x6T-2E-HAH" secondAttribute="leading" id="mUO-k5-UcH"/>
+                            <constraint firstItem="zxK-3R-Xe1" firstAttribute="centerX" secondItem="e1i-MY-LGw" secondAttribute="centerX" id="rPa-SD-b0z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="artworksCollectionView" destination="oty-XA-gss" id="grT-GY-UJK"/>
+                        <outlet property="autoPlayButton" destination="e1i-MY-LGw" id="ifP-ih-0Ba"/>
+                        <outlet property="autoPlayIcon" destination="zxK-3R-Xe1" id="KaU-0P-Ksh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9g-lO-khC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,18 +268,18 @@
                                     <constraint firstAttribute="height" constant="55" id="GLQ-eZ-tKb"/>
                                     <constraint firstAttribute="width" constant="55" id="aYr-wF-Xjq"/>
                                 </constraints>
-                                <state key="normal" image="play_button">
+                                <state key="normal" image="blue_circle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didTabPlay:" destination="F1b-k8-5b6" eventType="touchUpInside" id="erP-N5-H6n"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
-                                <rect key="frame" x="523" y="526" width="34" height="34"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="play_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-8r-wDT">
+                                <rect key="frame" x="523" y="531" width="34" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="BTt-8i-tEs"/>
-                                    <constraint firstAttribute="height" constant="34" id="jxa-Pk-Bzz"/>
+                                    <constraint firstAttribute="width" constant="25" id="BTt-8i-tEs"/>
+                                    <constraint firstAttribute="height" constant="25" id="jxa-Pk-Bzz"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bd-cW-sMK" customClass="MediaPlayerView" customModule="leexplorer" customModuleProvider="target">
@@ -315,7 +338,8 @@
     </scenes>
     <resources>
         <image name="ble1" width="58" height="58"/>
-        <image name="play_button" width="60" height="60"/>
+        <image name="blue_circle" width="200" height="200"/>
+        <image name="ic_action_autoplay" width="48" height="48"/>
         <image name="play_icon" width="60" height="60"/>
     </resources>
 </document>

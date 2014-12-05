@@ -12,6 +12,9 @@ import CoreLocation
 class ArtworkListViewController: UIViewController, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     @IBOutlet var artworksCollectionView: UICollectionView!
+    @IBOutlet weak var autoPlayButton: MKButton!
+    @IBOutlet weak var autoPlayIcon: UIImageView!
+    
     let REFRESH_INTERVAL = 30 // seconds
     var gallery: Gallery!
     var artworks: [Artwork] = []
@@ -26,6 +29,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         progressNavigationController = navigationController as ProgressNavigationController
         
+        setupAutoplay()
         setupCollectionView()
         setupNotifications()
         loadArtworks()
@@ -37,6 +41,27 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     // MARK - SETUP
+    
+    func setupAutoplay() {
+        autoPlayIcon.fixTemplateImage()
+        autoPlayIcon.tintColor = ColorPallete.White.get()
+        autoPlayButton.cornerRadius = 40.0
+        autoPlayButton.backgroundLayerCornerRadius = 40.0
+        autoPlayButton.maskEnabled = false
+        autoPlayButton.circleGrowRatioMax = 1.75
+        autoPlayButton.rippleLocation = .Center
+        autoPlayButton.aniDuration = 0.85
+        autoPlayButton.fixTemplateImage()
+        autoPlayButton.tintColor = ColorPallete.Blue.get()
+        
+        autoPlayButton.layer.shadowOpacity = 0.65
+        autoPlayButton.layer.shadowRadius = 2.5
+        autoPlayButton.layer.shadowColor = UIColor.blackColor().CGColor
+        autoPlayButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
+        
+//        autoPlayButton.hidden = MediaPlayerService.shared.isPlayingArtwork(artwork) || artwork.audio == nil
+//        autoPlayIcon.hidden = autoPlayButton.hidden
+    }
     
     func setupBeaconUpdates() {
         Timer(duration: REFRESH_INTERVAL) { [weak self] (_) -> () in
