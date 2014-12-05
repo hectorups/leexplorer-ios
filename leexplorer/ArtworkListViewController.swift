@@ -14,8 +14,10 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     @IBOutlet var artworksCollectionView: UICollectionView!
     var gallery: Gallery!
     var artworks: [Artwork] = []
+    var beacons: [CLBeacon] = []
     
     private let notificationManager = NotificationManager()
+    private var waitingForBeacons = false
     
     override func viewDidLoad() {
         title = NSLocalizedString("ARTWORKS", comment: "")
@@ -36,8 +38,12 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     func setupNotifications() {
         notificationManager.registerObserver(.BeaconsFound) { [weak self] (notification) -> Void in
             if let strongSelf = self {
-                var beacons = notification.userInfo!["beacons"] as [CLBeacon]
-                LELog.d("Beacons found: \(beacons.count)")
+                strongSelf.beacons = notification.userInfo!["beacons"] as [CLBeacon]
+                
+                if strongSelf.waitingForBeacons {
+                    strongSelf.waitingForBeacons = false
+                    strongSelf.sortAndShowArtworks()
+                }
             }
         }
     }
@@ -57,12 +63,41 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         LeexplorerApi.shared.getGalleryArtworks(gallery, success: { (artworks) -> Void in
             self.artworks = artworks
-            self.artworksCollectionView.reloadData()
+            if self.beacons.count == 0 {
+                self.waitingForBeacons = true
+            }
+            self.sortAndShowArtworks()
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }) { (operation, error) -> Void in
             LELog.d(error)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
+    }
+    
+    // MARK - NewBeacons
+    
+    func sortAndShowArtworks() {
+        sortArtworks()
+        artworksCollectionView.reloadData()
+    }
+    
+    func sortArtworks() {
+        artworks.sort { (artwork1, artwork2) -> Bool in
+            let accuracy1 = self.accuracyForArtwork(artwork1) ?? DBL_MAX
+            let accuracy2 = self.accuracyForArtwork(artwork2) ?? DBL_MAX
+            
+            return accuracy2 > accuracy1
+        }
+    }
+    
+    func accuracyForArtwork(artwork: Artwork) ->  CLLocationAccuracy? {
+        for beacon in beacons {
+            if artwork.belongsToBeacon(beacon) {
+                return beacon.accuracy
+            }
+        }
+        
+        return nil
     }
     
     // MARK - CHTCollectionViewDelegateWaterfallLayout
@@ -89,6 +124,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArtworkCollectionViewCell", forIndexPath: indexPath) as ArtworkCollectionViewCell
         
         cell.artwork = artworks[indexPath.row]
+        cell.hasBeacon = false
         
         return cell
     }

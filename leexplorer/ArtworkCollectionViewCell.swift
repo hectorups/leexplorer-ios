@@ -16,6 +16,13 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var artworkNameLabel: UILabel!
     @IBOutlet var separatorLabel: UILabel!
+    @IBOutlet weak var signalImageView: UIImageView!
+    
+    var hasBeacon: Bool! {
+        didSet {
+            signalImageView.hidden = !hasBeacon
+        }
+    }
     
     
     
@@ -37,7 +44,21 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
                 dateLabel.hidden = true
                 separatorLabel.hidden = true
             }
+            hasBeacon = false
+            setupSignal()
         }
+    }
+    
+    func setupSignal() {
+        var animationImages = [UIImage]()
+        for index in (1...4) {
+            animationImages.append(UIImage(named: "ble\(index)")!)
+        }
+        
+        signalImageView.animationImages = animationImages
+        signalImageView.animationDuration = 0.9
+        signalImageView.animationRepeatCount = 0
+        signalImageView.startAnimating()
     }
     
     

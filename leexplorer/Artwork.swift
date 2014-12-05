@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Artwork {
     var audio: Audio?
@@ -47,6 +48,10 @@ class Artwork {
         
         return artwork
     }
+    
+    func belongsToBeacon(beacon: CLBeacon) -> Bool {
+        return beacon.major == major && beacon.minor == minor
+    }
 
     
 }
@@ -55,3 +60,4 @@ class Artwork {
 func == <R: Artwork>(left: R, right: R) -> Bool {
     return left.id == right.id
 }
+
