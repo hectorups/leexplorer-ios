@@ -12,16 +12,27 @@ import CoreLocation
 class ArtworkListViewController: UIViewController, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     @IBOutlet var artworksCollectionView: UICollectionView!
+    let REFRESH_INTERVAL = 30 // seconds
     var gallery: Gallery!
     var artworks: [Artwork] = []
     var beacons: [CLBeacon] = []
     
     private let notificationManager = NotificationManager()
-    private var waitingForBeacons = false
+    private var progressNavigationController: ProgressNavigationController!
+    private var waitingForBeacons: Bool = false {
+        didSet {
+            if waitingForBeacons {
+                progressNavigationController.startAnimating()
+            } else {
+                progressNavigationController.stopAnimating()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         title = NSLocalizedString("ARTWORKS", comment: "")
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+        progressNavigationController = navigationController as ProgressNavigationController
         
         setupCollectionView()
         setupNotifications()
@@ -34,6 +45,14 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     // MARK - SETUP
+    
+    func setupBeaconUpdates() {
+        Timer(duration: REFRESH_INTERVAL) { [weak self] (_) -> () in
+            if let strongSelf = self {
+                strongSelf.waitingForBeacons = true
+            }
+        }
+    }
     
     func setupNotifications() {
         notificationManager.registerObserver(.BeaconsFound) { [weak self] (notification) -> Void in

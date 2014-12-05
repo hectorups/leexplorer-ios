@@ -78,10 +78,10 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         playButton.fixTemplateImage()
         playButton.tintColor = ColorPallete.Blue.get()
         
-        playButton.layer.shadowOpacity = 0.75
-        playButton.layer.shadowRadius = 1.0
+        playButton.layer.shadowOpacity = 0.65
+        playButton.layer.shadowRadius = 2.5
         playButton.layer.shadowColor = UIColor.blackColor().CGColor
-        playButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.5)
+        playButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
         
         playButton.hidden = MediaPlayerService.shared.isPlayingArtwork(artwork) || artwork.audio == nil
         playIcon.hidden = playButton.hidden
