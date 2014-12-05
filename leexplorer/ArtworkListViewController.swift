@@ -19,15 +19,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     
     private let notificationManager = NotificationManager()
     private var progressNavigationController: ProgressNavigationController!
-    private var waitingForBeacons: Bool = false {
-        didSet {
-            if waitingForBeacons {
-                progressNavigationController.startAnimating()
-            } else {
-                progressNavigationController.stopAnimating()
-            }
-        }
-    }
+    private var waitingForBeacons: Bool = false
     
     override func viewDidLoad() {
         title = NSLocalizedString("ARTWORKS", comment: "")
@@ -59,7 +51,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             if let strongSelf = self {
                 strongSelf.beacons = notification.userInfo!["beacons"] as [CLBeacon]
                 
-                if strongSelf.waitingForBeacons {
+                if strongSelf.waitingForBeacons && strongSelf.beacons.count > 0 {
                     strongSelf.waitingForBeacons = false
                     strongSelf.sortAndShowArtworks()
                 }
@@ -144,26 +136,23 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         
         let artwork = artworks[indexPath.row]
         cell.artwork = artwork
-        cell.hasBeacon = accuracyForArtwork(artwork) != nil
+        cell.accuracy = accuracyForArtwork(artwork)
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("Selected cell")
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
         cell.startAnimating()
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        println("hilighted cell")
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
         cell.startAnimating()
     }
     
     
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        println("didUnhighlightItemAtIndexPath")
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
         cell.startAnimating()
     }

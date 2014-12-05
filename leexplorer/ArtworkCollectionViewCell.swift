@@ -17,10 +17,21 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet var artworkNameLabel: UILabel!
     @IBOutlet var separatorLabel: UILabel!
     @IBOutlet weak var signalImageView: UIImageView!
+    @IBOutlet weak var accuracyLabel: UILabel!
     
-    var hasBeacon: Bool! {
+    var accuracy: Double? {
         didSet {
-            signalImageView.hidden = !hasBeacon
+            signalImageView.hidden = accuracy == nil
+            accuracyLabel.hidden = accuracy == nil
+            
+            if let value = accuracy {
+                let format = "%.2f"
+                accuracyLabel.text = "\(NSString(format: format, value))"
+            }
+            
+            if !AppConstant.DEBUG {
+                accuracyLabel.hidden = true
+            }
         }
     }
     
@@ -42,7 +53,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
                 dateLabel.hidden = true
                 separatorLabel.hidden = true
             }
-            hasBeacon = false
+            signalImageView.hidden = true
             setupSignal()
         }
     }

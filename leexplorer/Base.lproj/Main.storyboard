@@ -129,7 +129,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-8R-jUt">
-                                                            <rect key="frame" x="105" y="29" width="241" height="17"/>
+                                                            <rect key="frame" x="104" y="29" width="241" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -169,6 +169,12 @@
                                                         <constraint firstAttribute="width" constant="48" id="zLV-kk-aBY"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7P-sK-4IK">
+                                                    <rect key="frame" x="320" y="44" width="25" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -179,12 +185,15 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="3kk-v0-bpd" secondAttribute="trailing" constant="-10" id="KMp-TN-sXk"/>
                                             <constraint firstAttribute="trailing" secondItem="5vG-Jb-IeG" secondAttribute="trailing" id="Olw-ey-stJ"/>
                                             <constraint firstItem="3kk-v0-bpd" firstAttribute="top" secondItem="tUr-u3-zTh" secondAttribute="topMargin" constant="-10" id="Yh9-Dc-nkJ"/>
+                                            <constraint firstItem="U7P-sK-4IK" firstAttribute="top" secondItem="tUr-u3-zTh" secondAttribute="topMargin" constant="36" id="dY3-M2-R5Y"/>
+                                            <constraint firstItem="U7P-sK-4IK" firstAttribute="trailing" secondItem="tUr-u3-zTh" secondAttribute="trailingMargin" id="ghv-iK-CDa"/>
                                             <constraint firstAttribute="bottom" secondItem="5vG-Jb-IeG" secondAttribute="bottom" id="kl3-Fo-TtX"/>
                                             <constraint firstItem="VO7-14-Pac" firstAttribute="leading" secondItem="tUr-u3-zTh" secondAttribute="leading" id="tHs-Bd-nNF"/>
                                             <constraint firstItem="VO7-14-Pac" firstAttribute="top" secondItem="tUr-u3-zTh" secondAttribute="top" id="xGj-rL-AGw"/>
                                         </constraints>
                                         <size key="customSize" width="353" height="286"/>
                                         <connections>
+                                            <outlet property="accuracyLabel" destination="U7P-sK-4IK" id="DbF-F3-wbi"/>
                                             <outlet property="artworkNameLabel" destination="ssg-TH-xns" id="bwJ-6a-BTF"/>
                                             <outlet property="authorNameLabel" destination="ZLy-Lb-vZA" id="UTY-f0-bDe"/>
                                             <outlet property="dateLabel" destination="IBc-8R-jUt" id="dzk-2G-0kZ"/>
