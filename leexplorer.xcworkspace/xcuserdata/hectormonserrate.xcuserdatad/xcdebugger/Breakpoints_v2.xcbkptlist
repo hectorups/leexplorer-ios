@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439513860.729026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "loadArtworks()"
             landmarkType = "5">
             <Locations>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439513860.729026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "loadArtworks()"
             landmarkType = "5">
          </BreakpointContent>
@@ -231,121 +231,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            filePath = "leexplorer/AutoPlayService.swift"
+            timestampString = "439522643.924439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "sortArtworks()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "leexplorer.ArtworkListViewController.sortArtworks (leexplorer.ArtworkListViewController)() -&gt; ()"
-                  moduleName = "leexplorer"
-                  urlString = "file:///Users/hectormonserrate/SwiftProjects/leexplorer-ios/leexplorer/ArtworkListViewController.swift"
-                  timestampString = "439444179.872277"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "leexplorer.ArtworkListViewController.(sortArtworks (leexplorer.ArtworkListViewController) -&gt; () -&gt; ()).(closure #1)"
-                  moduleName = "leexplorer"
-                  urlString = "file:///Users/hectormonserrate/SwiftProjects/leexplorer-ios/leexplorer/ArtworkListViewController.swift"
-                  timestampString = "439444179.872402"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "reabstraction thunk helper from @callee_owned (@owned leexplorer.Artwork, @owned leexplorer.Artwork) -&gt; (@unowned Swift.Bool) to @callee_owned (@in leexplorer.Artwork, @in leexplorer.Artwork) -&gt; (@unowned Swift.Bool)"
-                  moduleName = "leexplorer"
-                  urlString = "file:///Users/hectormonserrate/SwiftProjects/leexplorer-ios/leexplorer/ArtworkListViewController.swift"
-                  timestampString = "439444179.872507"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "sortArtworks()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "accuracyForArtwork(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "accuracyForArtwork(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "accuracyForArtwork(_:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "findNextArtworkToPlay(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

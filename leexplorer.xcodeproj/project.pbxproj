@@ -30,6 +30,7 @@
 		9574A3691A24417400399531 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3681A24417400399531 /* GalleryCell.swift */; };
 		9574A36D1A24470300399531 /* GalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9574A36C1A24470300399531 /* GalleryCell.xib */; };
 		9574A3701A24526A00399531 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A36F1A24526A00399531 /* Gallery.swift */; };
+		959A9D281A327786002FBFB6 /* AutoPlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A9D271A327786002FBFB6 /* AutoPlayService.swift */; };
 		95A459F11A3146EF00CCF6FA /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A459F01A3146EF00CCF6FA /* Timer.swift */; };
 		95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93771A27A5ED001F4DD9 /* MKButton.swift */; };
 		95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93781A27A5ED001F4DD9 /* MKColor.swift */; };
@@ -107,6 +108,7 @@
 		9574A3681A24417400399531 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		9574A36C1A24470300399531 /* GalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryCell.xib; sourceTree = "<group>"; };
 		9574A36F1A24526A00399531 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		959A9D271A327786002FBFB6 /* AutoPlayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayService.swift; sourceTree = "<group>"; };
 		95A459F01A3146EF00CCF6FA /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		95AD93771A27A5ED001F4DD9 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		95AD93781A27A5ED001F4DD9 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
@@ -299,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				9574A33E1A24261B00399531 /* Images.xcassets */,
+				95A459F01A3146EF00CCF6FA /* Timer.swift */,
+				9539DFF61A30FCAF002E32AE /* NotificationManager.swift */,
 				9574A3611A2430CF00399531 /* Constants.swift */,
 				9574A3631A243CBC00399531 /* LELog.swift */,
 				9574A35C1A24277D00399531 /* leexplorer-Bridging-Header.h */,
@@ -359,6 +363,7 @@
 			children = (
 				95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */,
 				955936281A3107BE007CAD89 /* BLEService.swift */,
+				959A9D271A327786002FBFB6 /* AutoPlayService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -370,8 +375,6 @@
 				95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */,
 				9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */,
 				9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */,
-				9539DFF61A30FCAF002E32AE /* NotificationManager.swift */,
-				95A459F01A3146EF00CCF6FA /* Timer.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */,
 				95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */,
 				9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */,
+				959A9D281A327786002FBFB6 /* AutoPlayService.swift in Sources */,
 				95CD75461A24FBEE00974B3C /* Image.swift in Sources */,
 				95D010061A266FBB00E3B655 /* Artwork.swift in Sources */,
 				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,

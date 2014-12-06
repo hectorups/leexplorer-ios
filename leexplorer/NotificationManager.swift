@@ -23,12 +23,16 @@ class NotificationManager {
         observerTokens = []
     }
     
-    func registerObserver(name: AppNotification, block: (NSNotification! -> Void)) {
-        registerObserver(name, forObject: nil, block: block)
+    func registerObserverType(type: AppNotification, block: (NSNotification! -> Void)) {
+        registerObserverType(type, forObject: nil, block: block)
     }
     
-    func registerObserver(name: AppNotification, forObject object: AnyObject?, block: (NSNotification! -> Void)) {
-        let newToken = NSNotificationCenter.defaultCenter().addObserverForName(name.rawValue, object: object, queue: nil) {note in
+    func registerObserverType(type: AppNotification, forObject object: AnyObject?, block: (NSNotification! -> Void)) {
+        registerObserverName(type.rawValue, forObject: object, block: block)
+    }
+    
+    func registerObserverName(name: String, forObject object: AnyObject?, block: (NSNotification! -> Void)) {
+        let newToken = NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: nil) {note in
             block(note)
         }
         

@@ -52,10 +52,42 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = ColorPallete.AppBg.get()
         title = gallery.name
         edgesForExtendedLayout = .None;
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+        
+        setupTableView()
+        setupExploreCollectionButton()
+        
+    }
 
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offset = tableView.contentOffset.y
+        
+        profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segue.ShowArtworkList.rawValue {
+            var controller = segue.destinationViewController as ArtworkListViewController
+            controller.gallery = gallery
+        }
+    }
+    
+    // MARK: - Setup 
+    
+    func setupExploreCollectionButton() {
+        exploreCollectionButton.backgroundColor = ColorPallete.Blue.get().colorWithAlphaComponent(0.95)
+        exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
+        exploreCollectionButton.maskEnabled = true
+        exploreCollectionButton.rippleLocation = .TapLocation
+        exploreCollectionButton.circleLayerColor = ColorPallete.Blue.get()
+    }
+    
+    func setupTableView() {
         let cellNib = UINib(nibName: "ProfileSectionCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "ProfileSectionCell")
         tableView.dataSource = self
@@ -76,27 +108,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         tableView.tableFooterView = transparentFooterView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        
-        exploreCollectionButton.backgroundColor = ColorPallete.Blue.get().colorWithAlphaComponent(0.95)
-        exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
-        exploreCollectionButton.maskEnabled = true
-        exploreCollectionButton.rippleLocation = .TapLocation
-        exploreCollectionButton.circleLayerColor = ColorPallete.Blue.get()
-    }
-
-
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offset = tableView.contentOffset.y
-        
-        profileHeaderView.blur(offset, headerHeight: HEADER_HEIGHT)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Segue.ShowArtworkList.rawValue {
-            var controller = segue.destinationViewController as ArtworkListViewController
-            controller.gallery = gallery
-        }
+        tableView.backgroundColor = ColorPallete.AppBg.get()
     }
 
     // MARK: - Table view data source
@@ -108,7 +120,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as ProfileSectionCell
-        
+        cell.backgroundColor =  ColorPallete.AppBg.get()
         let section = Section(rawValue: indexPath.item)!
         cell.title = section.title()
         cell.sectionText = section.text(gallery)

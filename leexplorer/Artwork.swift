@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class Artwork {
+class Artwork: Equatable {
     var audio: Audio?
     var author: String?
     var desc: String?
@@ -55,6 +55,25 @@ class Artwork {
         }
         
         return beacon.major == major! && beacon.minor == minor!
+    }
+    
+    class func sortArtworks(inout artworks: [Artwork], beacons: [CLBeacon]) {
+        artworks.sort { (artwork1, artwork2) -> Bool in
+            let accuracy1 = artwork1.findFromBeacons(beacons)?.accuracy ?? DBL_MAX
+            let accuracy2 = artwork2.findFromBeacons(beacons)?.accuracy ?? DBL_MAX
+            
+            return accuracy2 > accuracy1
+        }
+    }
+    
+    func findFromBeacons(beacons: [CLBeacon]) -> CLBeacon? {
+        for beacon in beacons {
+            if belongsToBeacon(beacon) {
+                return beacon
+            }
+        }
+        
+        return nil
     }
 
     

@@ -18,6 +18,7 @@ class MediaPlayerService: NSObject {
     private var artwork: Artwork?
     private var playbackObserver: AnyObject?
     private var readyToCheck = false
+    private var notificationManager: NotificationManager
     
     var paused = false
     
@@ -29,10 +30,10 @@ class MediaPlayerService: NSObject {
     }
     
     override init() {
+        notificationManager = NotificationManager()
         super.init()
         
         var session = AVAudioSession.sharedInstance()
-
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         session.setActive(true, error: nil)
         session.overrideOutputAudioPort(.None, error: nil)
@@ -53,12 +54,10 @@ class MediaPlayerService: NSObject {
         self.artwork = artwork
         
         playerItem = AVPlayerItem(URL: url)
-        NSNotificationCenter.defaultCenter().addObserverForName(AVPlayerItemDidPlayToEndTimeNotification, object: playerItem!, queue: nil) {[weak self] (notification) -> Void in
+        notificationManager.registerObserverName(AVPlayerItemDidPlayToEndTimeNotification, forObject: playerItem!) {[weak self] (notification) -> Void in
             LELog.d("Audio finished playing")
             if let strongSelf = self {
-                let data = [
-                    "artworkId": strongSelf.artwork!.id
-                ]
+                let data = ["artworkId": strongSelf.artwork!.id]
                 NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioCompleted.rawValue, object: strongSelf, userInfo: data)
                 strongSelf.stop()
             }
@@ -75,32 +74,31 @@ class MediaPlayerService: NSObject {
     }
     
     func play() {
+        LELog.d("MediaPlayerService Play")
         paused = false
         audioPlayer?.play()
         
-        let data = [
-            "artworkId": self.artwork!.id
-        ]
+        let data = ["artworkId": self.artwork!.id]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioResumed.rawValue, object: self, userInfo: data)
     }
     
     func pause() {
+        LELog.d("MediaPlayerService Pause")
         paused = true
         audioPlayer?.pause()
         
-        let data = [
-            "artworkId": self.artwork!.id
-        ]
+        let data = ["artworkId": self.artwork!.id]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioPaused.rawValue, object: self, userInfo: data)
     }
     
     func stop() {
+        LELog.d("MediaPlayerService Stop")
         pause()
         playerItem?.removeObserver(self, forKeyPath: "status", context: &itemStatusContext)
         if let observer: AnyObject = self.playbackObserver {
             audioPlayer?.removeTimeObserver(observer)
         }
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem!)
+        notificationManager.deregisterAll()
         
         readyToCheck = false
         audioPlayer = nil
@@ -113,6 +111,10 @@ class MediaPlayerService: NSObject {
     func seekToTime(time: Float) {
         var cmtime = CMTimeMakeWithSeconds(Float64(time), 1)
         playerItem?.seekToTime(cmtime)
+    }
+    
+    func isAvailable() -> Bool {
+        return artwork == nil
     }
 
     func isPlaying() -> Bool {

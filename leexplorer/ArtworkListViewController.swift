@@ -72,7 +72,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func setupNotifications() {
-        notificationManager.registerObserver(.BeaconsFound) { [weak self] (notification) -> Void in
+        notificationManager.registerObserverType(.BeaconsFound) { [weak self] (notification) -> Void in
             if let strongSelf = self {
                 strongSelf.beacons = notification.userInfo!["beacons"] as [CLBeacon]
                 
@@ -91,6 +91,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         layout.minimumInteritemSpacing = 1
         layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1)
         
+        artworksCollectionView.backgroundColor = ColorPallete.AppBg.get()
         artworksCollectionView.delegate = self
         artworksCollectionView.dataSource = self
     }
@@ -113,27 +114,11 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     // MARK - NewBeacons
     
     func sortAndShowArtworks() {
-        sortArtworks()
-        artworksCollectionView.reloadData()
-    }
-    
-    func sortArtworks() {
-        artworks.sort { (artwork1, artwork2) -> Bool in
-            let accuracy1 = self.accuracyForArtwork(artwork1) ?? DBL_MAX
-            let accuracy2 = self.accuracyForArtwork(artwork2) ?? DBL_MAX
-            
-            return accuracy2 > accuracy1
-        }
-    }
-    
-    func accuracyForArtwork(artwork: Artwork) ->  CLLocationAccuracy? {
-        for beacon in beacons {
-            if artwork.belongsToBeacon(beacon) {
-                return beacon.accuracy
-            }
-        }
+        Artwork.sortArtworks(&artworks, beacons: beacons)
         
-        return nil
+        artworksCollectionView.performBatchUpdates({ () -> Void in
+            self.artworksCollectionView.reloadSections(NSIndexSet(index: 0))
+        }, completion: nil)
     }
     
     // MARK - CHTCollectionViewDelegateWaterfallLayout
@@ -161,7 +146,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         
         let artwork = artworks[indexPath.row]
         cell.artwork = artwork
-        cell.accuracy = accuracyForArtwork(artwork)
+        cell.accuracy = artwork.findFromBeacons(beacons)?.accuracy
         
         return cell
     }
@@ -192,5 +177,12 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             controller.gallery = gallery
         }
     }
+    
+    // MARK: - Autoplay 
+    
+    @IBAction func didTabAutoplay(sender: AnyObject) {
+        AutoPlayService.shared.playGallery(gallery, artworks: artworks)
+    }
+    
     
 }
