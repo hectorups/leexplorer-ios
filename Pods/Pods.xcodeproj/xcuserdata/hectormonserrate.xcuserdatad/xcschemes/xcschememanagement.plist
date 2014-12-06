@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-ADNLogin.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-OvershareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-PocketAPI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SCLAlertView-Objective-C.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +77,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>25FE1203FDADF66DE2A46850</key>
+		<key>3787ED9623BACD83BC1D360E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>26D4ACCDF3A22CAD4ACBD8C3</key>
+		<key>6574CB6659DB074CFBFCCDBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43D964A83042133869D9370C</key>
+		<key>6A215EF3657334EB0F79BE58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53BC569D0ED9D58F685CA601</key>
+		<key>A80B4FD909BBC773FD6CACB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60F6B607E03B1D6BDF2199E5</key>
+		<key>B68745D4AE701F5815946163</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6147B6CEFE2F0B7AC8D55A11</key>
+		<key>BA3ABC62991CE9557F5D29C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D8056B76D6C24C749D03EB4</key>
+		<key>C4B3FA735E3420984081F44D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72BBF184CA34D06CF82EDC44</key>
+		<key>D02084AF1DB8B0E2597E8288</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8012FB0F3B0AFE11BDD7CD23</key>
+		<key>D9A01D4B6D293494AF8204B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8CCEE443030F712F7A5CD62</key>
+		<key>E1D7B29B832937E029D32982</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EADEAF21EBC8EC7ADF2DA3AB</key>
+		<key>E94CB1619264FF5A46C4EAFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA491A62DA6BE16AE20C4CC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD42CFC192507CC32133BCB1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFDA671DD510A9CDEEFAB66A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

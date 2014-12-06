@@ -182,6 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         alert.shouldDismissOnTapOutside = true
         alert.addButton(NSLocalizedString("AUTOPLAY_CANCEL", comment: ""), actionBlock: { () -> Void in
             AutoPlayService.shared.stop()
+            MediaPlayerService.shared.stop()
         })
         
         var image = UIImage(named: "autoplay_icon")!.withColorTint(ColorPallete.White.get())

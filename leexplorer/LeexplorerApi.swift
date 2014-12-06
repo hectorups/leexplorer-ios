@@ -23,6 +23,7 @@ class LeexplorerApi: AFHTTPSessionManager {
     override init!(baseURL url: NSURL!) {
         super.init(baseURL: url)
         self.requestSerializer = AFJSONRequestSerializer(writingOptions: nil)
+        self.securityPolicy.validatesDomainName = false
     }
     
     override init!(baseURL url: NSURL!, sessionConfiguration configuration: NSURLSessionConfiguration!) {

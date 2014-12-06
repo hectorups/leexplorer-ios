@@ -10,4 +10,5 @@ pod "Mixpanel", "~> 2.6.0"
 pod "GSIndeterminateProgressBar", :git => "git@github.com:hectorups/GSIndeterminateProgressBar.git"
 pod "MBProgressHUD", "~> 0.8"
 pod "SCLAlertView-Objective-C"
+pod "OvershareKit"
 

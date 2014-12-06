@@ -61,6 +61,7 @@
 		95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */; };
 		95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */; };
 		95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */; };
+		95E2831C1A33858500BF37FB /* OverShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E2831B1A33858500BF37FB /* OverShareHelper.m */; };
 		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
@@ -140,6 +141,8 @@
 		95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+leDateFromString.swift"; sourceTree = "<group>"; };
 		95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
 		95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		95E2831A1A33852400BF37FB /* OverShareHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverShareHelper.h; sourceTree = "<group>"; };
+		95E2831B1A33858500BF37FB /* OverShareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverShareHelper.m; sourceTree = "<group>"; };
 		95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerView.xib; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 		9574A3311A24261B00399531 /* leexplorer */ = {
 			isa = PBXGroup;
 			children = (
+				95E283191A3384F400BF37FB /* ObjHelpers */,
 				95CABB001A2AA46B00F354B2 /* Services */,
 				95D010091A268D7A00E3B655 /* Extensions */,
 				9574A3651A2440F100399531 /* Libs */,
@@ -380,6 +384,15 @@
 				95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		95E283191A3384F400BF37FB /* ObjHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				95E2831A1A33852400BF37FB /* OverShareHelper.h */,
+				95E2831B1A33858500BF37FB /* OverShareHelper.m */,
+			);
+			name = ObjHelpers;
 			sourceTree = "<group>";
 		};
 		DF3886A16946E8231E5AB677 /* Pods */ = {
@@ -553,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */,
+				95E2831C1A33858500BF37FB /* OverShareHelper.m in Sources */,
 				95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */,
 				95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */,
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,

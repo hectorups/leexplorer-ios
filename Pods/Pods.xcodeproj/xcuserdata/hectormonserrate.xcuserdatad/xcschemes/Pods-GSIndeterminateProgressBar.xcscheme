@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26D4ACCDF3A22CAD4ACBD8C3"
+               BlueprintIdentifier = "6574CB6659DB074CFBFCCDBE"
                BuildableName = "libPods-GSIndeterminateProgressBar.a"
                BlueprintName = "Pods-GSIndeterminateProgressBar"
                ReferencedContainer = "container:Pods.xcodeproj">

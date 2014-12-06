@@ -12,3 +12,5 @@
 #import <GSIndeterminateProgressBar/GSIndeterminateProgressView.h>
 #import <Mixpanel/Mixpanel.h>
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import <OverShareKit/OverShareKit.h>
+#import "OverShareHelper.h"

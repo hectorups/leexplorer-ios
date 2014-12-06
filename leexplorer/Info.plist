@@ -2,10 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationUsageDescription</key>
-	<string>Beacon monitoring and ranging</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>monitoring and ranging</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>fb760381750702853</string>
+		</dict>
+	</array>
+	<key>FacebookDisplayName</key>
+	<string>leexplorer</string>
+	<key>FacebookAppID</key>
+	<string>760381750702853</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -40,6 +47,10 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>monitoring and ranging</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Beacon monitoring and ranging</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

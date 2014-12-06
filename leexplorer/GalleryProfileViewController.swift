@@ -17,6 +17,8 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var exploreCollectionButton: MKButton!
     
     let HEADER_HEIGHT: CGFloat = 260.0
+    var waitingForShareImage = false
+    var shareImageView: UIImageView?
     
     enum Section: Int {
         case Hours=0, Price, Description
@@ -57,9 +59,9 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         edgesForExtendedLayout = .None;
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
+        setupShare()
         setupTableView()
         setupExploreCollectionButton()
-        
     }
 
 
@@ -78,6 +80,33 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     // MARK: - Setup 
+    
+    func setupShare() {
+        let shareIcon = UIImage(named: "share_icon")?.fixTemplateImage()
+        
+        var rightBarButtonItem = UIBarButtonItem()
+        rightBarButtonItem.image = shareIcon
+        rightBarButtonItem.tintColor = ColorPallete.Blue.get()
+        rightBarButtonItem.target = self
+        rightBarButtonItem.action = "didTabShareGallery"
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        let shareImageUrl = MediaProcessor.urlForImageFill(gallery.images.first!, width: Int(200), height: Int(200))
+        shareImageView = UIImageView()
+        shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
+            placeholderImage: nil,
+            success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
+                LELog.d("Shared image loaded")
+                self.shareImageView!.image = image
+                if self.waitingForShareImage {
+                    self.didTabShareGallery()
+                }
+            },
+            failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
+                LELog.e("Shared image download failed: \(shareImageUrl)")
+                LELog.e(error.description)
+        })
+    }
     
     func setupExploreCollectionButton() {
         exploreCollectionButton.backgroundColor = ColorPallete.Blue.get().colorWithAlphaComponent(0.95)
@@ -132,6 +161,24 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         let section = Section(rawValue: indexPath.item)!
         
         return ProfileSectionCell.heightWithText(section.text(gallery))
+    }
+    
+    // MARK: - Share
+    
+    func didTabShareGallery() {
+        if shareImageView?.image == nil {
+            waitingForShareImage = true
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            return
+        }
+        
+        let shareableContent = OSKShareableContent(fromImages: [shareImageView!.image!], caption: self.gallery.name)
+        OverShareHelper.sharedInstance().presentActivitySheetForContent(shareableContent, presentingViewController: self)
+        
+        if waitingForShareImage {
+            waitingForShareImage = false
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        }
     }
 
 }
