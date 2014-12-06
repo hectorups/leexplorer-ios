@@ -10,8 +10,10 @@ import Foundation
 
 extension UIButton {
     func fixTemplateImage() {
-        setImage(
-            imageView?.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate),
-            forState: .Normal)
+        if let image = imageView?.image? {
+            setImage(
+                image.fixTemplateImage(),
+                forState: .Normal)
+        }
     }
 }

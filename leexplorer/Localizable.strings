@@ -6,8 +6,14 @@
   Copyright (c) 2014 leexplorer. All rights reserved.
 */
 
+// Autoplay
+"AUTOPLAY_TITLE" = "New Artwork Playing";
+"AUTOPLAY_SUBTITLE" = "Autoplaying artwork. To disable this autoplay press on cancel";
+"AUTOPLAY_OK" = "ok";
+"AUTOPLAY_CANCEL" = "cancel";
+
 // Gallery List VC
-"GALLERY_LIST_TITLE" = "LeExplorer Collections";
+"GALLERY_LIST_TITLE" = "Leexplorer Collections";
 
 // Gallery Profile VC
 "HOURS" = "Hours";

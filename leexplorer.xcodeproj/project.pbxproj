@@ -60,6 +60,7 @@
 		95D010081A267EDA00E3B655 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D010071A267EDA00E3B655 /* Audio.swift */; };
 		95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */; };
 		95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */; };
+		95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */; };
 		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
@@ -138,6 +139,7 @@
 		95D010071A267EDA00E3B655 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		95D0100A1A268E2F00E3B655 /* NSDate+leDateFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+leDateFromString.swift"; sourceTree = "<group>"; };
 		95D0100C1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
+		95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPlayerView.xib; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */,
 				9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */,
 				9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */,
+				95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
 				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
+				95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
 				9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */,
 				95D010001A26465700E3B655 /* GradientView.swift in Sources */,

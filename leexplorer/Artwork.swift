@@ -80,7 +80,7 @@ class Artwork: Equatable {
 }
 
 
-func == <R: Artwork>(left: R, right: R) -> Bool {
+func == (left: Artwork, right: Artwork) -> Bool {
     return left.id == right.id
 }
 

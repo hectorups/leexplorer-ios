@@ -59,8 +59,8 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         autoPlayButton.layer.shadowColor = UIColor.blackColor().CGColor
         autoPlayButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
         
-//        autoPlayButton.hidden = MediaPlayerService.shared.isPlayingArtwork(artwork) || artwork.audio == nil
-//        autoPlayIcon.hidden = autoPlayButton.hidden
+        autoPlayButton.hidden = AutoPlayService.shared.isPlayingGallery(gallery)
+        autoPlayIcon.hidden = autoPlayButton.hidden
     }
     
     func setupBeaconUpdates() {
@@ -182,6 +182,15 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     
     @IBAction func didTabAutoplay(sender: AnyObject) {
         AutoPlayService.shared.playGallery(gallery, artworks: artworks)
+        
+        autoPlayButton.userInteractionEnabled = false
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.autoPlayButton.alpha = 0.0
+            self.autoPlayIcon.alpha = 0.0
+            }) { (_) -> Void in
+                self.autoPlayButton.hidden = true
+                self.autoPlayIcon.hidden = self.autoPlayButton.hidden
+        }
     }
     
     

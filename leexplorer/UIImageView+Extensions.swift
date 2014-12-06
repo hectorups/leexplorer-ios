@@ -10,6 +10,6 @@ import Foundation
 
 extension UIImageView {
     func fixTemplateImage() {
-        self.image?.imageWithRenderingMode(.AlwaysTemplate)
+        self.image = self.image?.fixTemplateImage()
     }
 }

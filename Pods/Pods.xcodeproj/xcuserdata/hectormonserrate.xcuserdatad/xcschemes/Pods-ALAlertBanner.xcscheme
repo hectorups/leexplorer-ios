@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "622F639F2220377EE19A2F63"
+               BlueprintIdentifier = "72BBF184CA34D06CF82EDC44"
                BuildableName = "libPods-ALAlertBanner.a"
                BlueprintName = "Pods-ALAlertBanner"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "setupNotifications()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "setupAutoplay()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "setupNotifications()"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "setupAutoplay()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "setupNotifications()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "setupAutoplay()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439513860.729026"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "loadArtworks()"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "setupNotifications()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -200,12 +200,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439513860.729026"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "loadArtworks()"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "setupCollectionView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -216,12 +216,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/ArtworkListViewController.swift"
-            timestampString = "439510412.714248"
+            timestampString = "439537787.057733"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "setupNotifications()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "setupAutoplay()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,12 +232,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "leexplorer/AutoPlayService.swift"
-            timestampString = "439522643.924439"
+            timestampString = "439546229.135254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "findNextArtworkToPlay(_:)"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "isPlayingGallery(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

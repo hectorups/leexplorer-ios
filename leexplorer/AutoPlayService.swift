@@ -25,7 +25,6 @@ class AutoPlayService: NSObject {
     override init() {
         notificationManager = NotificationManager()
         super.init()
-        setupNotifications()
     }
     
     // MARK: - Setup
@@ -62,9 +61,25 @@ class AutoPlayService: NSObject {
     // MARK: - Controls
     
     func playGallery(gallery: Gallery, artworks: [Artwork]) {
+        stop()
         self.gallery = gallery
         self.artworks = artworks
-        self.playedArtworks = []
+        setupNotifications()
+    }
+    
+    func isPlayingGallery(gallery: Gallery) -> Bool {
+        if let currentGallery = self.gallery {
+            return currentGallery == gallery
+        } else {
+            return false
+        }
+    }
+    
+    func stop() {
+        notificationManager.deregisterAll()
+        gallery = nil
+        artworks = nil
+        playedArtworks = []
     }
     
     // MARK: - Logic
@@ -74,13 +89,19 @@ class AutoPlayService: NSObject {
             return
         }
         
-        var presentArtworks: [Artwork] = artworks!.filter(){ find(self.playedArtworks, $0) == nil }.filter(){ $0.findFromBeacons(beacons) != nil }
+        var presentArtworks: [Artwork] = artworks!.filter(){ find(self.playedArtworks, $0) == nil }
+            .filter() {
+                if let beacon = $0.findFromBeacons(beacons) {
+                    return beacon.accuracy < AppConstant.MAX_BEACON_PROXIMITY
+                } else {
+                    return false
+                }
+        }
         
         Artwork.sortArtworks(&presentArtworks, beacons: beacons)
         
         if let nextArtwork = presentArtworks.first {
-            MediaPlayerService.shared.playArtwork(nextArtwork)
-            playedArtworks.append(nextArtwork)
+            playArtwork(nextArtwork)
         }
     }
     
@@ -91,8 +112,25 @@ class AutoPlayService: NSObject {
         
         for galleryArtwork in artworks! {
             if galleryArtwork == artwork {
-                playedArtworks.append(artwork)
+                addToPlayedArtworks(artwork)
             }
+        }
+    }
+    
+    private func playArtwork(artwork: Artwork) {
+        MediaPlayerService.shared.playArtwork(artwork)
+        addToPlayedArtworks(artwork)
+        
+        let data = ["artworkId": artwork.id]
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AutoPlayTrackStarted.rawValue,
+            object: self, userInfo: data)
+    }
+    
+    private func addToPlayedArtworks(artwork: Artwork) {
+        playedArtworks.append(artwork)
+        
+        if playedArtworks.count == artworks!.count {
+            stop()
         }
     }
     

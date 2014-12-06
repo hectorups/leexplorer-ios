@@ -31,6 +31,8 @@ struct AppConstant {
     static let MILSEC_ARTWORK_REFRESH = 30000
     
     static let CRASHLYTICS_KEY = "1025a1bd270d6c18391090e2fe20649783aa84e2"
+    
+    static let MAX_BEACON_PROXIMITY = 30.0
 }
 
 enum Segue: String {
@@ -45,5 +47,6 @@ enum AppNotification: String {
     AudioPaused="AudioPaused",
     AudioResumed="AudioResumed",
     AudioStarted="AudioStarted",
-    BeaconsFound="BeaconsFound"
+    BeaconsFound="BeaconsFound",
+    AutoPlayTrackStarted="AutoPlayTrackStarted"
 }

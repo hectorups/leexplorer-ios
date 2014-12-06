@@ -11,3 +11,4 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <GSIndeterminateProgressBar/GSIndeterminateProgressView.h>
 #import <Mixpanel/Mixpanel.h>
+#import <SCLAlertView-Objective-C/SCLAlertView.h>

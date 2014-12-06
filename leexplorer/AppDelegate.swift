@@ -16,6 +16,7 @@ import CoreBluetooth
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var notificationManager = NotificationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Mixpanel.sharedInstanceWithToken(AppConstant.MIXPANEL_TOKEN)
         
+        setupNotifications()
         setupImageCache()
         initVisualAppearance()
         
@@ -42,6 +44,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    // MARK: - Setups
+    
+    func setupNotifications() {
+        notificationManager.registerObserverType(.AutoPlayTrackStarted) { [weak self] (notification) in
+            LELog.d("appdelegate: autoplay started")
+            if let strongSelf = self {
+                strongSelf.notifyNewAudio()
+            }
+        }
     }
     
     func setupImageCache() {
@@ -150,6 +163,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         default:break
         }
         
+    }
+    
+    // MARK: - AutoPlay notifications
+    
+    func notifyNewAudio() {
+        if let window = self.window {
+            let viewController = (window.rootViewController as UINavigationController).visibleViewController
+            notifyWighAlert(viewController)
+        }
+    }
+    
+    func notifyWighAlert(viewController: UIViewController) {
+        LELog.d("appdelegate: show alert")
+        
+        let alert = SCLAlertView()
+        alert.backgroundType = .Blur
+        alert.shouldDismissOnTapOutside = true
+        alert.addButton(NSLocalizedString("AUTOPLAY_CANCEL", comment: ""), actionBlock: { () -> Void in
+            AutoPlayService.shared.stop()
+        })
+        
+        var image = UIImage(named: "autoplay_icon")!.withColorTint(ColorPallete.White.get())
+        
+        alert.showCustom(viewController,
+            image: image,
+            color: ColorPallete.Blue.get(),
+            title: NSLocalizedString("AUTOPLAY_TITLE", comment: ""),
+            subTitle: NSLocalizedString("AUTOPLAY_SUBTITLE", comment: ""),
+            closeButtonTitle: NSLocalizedString("AUTOPLAY_OK", comment: ""),
+            duration: 10.0)
     }
 
 }

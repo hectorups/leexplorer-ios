@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Gallery {
+class Gallery: Equatable {
     
     var id: String!
     var address: String!
@@ -56,4 +56,8 @@ class Gallery {
         return gallery
     }
 
+}
+
+func == (left: Gallery, right: Gallery) -> Bool {
+    return left.id == right.id
 }
