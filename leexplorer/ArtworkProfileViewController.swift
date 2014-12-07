@@ -25,6 +25,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     private var headerOriginalWidth: CGFloat!
     private var profileHeaderView: ArtworkProfileHeaderView!
     private var progressNavigationController: ProgressNavigationController!
+    private var shareImageView: UIImageView?
+    private var waitingForShareImage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         setupTableView()
         setupPlayButton()
         setupMediaPlayerView()
-        
+        setupShare()
         setupNotifications()
     }
     
@@ -53,6 +55,31 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     // MARK - Setup Views
+    
+    func setupShare() {
+        let shareIcon = UIImage(named: "share_icon")?.fixTemplateImage()
+        
+        var rightBarButtonItem = UIBarButtonItem()
+        rightBarButtonItem.image = shareIcon
+        rightBarButtonItem.tintColor = ColorPallete.Blue.get()
+        rightBarButtonItem.target = self
+        rightBarButtonItem.action = "didTabShare"
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        let shareImageUrl = MediaProcessor.urlForImageFill(artwork.image, width: Int(200), height: Int(200))
+        shareImageView = UIImageView()
+        shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
+            placeholderImage: nil,
+            success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
+                self.shareImageView!.image = image
+                if self.waitingForShareImage {
+                    self.didTabShare()
+                }
+            },
+            failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
+                LELog.e(error.description)
+        })
+    }
     
     func setupMediaPlayerView() {
         mediaPlayerView.currentPosition = 0.0
@@ -259,6 +286,24 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         }
         
         MediaPlayerService.shared.seekToTime(updatedValue)
+    }
+    
+    // MARK: - Share
+    
+    func didTabShare() {
+        if shareImageView?.image == nil {
+            waitingForShareImage = true
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            return
+        }
+        
+        let shareableContent = OSKShareableContent(fromImages: [shareImageView!.image!], caption: artwork.name)
+        OverShareHelper.sharedInstance().presentActivitySheetForContent(shareableContent, presentingViewController: self)
+        
+        if waitingForShareImage {
+            waitingForShareImage = false
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        }
     }
 
 }

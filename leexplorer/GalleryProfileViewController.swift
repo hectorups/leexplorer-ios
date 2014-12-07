@@ -88,7 +88,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         rightBarButtonItem.image = shareIcon
         rightBarButtonItem.tintColor = ColorPallete.Blue.get()
         rightBarButtonItem.target = self
-        rightBarButtonItem.action = "didTabShareGallery"
+        rightBarButtonItem.action = "didTabShare"
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
         let shareImageUrl = MediaProcessor.urlForImageFill(gallery.images.first!, width: Int(200), height: Int(200))
@@ -96,14 +96,12 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
             placeholderImage: nil,
             success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
-                LELog.d("Shared image loaded")
                 self.shareImageView!.image = image
                 if self.waitingForShareImage {
-                    self.didTabShareGallery()
+                    self.didTabShare()
                 }
             },
             failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
-                LELog.e("Shared image download failed: \(shareImageUrl)")
                 LELog.e(error.description)
         })
     }
@@ -165,14 +163,14 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - Share
     
-    func didTabShareGallery() {
+    func didTabShare() {
         if shareImageView?.image == nil {
             waitingForShareImage = true
             MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             return
         }
         
-        let shareableContent = OSKShareableContent(fromImages: [shareImageView!.image!], caption: self.gallery.name)
+        let shareableContent = OSKShareableContent(fromImages: [shareImageView!.image!], caption: gallery.name)
         OverShareHelper.sharedInstance().presentActivitySheetForContent(shareableContent, presentingViewController: self)
         
         if waitingForShareImage {
