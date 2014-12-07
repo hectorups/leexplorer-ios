@@ -131,6 +131,10 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         transparentView.backgroundColor = UIColor.clearColor()
         tableView.tableHeaderView = transparentView
         
+        transparentView.userInteractionEnabled = true
+        var imageTab = UITapGestureRecognizer(target: self, action: "didTabImage")
+        transparentView.addGestureRecognizer(imageTab)
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
@@ -304,6 +308,23 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             waitingForShareImage = false
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }
+    }
+    
+    // MARK: - Show full image
+    
+    func didTabImage() {
+        var imageInfo = JTSImageInfo()
+        let bounds = UIScreen.mainScreen().bounds
+        imageInfo.imageURL = MediaProcessor.urlForImageFill(artwork.image,
+            width: Int(bounds.width * 2),
+            height: Int(bounds.height * 2),
+            scaleForDevice: true)
+        imageInfo.referenceRect = tableView.tableHeaderView!.bounds
+        imageInfo.referenceView = tableView.tableHeaderView!
+        
+        let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: .Image, backgroundStyle: .Blurred)
+        
+        imageViewer.showFromViewController(self, transition: ._FromOriginalPosition)
     }
 
 }

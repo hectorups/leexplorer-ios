@@ -14,3 +14,4 @@
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import <OverShareKit/OverShareKit.h>
 #import "OverShareHelper.h"
+#import <JTSImageViewController/JTSImageViewController.h>

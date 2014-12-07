@@ -11,4 +11,5 @@ pod "GSIndeterminateProgressBar", :git => "git@github.com:hectorups/GSIndetermin
 pod "MBProgressHUD", "~> 0.8"
 pod "SCLAlertView-Objective-C"
 pod "OvershareKit"
+pod "JTSImageViewController", "~> 1.4"
 

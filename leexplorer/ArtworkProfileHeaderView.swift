@@ -70,4 +70,5 @@ class ArtworkProfileHeaderView: NibDesignable {
             infoView.alpha = 1
         }
     }
+    
 }

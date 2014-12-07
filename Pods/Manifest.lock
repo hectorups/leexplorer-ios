@@ -26,6 +26,7 @@ PODS:
   - Cloudinary (1.0.12)
   - GSIndeterminateProgressBar (0.1.0)
   - HexColors (2.2.1)
+  - JTSImageViewController (1.4)
   - LBBlurredImage (0.2.1)
   - MBProgressHUD (0.9)
   - Mixpanel (2.6.0):
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - Cloudinary
   - GSIndeterminateProgressBar (from `git@github.com:hectorups/GSIndeterminateProgressBar.git`)
   - HexColors (~> 2.2)
+  - JTSImageViewController (~> 1.4)
   - LBBlurredImage (from `git@github.com:lukabernardi/LBBlurredImage.git`)
   - MBProgressHUD (~> 0.8)
   - Mixpanel (~> 2.6.0)
@@ -64,6 +66,7 @@ SPEC CHECKSUMS:
   Cloudinary: 1f3859b17f1c111671a1acf1f0e2648c34d3a207
   GSIndeterminateProgressBar: 9d065c95d6a882ba55e1db25b69d537ee059a5a5
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  JTSImageViewController: 9fe6402194b7679f0e28d0c1002d6164301fc34a
   LBBlurredImage: ad8cbf6783c6b2f30868e5eb6ce2eb1ee85f4988
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   Mixpanel: e919d14f07a34ee01f81f97e535b7a240af2f793

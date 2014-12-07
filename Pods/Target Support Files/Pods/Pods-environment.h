@@ -84,6 +84,12 @@
 #define COCOAPODS_VERSION_MINOR_HexColors 2
 #define COCOAPODS_VERSION_PATCH_HexColors 1
 
+// JTSImageViewController
+#define COCOAPODS_POD_AVAILABLE_JTSImageViewController
+#define COCOAPODS_VERSION_MAJOR_JTSImageViewController 1
+#define COCOAPODS_VERSION_MINOR_JTSImageViewController 4
+#define COCOAPODS_VERSION_PATCH_JTSImageViewController 0
+
 // LBBlurredImage
 #define COCOAPODS_POD_AVAILABLE_LBBlurredImage
 #define COCOAPODS_VERSION_MAJOR_LBBlurredImage 0
