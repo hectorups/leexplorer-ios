@@ -417,6 +417,7 @@
 				9574A32D1A24261B00399531 /* Resources */,
 				010FD31F5A5370EFBFDB0AE5 /* Copy Pods Resources */,
 				95F78E851A2E6861009F8554 /* ShellScript */,
+				95112EE01A33EFE200F83138 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -456,7 +457,7 @@
 				TargetAttributes = {
 					9574A32E1A24261B00399531 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = A8R4NMSA7A;
+						DevelopmentTeam = 874SCH36XD;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -530,12 +531,26 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		95112EE01A33EFE200F83138 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		95F78E851A2E6861009F8554 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/myfile",
 			);
 			outputPaths = (
 			);
