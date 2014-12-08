@@ -47,7 +47,7 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
             authorNameLabel.text = artwork.author
             artworkNameLabel.text = artwork.name
             
-            if let publishedAt = artwork.publishedAt {
+            if let publishedAt = artwork.publishedAt() {
                 dateLabel.text = NSDateFormatter.leShared.stringFromDate(publishedAt)
             } else {
                 dateLabel.hidden = true

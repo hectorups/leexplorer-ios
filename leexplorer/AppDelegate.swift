@@ -21,12 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         LELog.d("APP VERSION: \(AppConstant.CLIENT_VERSION)")
-        Fabric.with([Crashlytics()])
-        Crashlytics.setValue(AppConstant.CLIENT_VERSION, forKey: "version")
-        Crashlytics.setBoolValue(AppConstant.DEBUG, forKey: "debug")
-        
-        Mixpanel.sharedInstanceWithToken(AppConstant.MIXPANEL_TOKEN)
-        
+        setup3rdPartyPlugins()
+        setupReachability()
         setupNotifications()
         setupImageCache()
         initVisualAppearance()
@@ -47,6 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Setups
+    
+    func setup3rdPartyPlugins() {
+        Fabric.with([Crashlytics()])
+        Crashlytics.setValue(AppConstant.CLIENT_VERSION, forKey: "version")
+        Crashlytics.setBoolValue(AppConstant.DEBUG, forKey: "debug")
+        Mixpanel.sharedInstanceWithToken(AppConstant.MIXPANEL_TOKEN)
+    }
+    
+    func setupReachability() {
+        AFNetworkReachabilityManager.sharedManager().startMonitoring()
+        AFNetworkReachabilityManager.sharedManager().setReachabilityStatusChangeBlock { (status) -> Void in
+            switch status {
+            case .ReachableViaWiFi, .ReachableViaWWAN:
+                LELog.d("Internet Reachable")
+            default:
+                LELog.d("Internet Unreachable")
+            }
+        }
+    }
     
     func setupNotifications() {
         notificationManager.registerObserverType(.AutoPlayTrackStarted) { [weak self] (notification) in

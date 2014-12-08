@@ -27,8 +27,10 @@ class PersistantManager {
         realm.commitWriteTransaction()
     }
     
-    func persistCollectionInBackground<T: RLMObject>(collection: [T]) {
-        dispatch_async(dispatch_queue_create("background", 0)) {
+    func persistInBackgroundWithBlock<T: RLMObject>(collecitonBlock: () -> [T]) {
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue) { () -> Void in
+            let collection = collecitonBlock()
             self.persistCollection(collection)
         }
     }

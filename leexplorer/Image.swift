@@ -16,6 +16,10 @@ class Image: RLMObject {
     dynamic var format: String = ""
     dynamic var bytes: Int = 0
     
+    override class func primaryKey() -> String {
+        return "publicId"
+    }
+    
     class func createFromJSON(data: NSDictionary) -> Image {
         var image = Image()
         image.publicId = data["public_id"] as String

@@ -56,13 +56,17 @@ class LeexplorerApi: AFHTTPSessionManager {
         self.GET("/gallery", parameters: nil , success: { (_, collection) -> Void in
             LELog.d("galleries: \(collection.count)")
             
-            var galleries: [Gallery] = []
-            for galleryData in collection as [NSDictionary] {
-                galleries.append(Gallery.createFromJSON(galleryData))
+            let jsonToGalleries: () -> [Gallery] = {
+                var galleries: [Gallery] = []
+                for galleryData in collection as [NSDictionary] {
+                    galleries.append(Gallery.createFromJSON(galleryData))
+                }
+                return galleries
             }
             
-            PersistantManager.shared.persistCollection(galleries)
+            PersistantManager.shared.persistInBackgroundWithBlock(jsonToGalleries)
             
+            let galleries = jsonToGalleries()
             success(galleries: galleries)
             
         }, failure)
@@ -70,15 +74,26 @@ class LeexplorerApi: AFHTTPSessionManager {
     
     func getGalleryArtworks(gallery: Gallery, success: (artworks: [Artwork]) -> Void, failure: FailHandler) {
         self.GET("/gallery/\(gallery.id)/artworks", parameters: nil , success: { (_, collection) -> Void in
-            var artworks: [Artwork] = []
             
-            for artworkData in collection as [NSDictionary] {
-                artworks.append(Artwork.createFromJSON(artworkData))
+            let jsonToGalleries: () -> [Artwork] = {
+                var artworks: [Artwork] = []
+                for artworkData in collection as [NSDictionary] {
+                    artworks.append(Artwork.createFromJSON(artworkData))
+                }
+                
+                return artworks
             }
             
+            PersistantManager.shared.persistInBackgroundWithBlock(jsonToGalleries)
+            
+            let artworks = jsonToGalleries()
             success(artworks: artworks)
             
         }, failure)
+    }
+    
+    func isInternetReachable() -> Bool {
+        return AFNetworkReachabilityManager.sharedManager().networkReachabilityStatus != .NotReachable
     }
 
    

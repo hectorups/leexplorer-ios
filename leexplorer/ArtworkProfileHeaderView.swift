@@ -36,7 +36,7 @@ class ArtworkProfileHeaderView: NibDesignable {
             }, failure: nil)
         
         authorLabel.text = artwork.author
-        if let publishedAt = artwork.publishedAt {
+        if let publishedAt = artwork.publishedAt() {
             dateLabel.text = NSDateFormatter.leShared.stringFromDate(publishedAt)
         } else {
             dateLabel.hidden = true

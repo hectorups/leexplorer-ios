@@ -97,6 +97,23 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func loadArtworks() {
+        if LeexplorerApi.shared.isInternetReachable() {
+            loadArtworksFromAPI()
+        } else {
+            loadArtworksFromDB()
+        }
+    }
+    
+    func loadArtworksFromDB() {
+        LELog.d("Load Artworks from DB")
+        artworks = Artwork.allFromGallery(gallery)
+        if self.beacons.count == 0 {
+            self.waitingForBeacons = true
+        }
+        self.sortAndShowArtworks()
+    }
+    
+    func loadArtworksFromAPI() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         LeexplorerApi.shared.getGalleryArtworks(gallery, success: { (artworks) -> Void in
             self.artworks = artworks
@@ -105,9 +122,10 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             }
             self.sortAndShowArtworks()
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-        }) { (operation, error) -> Void in
-            LELog.d(error)
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            }) { (operation, error) -> Void in
+                LELog.d(error)
+                self.loadArtworksFromDB()
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
     }
     

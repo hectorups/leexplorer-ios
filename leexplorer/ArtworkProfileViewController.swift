@@ -214,8 +214,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        return ProfileSectionCell.heightWithText(artwork.desc!)
+        return ProfileSectionCell.heightWithText(artwork.desc)
     }
     
     // MARK - Audio control

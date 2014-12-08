@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import Realm
 
-class Audio {
-    var locale: String!
-    var publicId: String!
-    var bytes: Int!
+class Audio: RLMObject {
+    dynamic var locale: String = ""
+    dynamic var publicId: String = ""
+    dynamic var bytes: Int = 0
+    
+    override class func primaryKey() -> String {
+        return "publicId"
+    }
     
     class func createFromJSON(data: NSDictionary) -> Audio {
         var audio = Audio()
