@@ -12,6 +12,8 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var exploreCollectionButton: MKButton!
+    @IBOutlet weak var downloadButton: MKButton!
+    @IBOutlet weak var downloadIcon: UIImageView!
     
     var gallery: Gallery!
     
@@ -62,6 +64,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         edgesForExtendedLayout = .None;
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
+        setupDownload()
         setupShare()
         setupTableView()
         setupExploreCollectionButton()
@@ -84,6 +87,25 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     // MARK: - Setup 
+    
+    func setupDownload() {
+        downloadIcon.fixTemplateImage()
+        downloadIcon.tintColor = ColorPallete.White.get()
+        downloadButton.cornerRadius = 40.0
+        downloadButton.backgroundLayerCornerRadius = 40.0
+        downloadButton.maskEnabled = false
+        downloadButton.circleGrowRatioMax = 1.75
+        downloadButton.rippleLocation = .Center
+        downloadButton.aniDuration = 0.85
+        downloadButton.fixTemplateImage()
+        downloadButton.tintColor = ColorPallete.Blue.get()
+        
+        downloadButton.layer.shadowOpacity = 0.65
+        downloadButton.layer.shadowRadius = 2.5
+        downloadButton.layer.shadowColor = UIColor.blackColor().CGColor
+        downloadButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
+        
+    }
     
     func setupNotifications() {
         notificationManager.registerObserverType(.DownloadProgress) { [weak self] (notification) -> Void in

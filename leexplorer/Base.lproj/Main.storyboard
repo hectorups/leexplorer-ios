@@ -71,20 +71,34 @@
                                     <segue destination="8QI-or-vBh" kind="show" identifier="ShowArtworkList" id="G9I-OR-fRC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3e-AE-3Pp">
-                                <rect key="frame" x="511" y="502" width="69" height="30"/>
-                                <state key="normal" title="Download">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3e-AE-3Pp" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
+                                <rect key="frame" x="525" y="477" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="8I0-Ps-6Rl"/>
+                                    <constraint firstAttribute="height" constant="55" id="gHw-U6-BVr"/>
+                                </constraints>
+                                <state key="normal" image="blue_circle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didTabDownload:" destination="sxT-XE-v6r" eventType="touchUpInside" id="dIy-4L-JpI"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="download_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4fu-og-G3O">
+                                <rect key="frame" x="540" y="492" width="25" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="cj2-3E-lKm"/>
+                                    <constraint firstAttribute="height" constant="25" id="wjY-oy-QjG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b0E-Kz-nWw" secondAttribute="trailing" id="Aej-Bl-Kny"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="top" secondItem="gbk-Pb-WYE" secondAttribute="top" id="HTR-oz-nOV"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="b0E-Kz-nWw" secondAttribute="bottom" id="MCe-o0-LXB"/>
+                            <constraint firstItem="4fu-og-G3O" firstAttribute="centerY" secondItem="w3e-AE-3Pp" secondAttribute="centerY" id="QNH-Fy-HSF"/>
+                            <constraint firstItem="4fu-og-G3O" firstAttribute="centerX" secondItem="w3e-AE-3Pp" secondAttribute="centerX" id="WEA-Tl-aOR"/>
                             <constraint firstItem="uO8-eB-kKQ" firstAttribute="top" secondItem="w3e-AE-3Pp" secondAttribute="bottom" constant="20" id="XK3-0t-rg1"/>
                             <constraint firstAttribute="trailing" secondItem="uO8-eB-kKQ" secondAttribute="trailing" id="ZnL-h1-gmn"/>
                             <constraint firstItem="uO8-eB-kKQ" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="dO8-6P-YIJ"/>
@@ -94,6 +108,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="downloadButton" destination="w3e-AE-3Pp" id="fcq-Ta-RR5"/>
+                        <outlet property="downloadIcon" destination="4fu-og-G3O" id="siW-2S-7gp"/>
                         <outlet property="exploreCollectionButton" destination="uO8-eB-kKQ" id="5E0-9G-eTJ"/>
                         <outlet property="tableView" destination="b0E-Kz-nWw" id="va3-cp-Rzx"/>
                     </connections>
@@ -353,6 +369,7 @@
         <image name="autoplay_icon" width="48" height="48"/>
         <image name="ble1" width="58" height="58"/>
         <image name="blue_circle" width="200" height="200"/>
+        <image name="download_icon" width="60" height="60"/>
         <image name="play_icon" width="60" height="60"/>
     </resources>
 </document>
