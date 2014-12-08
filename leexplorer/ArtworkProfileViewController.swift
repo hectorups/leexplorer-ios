@@ -24,7 +24,6 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     private let notificationManager = NotificationManager()
     private var headerOriginalWidth: CGFloat!
     private var profileHeaderView: ArtworkProfileHeaderView!
-    private var progressNavigationController: ProgressNavigationController!
     private var shareImageView: UIImageView?
     private var waitingForShareImage = false
     
@@ -35,8 +34,6 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         edgesForExtendedLayout = .None;
-        
-        progressNavigationController = navigationController as ProgressNavigationController
         
         setupTableView()
         setupPlayButton()
@@ -51,7 +48,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     override func viewWillDisappear(animated: Bool) {
-        progressNavigationController.stopAnimating()
+        self.navigationController?.navProgressStopAnimating()
     }
     
     // MARK - Setup Views
@@ -234,7 +231,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         
         EventReporter.shared.artworkAudioPlayed(artwork, gallery: gallery)
         
-        progressNavigationController.startAnimating()
+        self.navigationController?.navProgressStartAnimating()
     }
     
     func showMediaPlayerTime(time: Float, duration: Float) {
@@ -250,7 +247,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func mediaPlayerAudioStarted() {
-        progressNavigationController.stopAnimating()
+        self.navigationController?.navProgressStopAnimating()
     }
     
     func mediaPlayerAudioCompleted() {
@@ -296,7 +293,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     func didTabShare() {
         if shareImageView?.image == nil {
             waitingForShareImage = true
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressStartAnimating()
             return
         }
         
@@ -305,7 +302,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         
         if waitingForShareImage {
             waitingForShareImage = false
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            progressStopAnimating()
         }
     }
     

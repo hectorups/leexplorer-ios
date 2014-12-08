@@ -66,20 +66,21 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         LELog.d("Load galleries from DB")
         self.galleries = Gallery.allGalleries()
         self.tableView.reloadData()
-        MBProgressHUD.hideHUDForView(self.view, animated: true)
     }
     
     func loadGalleriesFromAPI() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressStartAnimatingWithTitle(NSLocalizedString("LOADING_GALLERIES", comment: ""))
         LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
             LELog.d(galleries.count)
             self.galleries = galleries
             self.tableView.reloadData()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            }, failure: { (operation, error) -> Void in
-                LELog.e(error)
-                self.loadGalleriesFromDB()
+            self.progressStopAnimating()
+        }, failure: { (operation, error) -> Void in
+            LELog.e(error)
+            self.loadGalleriesFromDB()
+            self.progressStopAnimating()
         })
+        
     }
     
     func handleGalleryTab(sender: GalleryCell) {

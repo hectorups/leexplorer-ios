@@ -17,6 +17,10 @@
 		9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */; };
 		9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */; };
 		9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DFF61A30FCAF002E32AE /* NotificationManager.swift */; };
+		95449A261A3659380077657F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E921A2E8C09009F8554 /* Accelerate.framework */; };
+		95449A271A3659430077657F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E901A2E8C01009F8554 /* CoreGraphics.framework */; };
+		95449A291A365BE90077657F /* UINavigationController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95449A281A365BE90077657F /* UINavigationController+Progress.swift */; };
+		95449A2B1A366B2A0077657F /* UIViewController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95449A2A1A366B2A0077657F /* UIViewController+Progress.swift */; };
 		955936291A3107BE007CAD89 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955936281A3107BE007CAD89 /* BLEService.swift */; };
 		9559362B1A310AA8007CAD89 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */; };
 		955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955CD8531A342C5000653B6D /* libc++.dylib */; };
@@ -69,7 +73,6 @@
 		95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */; };
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
-		95F78E971A2E9353009F8554 /* ProgressNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */; };
 		95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E981A2EA08D009F8554 /* EventReporter.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,8 @@
 		9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		9539DFF61A30FCAF002E32AE /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		95449A281A365BE90077657F /* UINavigationController+Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Progress.swift"; sourceTree = "<group>"; };
+		95449A2A1A366B2A0077657F /* UIViewController+Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Progress.swift"; sourceTree = "<group>"; };
 		955936281A3107BE007CAD89 /* BLEService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		955CD8531A342C5000653B6D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -157,7 +162,6 @@
 		95F78E881A2E7222009F8554 /* libPods-CrashlyticsFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CrashlyticsFramework.a"; path = "Pods/build/Debug-iphoneos/libPods-CrashlyticsFramework.a"; sourceTree = "<group>"; };
 		95F78E901A2E8C01009F8554 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		95F78E921A2E8C09009F8554 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressNavigationController.swift; sourceTree = "<group>"; };
 		95F78E981A2EA08D009F8554 /* EventReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReporter.swift; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -167,6 +171,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95D00FFE1A25B11700E3B655 /* QuartzCore.framework in Frameworks */,
+				95449A271A3659430077657F /* CoreGraphics.framework in Frameworks */,
+				95449A261A3659380077657F /* Accelerate.framework in Frameworks */,
 				955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */,
 				95112EE21A34269C00F83138 /* Realm.framework in Frameworks */,
 				952715591A2EDB05008D43EF /* CoreLocation.framework in Frameworks */,
@@ -174,7 +181,6 @@
 				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
 				952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */,
 				95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */,
-				95D00FFE1A25B11700E3B655 /* QuartzCore.framework in Frameworks */,
 				5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */,
 				952715571A2ED001008D43EF /* Fabric.framework in Frameworks */,
 			);
@@ -293,7 +299,6 @@
 				95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */,
 				95D010011A266BD200E3B655 /* ArtworkListViewController.swift */,
 				95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */,
-				95F78E961A2E9353009F8554 /* ProgressNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -404,6 +409,8 @@
 				9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */,
 				9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */,
 				95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */,
+				95449A281A365BE90077657F /* UINavigationController+Progress.swift */,
+				95449A2A1A366B2A0077657F /* UIViewController+Progress.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -602,6 +609,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95449A291A365BE90077657F /* UINavigationController+Progress.swift in Sources */,
 				95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */,
 				95E2831C1A33858500BF37FB /* OverShareHelper.m in Sources */,
 				95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */,
@@ -619,6 +627,7 @@
 				955CD8591A35214500653B6D /* PersistantManager.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
 				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
+				95449A2B1A366B2A0077657F /* UIViewController+Progress.swift in Sources */,
 				95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */,
 				95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
@@ -644,7 +653,6 @@
 				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
 				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
-				95F78E971A2E9353009F8554 /* ProgressNavigationController.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

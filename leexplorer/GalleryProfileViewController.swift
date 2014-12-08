@@ -205,7 +205,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     func didTabShare() {
         if shareImageView?.image == nil {
             waitingForShareImage = true
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressStartAnimating()
             return
         }
         
@@ -214,7 +214,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         if waitingForShareImage {
             waitingForShareImage = false
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            progressStopAnimating()
         }
     }
     

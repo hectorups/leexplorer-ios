@@ -32,6 +32,34 @@ PODS:
   - Mixpanel (2.6.0):
     - Mixpanel/MPCategoryHelpers (= 2.6.0)
   - Mixpanel/MPCategoryHelpers (2.6.0)
+  - MRProgress (0.8.0):
+    - MRProgress/ActivityIndicator (= 0.8.0)
+    - MRProgress/Blur (= 0.8.0)
+    - MRProgress/Circular (= 0.8.0)
+    - MRProgress/Icons (= 0.8.0)
+    - MRProgress/NavigationBarProgress (= 0.8.0)
+    - MRProgress/Overlay (= 0.8.0)
+  - MRProgress/ActivityIndicator (0.8.0):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.0):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.0):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.0)
+  - MRProgress/Icons (0.8.0)
+  - MRProgress/NavigationBarProgress (0.8.0):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.0):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.0)
+  - MRProgress/Stopable (0.8.0):
+    - MRProgress/Helper
   - OvershareKit (1.3.1):
     - ADNLogin
     - PocketAPI
@@ -50,6 +78,7 @@ DEPENDENCIES:
   - LBBlurredImage (from `git@github.com:lukabernardi/LBBlurredImage.git`)
   - MBProgressHUD (~> 0.8)
   - Mixpanel (~> 2.6.0)
+  - MRProgress
   - OvershareKit
   - SCLAlertView-Objective-C
   - TWRDownloadManager (~> 1.1.1)
@@ -72,6 +101,7 @@ SPEC CHECKSUMS:
   LBBlurredImage: ad8cbf6783c6b2f30868e5eb6ce2eb1ee85f4988
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   Mixpanel: e919d14f07a34ee01f81f97e535b7a240af2f793
+  MRProgress: 2b65d6ec30a5d08b55efd3ceb3e714a5c6c9a28b
   OvershareKit: c63af3a78b59b245095d47b4b76dbd96d2a85dbc
   PocketAPI: 801df1a3cdd094e5477add10c80dceb533c98a66
   SCLAlertView-Objective-C: ba283f4d609d9929d4d2bf66f713db19ae0fe066

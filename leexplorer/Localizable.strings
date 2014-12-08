@@ -13,6 +13,7 @@
 "AUTOPLAY_CANCEL" = "cancel";
 
 // Gallery List VC
+"LOADING_GALLERIES" = "Loading galleries...";
 "GALLERY_LIST_TITLE" = "Leexplorer Collections";
 
 // Gallery Profile VC
@@ -20,8 +21,10 @@
 "PRICE" = "Price";
 "DESCRIPTION" = "Description";
 "EXPLORE_COLLECTION" = "Explore Collection";
+"DOWNLOADING_GALLERY" = "Downloading gallery...";
 
 // Artwork List VC
+"LOADING_ARTWORKS" = "Loading artworks...";
 "ARTWORKS" = "Artworks";
 
 

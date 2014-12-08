@@ -21,13 +21,11 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     var beacons: [CLBeacon] = []
     
     private let notificationManager = NotificationManager()
-    private var progressNavigationController: ProgressNavigationController!
     private var waitingForBeacons: Bool = false
     
     override func viewDidLoad() {
         title = NSLocalizedString("ARTWORKS", comment: "")
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-        progressNavigationController = navigationController as ProgressNavigationController
         
         setupAutoplay()
         setupCollectionView()
@@ -114,18 +112,18 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func loadArtworksFromAPI() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressStartAnimatingWithTitle(NSLocalizedString("LOADING_ARTWORKS", comment: ""))
         LeexplorerApi.shared.getGalleryArtworks(gallery, success: { (artworks) -> Void in
             self.artworks = artworks
             if self.beacons.count == 0 {
                 self.waitingForBeacons = true
             }
             self.sortAndShowArtworks()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            }) { (operation, error) -> Void in
-                LELog.d(error)
-                self.loadArtworksFromDB()
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            self.progressStopAnimating()
+        }) { (operation, error) -> Void in
+            LELog.d(error)
+            self.loadArtworksFromDB()
+            self.progressStopAnimating()
         }
     }
     

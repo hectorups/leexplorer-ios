@@ -8,7 +8,6 @@
 #import <HexColors/HexColor.h>
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import <CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.h>
-#import <MBProgressHUD/MBProgressHUD.h>
 #import <GSIndeterminateProgressBar/GSIndeterminateProgressView.h>
 #import <Mixpanel/Mixpanel.h>
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
@@ -16,3 +15,4 @@
 #import "OverShareHelper.h"
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <TWRDownloadManager/TWRDownloadManager.h>
+#import <MRProgress/MRProgress.h>
