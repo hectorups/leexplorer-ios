@@ -91,7 +91,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         rightBarButtonItem.action = "didTabShare"
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        let shareImageUrl = MediaProcessor.urlForImageFill(gallery.images.first!, width: Int(200), height: Int(200))
+        let shareImageUrl = MediaProcessor.urlForImageFill(gallery.images.firstObject() as Image, width: Int(200), height: Int(200))
         shareImageView = UIImageView()
         shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
             placeholderImage: nil,

@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Realm
 
-class Image {
-    var publicId: String!
-    var height: Int!
-    var width: Int!
-    var format: String!
-    var bytes: Int!
+class Image: RLMObject {
+    dynamic var publicId: String = ""
+    dynamic var height: Int = 0
+    dynamic var width: Int = 0
+    dynamic var format: String = ""
+    dynamic var bytes: Int = 0
     
     class func createFromJSON(data: NSDictionary) -> Image {
         var image = Image()

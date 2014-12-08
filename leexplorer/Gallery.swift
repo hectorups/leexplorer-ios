@@ -7,23 +7,32 @@
 //
 
 import Foundation
+import Realm
 
-class Gallery: Equatable {
+class Gallery: RLMObject, Equatable {
     
-    var id: String!
-    var address: String!
-    var desc: String!
-    var name: String!
-    var type: String!
-    var latitude: Double!
-    var longitude: Double!
-    var languages: [String]!
-    var hours: String!
-    var priceDescription: String!
-    var priceReference: Int!
-    var updatedAt: NSDate!
-    var images: [Image]!
+    dynamic var id = ""
+    dynamic var address = ""
+    dynamic var desc = ""
+    dynamic var name = ""
+    dynamic var type = ""
+    dynamic var latitude: Double = 0.0
+    dynamic var longitude: Double = 0.0
+    dynamic var languagesString = ""
+    dynamic var images = RLMArray(objectClassName: Image.className())
+    dynamic var hours = ""
+    dynamic var priceDescription = ""
+    dynamic var priceReference = 0
+    
+    var updatedAt: NSDate = NSDate()
+    
+    func ignoredProperties() -> NSArray {
+        return [updatedAt]
+    }
 
+    override class func primaryKey() -> String {
+        return "id"
+    }
     
     class func createFromJSON(data: NSDictionary) -> Gallery {
         var gallery = Gallery()
@@ -36,10 +45,7 @@ class Gallery: Equatable {
         gallery.latitude = data["latitude"] as Double
         gallery.longitude = data["longitude"] as Double
         
-        gallery.languages = []
-        for language in data["languages"] as [String] {
-            gallery.languages.append(language)
-        }
+        gallery.setLanguages(data["languages"] as [String] )
         
         gallery.hours = data["hours"] as String
         gallery.priceDescription = data["price_description"] as String
@@ -47,13 +53,24 @@ class Gallery: Equatable {
         gallery.updatedAt = NSDate.leDateFromString(data["updatedAt"] as String)!
         
         let imagesData = data["images"] as [NSDictionary]
-        gallery.images = []
         for imageData in imagesData as [NSDictionary] {
             let image = Image.createFromJSON(imageData)
-            gallery.images.append(image)
+            gallery.images.addObject(image)
         }
         
         return gallery
+    }
+    
+    func setLanguages(value: [String]) {
+        languagesString = ",".join(value)
+    }
+    
+    func getLanguages() -> [String] {
+        return languagesString.componentsSeparatedByString(",")
+    }
+    
+    class func allGalleries() -> [Gallery] {
+        return PersistantManager.shared.getAll()
     }
 
 }

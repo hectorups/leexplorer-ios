@@ -32,7 +32,7 @@ class GalleryProfileHeaderView: NibDesignable {
     
     
     func updateUI() {
-        var imageUrl = MediaProcessor.urlForImageFill(gallery.images.first!,
+        var imageUrl = MediaProcessor.urlForImageFill(gallery.images.firstObject() as Image,
             width: Int(bounds.width), height: Int(bounds.height))
         
         imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil
@@ -43,7 +43,7 @@ class GalleryProfileHeaderView: NibDesignable {
         
         addressLabel.text = gallery.address
         typeLabel.text = gallery.type
-        languagesLabel.text = ", ".join(gallery.languages)
+        languagesLabel.text = ", ".join(gallery.getLanguages())
         
         for icon in icons {
             icon.fixTemplateImage()

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Realm
 
 class LeexplorerApi: AFHTTPSessionManager {
     
@@ -54,10 +55,13 @@ class LeexplorerApi: AFHTTPSessionManager {
     func getGalleries(success: (galleries: [Gallery]) -> Void, failure: FailHandler) {
         self.GET("/gallery", parameters: nil , success: { (_, collection) -> Void in
             LELog.d("galleries: \(collection.count)")
+            
             var galleries: [Gallery] = []
             for galleryData in collection as [NSDictionary] {
                 galleries.append(Gallery.createFromJSON(galleryData))
             }
+            
+            PersistantManager.shared.persistCollection(galleries)
             
             success(galleries: galleries)
             
@@ -67,6 +71,7 @@ class LeexplorerApi: AFHTTPSessionManager {
     func getGalleryArtworks(gallery: Gallery, success: (artworks: [Artwork]) -> Void, failure: FailHandler) {
         self.GET("/gallery/\(gallery.id)/artworks", parameters: nil , success: { (_, collection) -> Void in
             var artworks: [Artwork] = []
+            
             for artworkData in collection as [NSDictionary] {
                 artworks.append(Artwork.createFromJSON(artworkData))
             }

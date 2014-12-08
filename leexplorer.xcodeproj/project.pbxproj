@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50639E2347B4C9610E85F6F3 /* libPods.a */; };
+		95112EE21A34269C00F83138 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95112EE11A34269C00F83138 /* Realm.framework */; };
+		95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95112EE31A3426B400F83138 /* RLMSupport.swift */; };
 		952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715541A2ED001008D43EF /* Crashlytics.framework */; };
 		952715571A2ED001008D43EF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715551A2ED001008D43EF /* Fabric.framework */; };
 		952715591A2EDB05008D43EF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715581A2EDB05008D43EF /* CoreLocation.framework */; };
@@ -17,6 +19,8 @@
 		9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DFF61A30FCAF002E32AE /* NotificationManager.swift */; };
 		955936291A3107BE007CAD89 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955936281A3107BE007CAD89 /* BLEService.swift */; };
 		9559362B1A310AA8007CAD89 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */; };
+		955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955CD8531A342C5000653B6D /* libc++.dylib */; };
+		955CD8591A35214500653B6D /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CD8581A35214500653B6D /* PersistantManager.swift */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
 		9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
@@ -83,6 +87,8 @@
 		44558FA7805968D613F04293 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		499297CF2F19DE4C5A5B4425 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50639E2347B4C9610E85F6F3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		95112EE11A34269C00F83138 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		95112EE31A3426B400F83138 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RLMSupport.swift; path = ../RLMSupport.swift; sourceTree = "<group>"; };
 		952715541A2ED001008D43EF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		952715551A2ED001008D43EF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		952715581A2EDB05008D43EF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -92,6 +98,8 @@
 		9539DFF61A30FCAF002E32AE /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		955936281A3107BE007CAD89 /* BLEService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		955CD8531A342C5000653B6D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		955CD8581A35214500653B6D /* PersistantManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */,
+				95112EE21A34269C00F83138 /* Realm.framework in Frameworks */,
 				952715591A2EDB05008D43EF /* CoreLocation.framework in Frameworks */,
 				9559362B1A310AA8007CAD89 /* CoreBluetooth.framework in Frameworks */,
 				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
@@ -183,6 +193,7 @@
 		2E2A5C072832B8CA30D73D24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				955CD8531A342C5000653B6D /* libc++.dylib */,
 				9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */,
 				952715581A2EDB05008D43EF /* CoreLocation.framework */,
 				95F78E921A2E8C09009F8554 /* Accelerate.framework */,
@@ -197,9 +208,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		955CD8551A34C9BA00653B6D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				95A459F01A3146EF00CCF6FA /* Timer.swift */,
+				9539DFF61A30FCAF002E32AE /* NotificationManager.swift */,
+				9574A3631A243CBC00399531 /* LELog.swift */,
+				95F78E981A2EA08D009F8554 /* EventReporter.swift */,
+				955CD8581A35214500653B6D /* PersistantManager.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		9574A3261A24261B00399531 = {
 			isa = PBXGroup;
 			children = (
+				95112EE11A34269C00F83138 /* Realm.framework */,
 				952715541A2ED001008D43EF /* Crashlytics.framework */,
 				952715551A2ED001008D43EF /* Fabric.framework */,
 				9574A3311A24261B00399531 /* leexplorer */,
@@ -222,6 +246,7 @@
 		9574A3311A24261B00399531 /* leexplorer */ = {
 			isa = PBXGroup;
 			children = (
+				955CD8551A34C9BA00653B6D /* Utils */,
 				95E283191A3384F400BF37FB /* ObjHelpers */,
 				95CABB001A2AA46B00F354B2 /* Services */,
 				95D010091A268D7A00E3B655 /* Extensions */,
@@ -307,15 +332,11 @@
 			isa = PBXGroup;
 			children = (
 				9574A33E1A24261B00399531 /* Images.xcassets */,
-				95A459F01A3146EF00CCF6FA /* Timer.swift */,
-				9539DFF61A30FCAF002E32AE /* NotificationManager.swift */,
 				9574A3611A2430CF00399531 /* Constants.swift */,
-				9574A3631A243CBC00399531 /* LELog.swift */,
 				9574A35C1A24277D00399531 /* leexplorer-Bridging-Header.h */,
 				9574A3341A24261B00399531 /* AppDelegate.swift */,
 				95CD75431A24F7EA00974B3C /* Localizable.strings */,
 				95D00FE11A25439C00E3B655 /* ColorPalette.swift */,
-				95F78E981A2EA08D009F8554 /* EventReporter.swift */,
 				9527155A1A2EDF58008D43EF /* SDKVersion.swift */,
 			);
 			name = App;
@@ -336,6 +357,7 @@
 		9574A3651A2440F100399531 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				95112EE31A3426B400F83138 /* RLMSupport.swift */,
 				95AD93761A27A5ED001F4DD9 /* MaterialKit */,
 				95AD937C1A27A5ED001F4DD9 /* NibDesignable */,
 			);
@@ -594,9 +616,11 @@
 				95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */,
 				95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */,
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
+				955CD8591A35214500653B6D /* PersistantManager.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
 				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
 				95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */,
+				95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
 				9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */,
 				95D010001A26465700E3B655 /* GradientView.swift in Sources */,

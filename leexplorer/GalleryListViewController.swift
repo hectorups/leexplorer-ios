@@ -55,16 +55,18 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func loadGalleries() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
-            LELog.d(galleries.count)
-            self.galleries = galleries
-            self.tableView.reloadData()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        }, failure: { (operation, error) -> Void in
-            LELog.e(error)
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
+        self.galleries = Gallery.allGalleries()
+        self.tableView.reloadData()
+//        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
+//            LELog.d(galleries.count)
+//            self.galleries = galleries
+//            self.tableView.reloadData()
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
+//        }, failure: { (operation, error) -> Void in
+//            LELog.e(error)
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
+//        })
     }
     
     func handleGalleryTab(sender: GalleryCell) {
