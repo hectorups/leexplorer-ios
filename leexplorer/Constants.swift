@@ -50,5 +50,6 @@ enum AppNotification: String {
     AudioResumed="AudioResumed",
     AudioStarted="AudioStarted",
     BeaconsFound="BeaconsFound",
-    AutoPlayTrackStarted="AutoPlayTrackStarted"
+    AutoPlayTrackStarted="AutoPlayTrackStarted",
+    DownloadProgress="DownloadProgress"
 }

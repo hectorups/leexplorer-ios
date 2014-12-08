@@ -14,6 +14,8 @@ class DownloadService {
     let SMALL_IMAGE_FACTOR: CGFloat = 0.5
     
     var gallery: Gallery
+    var completed: Int = 0
+    var total: Int?
     
     init(gallery: Gallery) {
         self.gallery = gallery
@@ -31,7 +33,7 @@ class DownloadService {
         let urls = artworksMediaUrls(artworks)
         for (name,url) in urls {
             println("Check file url \(url)")
-            if !TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folder()){
+            if !TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folder()) {
                 return false
             }
         }
@@ -42,9 +44,17 @@ class DownloadService {
     private func downloadArtworks(artworks: [Artwork]) {
         createFolder(folder())
         let urls = artworksMediaUrls(artworks)
+        total = urls.count
+        for (name, url) in urls {
+            if !TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folder()) {
+                downloadUrl(url, withName: name)
+            } else {
+                completed++
+            }
+        }
         
-        for (name,url) in urls {
-            downloadUrl(url, withName: name)
+        if completed == total {
+            notifyProgress()
         }
     }
     
@@ -93,14 +103,23 @@ class DownloadService {
     private func downloadUrl(url: String, withName: String) {
         LELog.d("Downloading \(url) to \(folder)")
         TWRDownloadManager.sharedManager().downloadFileForURL(url, withName: withName,inDirectoryNamed: folder(), progressBlock: { (progress) -> Void in
-            LELog.d("\(progress) \(url)")
+            self.notifyProgress()
         }, completionBlock: { (completed) -> Void in
             LELog.d("Competed \(url)")
+            self.completed++
+            self.notifyProgress()
         }, enableBackgroundMode: true)
     }
     
     private func folder() -> String {
         return gallery.id
+    }
+    
+    private func notifyProgress() {
+        let progress: Float = Float(completed) / Float(total!)
+        let data = ["galleryId": gallery.id , "progress": progress ]
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.DownloadProgress.rawValue,
+            object: self, userInfo: data)
     }
     
     func createFolder(name: String) -> NSURL? {

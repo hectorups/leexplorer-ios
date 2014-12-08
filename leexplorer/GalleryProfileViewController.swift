@@ -11,10 +11,13 @@ import UIKit
 class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
-    var gallery: Gallery!
-    var profileHeaderView: GalleryProfileHeaderView!
-    var headerOriginalWidth: CGFloat!
     @IBOutlet var exploreCollectionButton: MKButton!
+    
+    var gallery: Gallery!
+    
+    private var profileHeaderView: GalleryProfileHeaderView!
+    private var headerOriginalWidth: CGFloat!
+    private var notificationManager = NotificationManager()
     
     let HEADER_HEIGHT: CGFloat = 260.0
     var waitingForShareImage = false
@@ -62,6 +65,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         setupShare()
         setupTableView()
         setupExploreCollectionButton()
+        setupNotifications()
     }
 
 
@@ -80,6 +84,19 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     // MARK: - Setup 
+    
+    func setupNotifications() {
+        notificationManager.registerObserverType(.DownloadProgress) { [weak self] (notification) -> Void in
+            if let strongSelf = self {
+                let galleryId = notification.userInfo!["galleryId"] as String
+                let progress = notification.userInfo!["progress"] as Float
+                
+                if galleryId == strongSelf.gallery.id {
+                    strongSelf.downloadProgress(progress)
+                }
+            }
+        }
+    }
     
     func setupShare() {
         let shareIcon = UIImage(named: "share_icon")?.fixTemplateImage()
@@ -177,6 +194,12 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
             waitingForShareImage = false
             MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }
+    }
+    
+    // MARK: - Download
+    
+    func downloadProgress(progress: Float) {
+        println("download progress: \(progress)")
     }
 
     @IBAction func didTabDownload(sender: AnyObject) {
