@@ -22,7 +22,6 @@
 		955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955CD8531A342C5000653B6D /* libc++.dylib */; };
 		955CD8591A35214500653B6D /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CD8581A35214500653B6D /* PersistantManager.swift */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
-		9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
 		9574A33D1A24261B00399531 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9574A33B1A24261B00399531 /* Main.storyboard */; };
 		9574A33F1A24261B00399531 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9574A33E1A24261B00399531 /* Images.xcassets */; };
@@ -103,7 +102,6 @@
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9574A3371A24261B00399531 /* leexplorer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = leexplorer.xcdatamodel; sourceTree = "<group>"; };
 		9574A3391A24261B00399531 /* GalleryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListViewController.swift; sourceTree = "<group>"; };
 		9574A33C1A24261B00399531 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9574A33E1A24261B00399531 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 		9574A35B1A24268300399531 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */,
 				9574A36F1A24526A00399531 /* Gallery.swift */,
 				95CD75451A24FBEE00974B3C /* Image.swift */,
 				95D010051A266FBB00E3B655 /* Artwork.swift */,
@@ -637,7 +634,6 @@
 				95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */,
 				9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */,
 				95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */,
-				9574A3381A24261B00399531 /* leexplorer.xcdatamodeld in Sources */,
 				959A9D281A327786002FBFB6 /* AutoPlayService.swift in Sources */,
 				95CD75461A24FBEE00974B3C /* Image.swift in Sources */,
 				95D010061A266FBB00E3B655 /* Artwork.swift in Sources */,
@@ -883,19 +879,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9574A3361A24261B00399531 /* leexplorer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9574A3371A24261B00399531 /* leexplorer.xcdatamodel */,
-			);
-			currentVersion = 9574A3371A24261B00399531 /* leexplorer.xcdatamodel */;
-			path = leexplorer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9574A3271A24261B00399531 /* Project object */;
 }
