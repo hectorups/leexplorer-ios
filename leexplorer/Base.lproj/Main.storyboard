@@ -71,14 +71,25 @@
                                     <segue destination="8QI-or-vBh" kind="show" identifier="ShowArtworkList" id="G9I-OR-fRC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3e-AE-3Pp">
+                                <rect key="frame" x="511" y="502" width="69" height="30"/>
+                                <state key="normal" title="Download">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTabDownload:" destination="sxT-XE-v6r" eventType="touchUpInside" id="dIy-4L-JpI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b0E-Kz-nWw" secondAttribute="trailing" id="Aej-Bl-Kny"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="top" secondItem="gbk-Pb-WYE" secondAttribute="top" id="HTR-oz-nOV"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="b0E-Kz-nWw" secondAttribute="bottom" id="MCe-o0-LXB"/>
+                            <constraint firstItem="uO8-eB-kKQ" firstAttribute="top" secondItem="w3e-AE-3Pp" secondAttribute="bottom" constant="20" id="XK3-0t-rg1"/>
                             <constraint firstAttribute="trailing" secondItem="uO8-eB-kKQ" secondAttribute="trailing" id="ZnL-h1-gmn"/>
                             <constraint firstItem="uO8-eB-kKQ" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="dO8-6P-YIJ"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="uO8-eB-kKQ" secondAttribute="bottom" id="pKl-ZH-Ym4"/>
+                            <constraint firstAttribute="trailing" secondItem="w3e-AE-3Pp" secondAttribute="trailing" constant="20" id="sI4-CG-tQW"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="wyO-dT-o24"/>
                         </constraints>
                     </view>

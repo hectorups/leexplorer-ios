@@ -141,6 +141,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             closeButtonTitle: NSLocalizedString("AUTOPLAY_OK", comment: ""),
             duration: 10.0)
     }
+    
+    // MARK: - Background Downloads
+    
+    func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
+        TWRDownloadManager.sharedManager().backgroundTransferCompletionHandler = completionHandler
+    }
 
 }
 

@@ -13,9 +13,11 @@ struct AppConstant {
     #if DEBUG
         static let DEBUG = true
         static let LEEXPLORER_ENDPOINT = "http://leexplorer.herokuapp.com"
+        static let OFFLINE_MODE = true
     #else
         static let DEBUG = false
         static let LEEXPLORER_ENDPOINT = "http://leexplorer.herokuapp.com"
+        static let OFFLINE_MODE = false
     #endif
 
     static let LE_UUID = "9133edc4-a87c-5529-befa-4f75f31a45d4"

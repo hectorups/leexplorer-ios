@@ -15,3 +15,4 @@
 #import <OverShareKit/OverShareKit.h>
 #import "OverShareHelper.h"
 #import <JTSImageViewController/JTSImageViewController.h>
+#import <TWRDownloadManager/TWRDownloadManager.h>

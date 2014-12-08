@@ -21,6 +21,7 @@
 		9559362B1A310AA8007CAD89 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */; };
 		955CD8541A342C5000653B6D /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955CD8531A342C5000653B6D /* libc++.dylib */; };
 		955CD8591A35214500653B6D /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CD8581A35214500653B6D /* PersistantManager.swift */; };
+		955CD85B1A355FA300653B6D /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CD85A1A355FA300653B6D /* DownloadService.swift */; };
 		9574A3351A24261B00399531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3341A24261B00399531 /* AppDelegate.swift */; };
 		9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A3391A24261B00399531 /* GalleryListViewController.swift */; };
 		9574A33D1A24261B00399531 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9574A33B1A24261B00399531 /* Main.storyboard */; };
@@ -99,6 +100,7 @@
 		9559362A1A310AA8007CAD89 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		955CD8531A342C5000653B6D /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		955CD8581A35214500653B6D /* PersistantManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
+		955CD85A1A355FA300653B6D /* DownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		9574A32F1A24261B00399531 /* leexplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leexplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9574A3331A24261B00399531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9574A3341A24261B00399531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */,
 				955936281A3107BE007CAD89 /* BLEService.swift */,
 				959A9D271A327786002FBFB6 /* AutoPlayService.swift */,
+				955CD85A1A355FA300653B6D /* DownloadService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */,
 				95D010081A267EDA00E3B655 /* Audio.swift in Sources */,
 				9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */,
+				955CD85B1A355FA300653B6D /* DownloadService.swift in Sources */,
 				95D010001A26465700E3B655 /* GradientView.swift in Sources */,
 				95A459F11A3146EF00CCF6FA /* Timer.swift in Sources */,
 				9574A33A1A24261B00399531 /* GalleryListViewController.swift in Sources */,

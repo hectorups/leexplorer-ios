@@ -37,6 +37,7 @@ PODS:
     - PocketAPI
   - PocketAPI (1.0.2)
   - SCLAlertView-Objective-C (0.3.5)
+  - TWRDownloadManager (1.1.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - Mixpanel (~> 2.6.0)
   - OvershareKit
   - SCLAlertView-Objective-C
+  - TWRDownloadManager (~> 1.1.1)
 
 EXTERNAL SOURCES:
   GSIndeterminateProgressBar:
@@ -73,5 +75,6 @@ SPEC CHECKSUMS:
   OvershareKit: c63af3a78b59b245095d47b4b76dbd96d2a85dbc
   PocketAPI: 801df1a3cdd094e5477add10c80dceb533c98a66
   SCLAlertView-Objective-C: ba283f4d609d9929d4d2bf66f713db19ae0fe066
+  TWRDownloadManager: 8ee956f8e63b416347b368e477fae654ca2121ba
 
 COCOAPODS: 0.35.0

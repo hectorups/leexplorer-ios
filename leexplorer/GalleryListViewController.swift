@@ -55,7 +55,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func loadGalleries() {
-        if LeexplorerApi.shared.isInternetReachable() {
+        if LeexplorerApi.shared.isInternetReachable() && !AppConstant.OFFLINE_MODE {
             loadGalleriesFromAPI()
         } else {
             loadGalleriesFromDB()

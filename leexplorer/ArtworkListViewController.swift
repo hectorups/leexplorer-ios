@@ -97,7 +97,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func loadArtworks() {
-        if LeexplorerApi.shared.isInternetReachable() {
+        if LeexplorerApi.shared.isInternetReachable() && !AppConstant.OFFLINE_MODE {
             loadArtworksFromAPI()
         } else {
             loadArtworksFromDB()

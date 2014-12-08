@@ -132,3 +132,9 @@
 #define COCOAPODS_VERSION_MINOR_SCLAlertView_Objective_C 3
 #define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 5
 
+// TWRDownloadManager
+#define COCOAPODS_POD_AVAILABLE_TWRDownloadManager
+#define COCOAPODS_VERSION_MAJOR_TWRDownloadManager 1
+#define COCOAPODS_VERSION_MINOR_TWRDownloadManager 1
+#define COCOAPODS_VERSION_PATCH_TWRDownloadManager 1
+

@@ -12,4 +12,5 @@ pod "MBProgressHUD", "~> 0.8"
 pod "SCLAlertView-Objective-C"
 pod "OvershareKit"
 pod "JTSImageViewController", "~> 1.4"
+pod "TWRDownloadManager", "~> 1.1.1"
 

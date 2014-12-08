@@ -179,4 +179,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
 
+    @IBAction func didTabDownload(sender: AnyObject) {
+        DownloadService(gallery: gallery).download()
+    }
 }
