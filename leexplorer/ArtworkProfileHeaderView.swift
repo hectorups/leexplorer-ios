@@ -26,14 +26,11 @@ class ArtworkProfileHeaderView: NibDesignable {
     }
     
     func setupUI() {
-        var imageUrl = MediaProcessor.urlForImageFill(artwork.image,
-            width: Int(bounds.width), height: Int(bounds.height))
         
-        imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil
-            , success: { (request, response, image) -> Void in
-                self.imageView.image = image
-                self.blurredImageView.setImageToBlur(image, blurRadius: 8.0, completionBlock: nil)
-            }, failure: nil)
+        imageView.setImageWithImageModel(artwork.image, width: Int(bounds.width), height: Int(bounds.height), galleryId: artwork.galleryId) { (image) -> Void in
+            self.imageView.image = image
+            self.blurredImageView.setImageToBlur(image, blurRadius: 8.0, completionBlock: nil)
+        }
         
         authorLabel.text = artwork.author
         if let publishedAt = artwork.publishedAt() {

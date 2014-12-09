@@ -63,19 +63,13 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         rightBarButtonItem.action = "didTabShare"
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        let shareImageUrl = MediaProcessor.urlForImageFill(artwork.image, width: Int(200), height: Int(200))
         shareImageView = UIImageView()
-        shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
-            placeholderImage: nil,
-            success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
-                self.shareImageView!.image = image
-                if self.waitingForShareImage {
-                    self.didTabShare()
-                }
-            },
-            failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
-                LELog.e(error.description)
-        })
+        shareImageView!.setImageWithImageModel(artwork.image, width: Int(200), height: Int(200), galleryId: artwork.galleryId) { (image) -> Void in
+            self.shareImageView!.image = image
+            if self.waitingForShareImage {
+                self.didTabShare()
+            }
+        }
     }
     
     func setupMediaPlayerView() {
@@ -311,10 +305,17 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     func didTabImage() {
         var imageInfo = JTSImageInfo()
         let bounds = UIScreen.mainScreen().bounds
-        imageInfo.imageURL = MediaProcessor.urlForImageFill(artwork.image,
-            width: Int(bounds.width * 2),
-            height: Int(bounds.height * 2),
-            scaleForDevice: true)
+        
+        if MediaManager.imageExists(artwork.image, size: .Large, galleryId: artwork.galleryId) {
+            let localUrl = MediaManager.localUrlForImage(artwork.image, size: .Large, galleryId: artwork.galleryId)!
+            imageInfo.image = UIImage(contentsOfFile: localUrl)!
+        } else {
+            imageInfo.imageURL = MediaProcessor.urlForImageFill(artwork.image,
+                width: Int(bounds.width * 2),
+                height: Int(bounds.height * 2),
+                scaleForDevice: true)
+        }
+        
         imageInfo.referenceRect = tableView.tableHeaderView!.bounds
         imageInfo.referenceView = tableView.tableHeaderView!
         

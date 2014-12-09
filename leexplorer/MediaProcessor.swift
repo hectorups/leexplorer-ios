@@ -29,6 +29,12 @@ class MediaProcessor {
             WEBP="webp"
     }
     
+    // MARK: AudioProcessor
+    
+    class func urlForAudio(audio: Audio) -> NSURL {
+        let url = shared.url(audio.publicId, options: ["resource_type": "raw"])
+        return NSURL(string: url)!
+    }
     
     // MARK: ImageProcessor
     
@@ -36,15 +42,7 @@ class MediaProcessor {
         return urlForImage(image, width: width, height: height, crop: .LFILL, scaleForDevice: scaleForDevice)
     }
     
-    class func urlForImageFit(image: Image, containerSize: CGSize, imageSize: CGSize, scaleForDevice: Bool) -> NSURL {
-        var scaledContainerSize = scaleForDevice ? scaledSizeForSize(containerSize) : containerSize
-        var height = Int(fmin(scaledContainerSize.height, imageSize.height))
-        var width = Int(fmin(scaledContainerSize.width, imageSize.width))
-        
-        return urlForImage(image, width: width, height: height, crop: .FIT, scaleForDevice: false)
-    }
-    
-    class func urlForImage(image: Image, width: Int, height: Int, crop: Crop, scaleForDevice: Bool = true) -> NSURL {
+    private class func urlForImage(image: Image, width: Int, height: Int, crop: Crop, scaleForDevice: Bool = true) -> NSURL {
         var scale = scaleForDevice ? Int(UIScreen.mainScreen().scale) : 1
         var transformation = CLTransformation.transformation() as CLTransformation
         transformation.setWidthWithInt(Int32(width * scale))
@@ -57,14 +55,5 @@ class MediaProcessor {
         return NSURL(string: url)!
     }
     
-    class func urlForAudio(audio: Audio) -> NSURL {
-        let url = shared.url(audio.publicId, options: ["resource_type": "raw"])
-        return NSURL(string: url)!
-    }
-    
-    
-    class func scaledSizeForSize(size: CGSize) -> CGSize {
-        var scale = UIScreen.mainScreen().scale
-        return CGSize(width: (size.width * scale), height: (size.height * scale))
-    }
+
 }

@@ -64,9 +64,9 @@ class GalleryCell: UITableViewCell {
         for (index, image) in enumerate(gallery.images) {
             let rect = CGRectMake(CGFloat(index) * screenBounds.size.width, 0, screenBounds.size.width, height)
             var imageView = UIImageView(frame: rect)
-            var imageUrl = MediaProcessor.urlForImageFill(image as Image, width: Int(bounds.width),
-                height: Int(bounds.height), scaleForDevice: true)
-            imageView.setImageWithURL(imageUrl)
+            imageView.setImageWithImageModel(image as Image, width: Int(bounds.width),
+                height: Int(bounds.height), galleryId: gallery.id)
+            
             imageView.contentMode = .ScaleAspectFill
             imageView.clipsToBounds = true
             scrollView.addSubview(imageView)

@@ -32,14 +32,13 @@ class GalleryProfileHeaderView: NibDesignable {
     
     
     func updateUI() {
-        var imageUrl = MediaProcessor.urlForImageFill(gallery.images.firstObject() as Image,
-            width: Int(bounds.width), height: Int(bounds.height))
         
-        imageView.setImageWithURLRequest(NSURLRequest(URL: imageUrl), placeholderImage: nil
-            , success: { (request, response, image) -> Void in
+        let imageModel = gallery.images.firstObject() as Image
+        imageView.setImageWithImageModel(imageModel, width: Int(bounds.width), height: Int(bounds.height)
+            , galleryId: gallery.id) { (image) -> Void in
                 self.imageView.image = image
                 self.blurredImageView.setImageToBlur(image, blurRadius: 8.0, completionBlock: nil)
-            }, failure: nil)
+        }
         
         addressLabel.text = gallery.address
         typeLabel.text = gallery.type

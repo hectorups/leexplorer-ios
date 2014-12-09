@@ -141,18 +141,17 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         rightBarButtonItem.action = "didTabShare"
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        let shareImageUrl = MediaProcessor.urlForImageFill(gallery.images.firstObject() as Image, width: Int(200), height: Int(200))
         shareImageView = UIImageView()
-        shareImageView!.setImageWithURLRequest(NSURLRequest(URL: shareImageUrl),
-            placeholderImage: nil,
-            success: { (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) in
+        let imageModel = gallery.images.firstObject() as Image
+        shareImageView?.setImageWithImageModel(imageModel
+            , width: Int(200)
+            , height: Int(200)
+            , galleryId: gallery.id
+            , block: { (image) -> Void in
                 self.shareImageView!.image = image
                 if self.waitingForShareImage {
                     self.didTabShare()
                 }
-            },
-            failure: { (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) in
-                LELog.e(error.description)
         })
     }
     
@@ -263,7 +262,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
                 self.circularProgress2?.titleLabelText = NSLocalizedString("DOWNLOADING_GALLERY", comment: "")
                 self.circularProgress2?.mode = .DeterminateCircular
                 self.circularProgress2?.progress = 0.0
-                self.view.addSubview(self.circularProgress2!)
+                self.navigationController?.view.addSubview(self.circularProgress2!)
                 self.circularProgress2?.show(true)
         }
         

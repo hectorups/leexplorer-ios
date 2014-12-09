@@ -37,10 +37,8 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     
     var artwork: Artwork! {
         didSet {
-            var imageUrl = MediaProcessor.urlForImageFill(artwork.image,
-                width: Int(bounds.width), height: Int(bounds.height))
-            
-            imageView.setImageWithURL(imageUrl)
+            imageView.setImageWithImageModel(artwork.image, width: Int(bounds.width), height: Int(bounds.height),
+                galleryId: artwork.galleryId)
             
             infoView.backgroundColor = ColorPallete.Black.get().colorWithAlphaComponent(0.35)
             

@@ -10,9 +10,6 @@ import Foundation
 
 class DownloadService {
     
-    let LARGE_IMAGE_FACTOR: CGFloat = 2.0
-    let SMALL_IMAGE_FACTOR: CGFloat = 0.5
-    
     var gallery: Gallery
     var completed: Int = 0
     var total: Int?
@@ -41,6 +38,7 @@ class DownloadService {
         return true
     }
     
+    
     private func downloadArtworks(artworks: [Artwork]) {
         createFolder(folder())
         let urls = artworksMediaUrls(artworks)
@@ -61,43 +59,16 @@ class DownloadService {
     private func artworksMediaUrls(artworks: [Artwork]) -> [String:String] {
         var urls: [String : String] = [:]
         for artwork in artworks {
-            urls[imageName(artwork.image, factor: LARGE_IMAGE_FACTOR)] = imageUrl(artwork.image, factor: LARGE_IMAGE_FACTOR)
-            urls[imageName(artwork.image, factor: SMALL_IMAGE_FACTOR)] = imageUrl(artwork.image, factor: SMALL_IMAGE_FACTOR)
+            for size in MediaManager.Size.allValues {
+                urls[MediaManager.imageName(artwork.image, size: size)] = MediaManager.imageUrl(artwork.image, size: size)
+            }
             
             if let audio = artwork.audio {
-                urls[audioName(audio)] = audioUrl(audio)
+                urls[MediaManager.audioName(audio)] = MediaManager.audioUrl(audio)
             }
         }
         
         return urls
-    }
-    
-    private func imageUrl(image: Image, factor: CGFloat) -> String {
-        let bounds = UIScreen.mainScreen().bounds
-        let url = MediaProcessor.urlForImageFill(image,
-            width: Int(bounds.width * factor),
-            height: Int(bounds.height * factor),
-            scaleForDevice: true).absoluteString!
-        
-        return url
-    }
-    
-    private func imageName(image: Image, factor: CGFloat) -> String {
-        var name = imageUrl(image, factor: factor).lastPathComponent
-        
-        if factor == SMALL_IMAGE_FACTOR {
-            name = "small_\(name)"
-        }
-        
-        return name
-    }
-    
-    private func audioUrl(audio: Audio) -> String {
-        return MediaProcessor.urlForAudio(audio).absoluteString!
-    }
-    
-    private func audioName(audio: Audio) -> String {
-        return audioUrl(audio).lastPathComponent
     }
     
     private func downloadUrl(url: String, withName: String) {
@@ -112,7 +83,7 @@ class DownloadService {
     }
     
     private func folder() -> String {
-        return gallery.id
+        return MediaManager.folderFromGalleryId(gallery.id)
     }
     
     private func notifyProgress() {
