@@ -117,6 +117,10 @@ class DownloadService {
     
     private func notifyProgress() {
         let progress: Float = Float(completed) / Float(total!)
+        if progress == 1.0 {
+            gallery.setDownloadedAt(NSDate())
+        }
+        
         let data = ["galleryId": gallery.id , "progress": progress ]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.DownloadProgress.rawValue,
             object: self, userInfo: data)
@@ -138,7 +142,7 @@ class DownloadService {
         } else {
             return nil
         }
-     
+        
         return dirPath
     }
 }

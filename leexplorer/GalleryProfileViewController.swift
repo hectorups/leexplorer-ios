@@ -14,12 +14,14 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var exploreCollectionButton: MKButton!
     @IBOutlet weak var downloadButton: MKButton!
     @IBOutlet weak var downloadIcon: UIImageView!
+    @IBOutlet weak var circularProgress: MRCircularProgressView!
     
     var gallery: Gallery!
     
     private var profileHeaderView: GalleryProfileHeaderView!
     private var headerOriginalWidth: CGFloat!
     private var notificationManager = NotificationManager()
+    private var circularProgress2: MRProgressOverlayView?
     
     let HEADER_HEIGHT: CGFloat = 260.0
     var waitingForShareImage = false
@@ -105,6 +107,15 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         downloadButton.layer.shadowColor = UIColor.blackColor().CGColor
         downloadButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
         
+        circularProgress.hidden = true
+        
+        println("\(gallery.downloadedAt()) > \(gallery.updatedAt) ?")
+        if let downloadedAt = gallery.downloadedAt() {
+            if downloadedAt.compare(gallery.updatedAt) == .OrderedDescending {
+                downloadButton.hidden = true
+                downloadIcon.hidden = true
+            }
+        }
     }
     
     func setupNotifications() {
@@ -222,9 +233,40 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     func downloadProgress(progress: Float) {
         println("download progress: \(progress)")
+        if let circularProgress2 = self.circularProgress2 {
+            circularProgress2.progress = progress
+        }
+        circularProgress.progress = progress
+        
+        if progress == 1.0 {
+            circularProgress.hidden = true
+            circularProgress2?.dismiss(true)
+            let successView = MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            successView.mode = .Checkmark
+            successView.titleLabelText = NSLocalizedString("GALLERY_DOWNLOADED", comment: "")
+            performBlockAfterDelay(4, block: { () -> Void in
+                successView.dismiss(true)
+            })
+        }
     }
 
     @IBAction func didTabDownload(sender: AnyObject) {
-        DownloadService(gallery: gallery).download()
+        downloadButton.userInteractionEnabled = false
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.downloadButton.alpha = 0.0
+            self.downloadIcon.alpha = 0.0
+            }) { (_) -> Void in
+                self.downloadButton.hidden = true
+                self.downloadIcon.hidden = self.downloadButton.hidden
+                
+                self.circularProgress2 = MRProgressOverlayView()
+                self.circularProgress2?.titleLabelText = NSLocalizedString("DOWNLOADING_GALLERY", comment: "")
+                self.circularProgress2?.mode = .DeterminateCircular
+                self.circularProgress2?.progress = 0.0
+                self.view.addSubview(self.circularProgress2!)
+                self.circularProgress2?.show(true)
+        }
+        
+        DownloadService(gallery: self.gallery).download()
     }
 }

@@ -47,4 +47,9 @@ extension UIViewController {
     func progressStopAnimating() {
         overlayProgressView?.dismiss(true)
     }
+    
+    func performBlockAfterDelay(delay: NSTimeInterval, block: () -> Void ) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(popTime, dispatch_get_main_queue(), block)
+    }
 }

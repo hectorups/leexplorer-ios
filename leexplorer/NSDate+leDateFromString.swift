@@ -9,12 +9,22 @@
 import Foundation
 
 extension NSDate {
-    class func leDateFromString(string: String) -> NSDate? {
+    
+    
+    class func leFormatter() -> NSDateFormatter {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeZone = NSTimeZone.localTimeZone()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ'"
         
-        return dateFormatter.dateFromString(string)
+        return dateFormatter
+    }
+    
+    class func leDateFromString(string: String) -> NSDate? {
+        return leFormatter().dateFromString(string)
+    }
+    
+    func leString() -> String {
+        return self.dynamicType.leFormatter().stringFromDate(self)
     }
 }

@@ -71,6 +71,11 @@
                                     <segue destination="8QI-or-vBh" kind="show" identifier="ShowArtworkList" id="G9I-OR-fRC"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFx-6s-shv" customClass="MRCircularProgressView">
+                                <rect key="frame" x="525" y="477" width="55" height="55"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1450980392" green="0.64705882349999999" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3e-AE-3Pp" customClass="MKButton" customModule="leexplorer" customModuleProvider="target">
                                 <rect key="frame" x="525" y="477" width="55" height="55"/>
                                 <constraints>
@@ -95,12 +100,16 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b0E-Kz-nWw" secondAttribute="trailing" id="Aej-Bl-Kny"/>
+                            <constraint firstItem="w3e-AE-3Pp" firstAttribute="height" secondItem="HFx-6s-shv" secondAttribute="height" id="B0M-xg-gdP"/>
+                            <constraint firstItem="w3e-AE-3Pp" firstAttribute="centerX" secondItem="HFx-6s-shv" secondAttribute="centerX" id="CvV-Gp-4Tw"/>
                             <constraint firstItem="b0E-Kz-nWw" firstAttribute="top" secondItem="gbk-Pb-WYE" secondAttribute="top" id="HTR-oz-nOV"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="b0E-Kz-nWw" secondAttribute="bottom" id="MCe-o0-LXB"/>
                             <constraint firstItem="4fu-og-G3O" firstAttribute="centerY" secondItem="w3e-AE-3Pp" secondAttribute="centerY" id="QNH-Fy-HSF"/>
+                            <constraint firstItem="w3e-AE-3Pp" firstAttribute="centerY" secondItem="HFx-6s-shv" secondAttribute="centerY" id="RnB-rw-LuD"/>
                             <constraint firstItem="4fu-og-G3O" firstAttribute="centerX" secondItem="w3e-AE-3Pp" secondAttribute="centerX" id="WEA-Tl-aOR"/>
                             <constraint firstItem="uO8-eB-kKQ" firstAttribute="top" secondItem="w3e-AE-3Pp" secondAttribute="bottom" constant="20" id="XK3-0t-rg1"/>
                             <constraint firstAttribute="trailing" secondItem="uO8-eB-kKQ" secondAttribute="trailing" id="ZnL-h1-gmn"/>
+                            <constraint firstItem="w3e-AE-3Pp" firstAttribute="width" secondItem="HFx-6s-shv" secondAttribute="width" id="c5Z-8V-v9R"/>
                             <constraint firstItem="uO8-eB-kKQ" firstAttribute="leading" secondItem="gbk-Pb-WYE" secondAttribute="leading" id="dO8-6P-YIJ"/>
                             <constraint firstItem="a3U-r5-01L" firstAttribute="top" secondItem="uO8-eB-kKQ" secondAttribute="bottom" id="pKl-ZH-Ym4"/>
                             <constraint firstAttribute="trailing" secondItem="w3e-AE-3Pp" secondAttribute="trailing" constant="20" id="sI4-CG-tQW"/>
@@ -108,6 +117,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="circularProgress" destination="HFx-6s-shv" id="ufF-Vx-k0q"/>
                         <outlet property="downloadButton" destination="w3e-AE-3Pp" id="fcq-Ta-RR5"/>
                         <outlet property="downloadIcon" destination="4fu-og-G3O" id="siW-2S-7gp"/>
                         <outlet property="exploreCollectionButton" destination="uO8-eB-kKQ" id="5E0-9G-eTJ"/>

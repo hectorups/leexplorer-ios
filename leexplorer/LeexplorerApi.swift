@@ -75,7 +75,7 @@ class LeexplorerApi: AFHTTPSessionManager {
     func getGalleryArtworks(gallery: Gallery, success: (artworks: [Artwork]) -> Void, failure: FailHandler) {
         self.GET("/gallery/\(gallery.id)/artworks", parameters: nil , success: { (_, collection) -> Void in
             
-            let jsonToGalleries: () -> [Artwork] = {
+            let jsonToArtworks: () -> [Artwork] = {
                 var artworks: [Artwork] = []
                 for artworkData in collection as [NSDictionary] {
                     artworks.append(Artwork.createFromJSON(artworkData))
@@ -84,9 +84,9 @@ class LeexplorerApi: AFHTTPSessionManager {
                 return artworks
             }
             
-            PersistantManager.shared.persistInBackgroundWithBlock(jsonToGalleries)
+            PersistantManager.shared.persistInBackgroundWithBlock(jsonToArtworks)
             
-            let artworks = jsonToGalleries()
+            let artworks = jsonToArtworks()
             success(artworks: artworks)
             
         }, failure)

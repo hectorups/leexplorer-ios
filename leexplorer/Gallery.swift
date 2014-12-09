@@ -37,7 +37,7 @@ class Gallery: RLMObject, Equatable {
     class func createFromJSON(data: NSDictionary) -> Gallery {
         var gallery = Gallery()
         
-        gallery.id = data["id"] as String
+        gallery.id =  data["id"] as String
         gallery.address = data["address"] as String
         gallery.desc = data["description"] as String
         gallery.name = data["name"] as String
@@ -71,6 +71,22 @@ class Gallery: RLMObject, Equatable {
     
     class func allGalleries() -> [Gallery] {
         return PersistantManager.shared.getAll()
+    }
+    
+    func downloadedAt() -> NSDate? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(downloadedAtKey()) as NSDate?
+    }
+    
+    func setDownloadedAt(date: NSDate) {
+        NSUserDefaults.standardUserDefaults().setObject(date, forKey: downloadedAtKey())
+    }
+    
+    private func downloadedAtKey() -> String {
+        return "gallery_\(id)_downloadedAt"
+    }
+    
+    class func galleryId(id: String) -> Gallery? {
+        return Artwork.objectsWhere("id = '\(id)'").firstObject() as Gallery?
     }
 
 }

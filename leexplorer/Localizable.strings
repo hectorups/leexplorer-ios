@@ -22,6 +22,7 @@
 "DESCRIPTION" = "Description";
 "EXPLORE_COLLECTION" = "Explore Collection";
 "DOWNLOADING_GALLERY" = "Downloading gallery...";
+"GALLERY_DOWNLOADED" = "Gallery downloaded successfully!";
 
 // Artwork List VC
 "LOADING_ARTWORKS" = "Loading artworks...";

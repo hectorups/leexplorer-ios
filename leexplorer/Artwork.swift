@@ -28,7 +28,7 @@ class Artwork: RLMObject, Equatable {
     }
     
     class func createFromJSON(data: NSDictionary) -> Artwork {
-        var artwork =  Artwork()
+        var artwork = Artwork()
         
         artwork.id = data["id"] as String
         if let audioData = data["audio"] as? NSDictionary {
@@ -95,6 +95,10 @@ class Artwork: RLMObject, Equatable {
         }
         
         return artworks
+    }
+    
+    class func artworkId(id: String) -> Artwork? {
+        return Artwork.objectsWhere("id = '\(id)'").firstObject() as Artwork?
     }
 }
 
