@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="356" height="215"/>
                         <gestureRecognizers/>
                     </scrollView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jre-ba-pTE" customClass="SwipeView">
+                        <rect key="frame" x="0.0" y="0.0" width="356" height="216"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LiE-x4-xmp">
                         <rect key="frame" x="0.0" y="146" width="356" height="70"/>
                         <subviews>
@@ -28,8 +32,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir7-K8-71j">
-                                <rect key="frame" x="321" y="11" width="29" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir7-K8-71j">
+                                <rect key="frame" x="317" y="11" width="33" height="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,8 +53,8 @@
                                     <constraint firstAttribute="height" constant="20" id="BR9-hc-FYY"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="building_icon" translatesAutoresizingMaskIntoConstraints="NO" id="FaT-Nz-bGr">
-                                <rect key="frame" x="283" y="8" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building_icon" translatesAutoresizingMaskIntoConstraints="NO" id="FaT-Nz-bGr">
+                                <rect key="frame" x="279" y="8" width="20" height="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="K5p-Hb-wfo"/>
@@ -93,23 +97,32 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="LiE-x4-xmp" secondAttribute="trailing" id="0Cw-ed-HvS"/>
+                    <constraint firstItem="jre-ba-pTE" firstAttribute="leading" secondItem="oHt-Zh-DYM" secondAttribute="leading" id="3kX-Ss-49w"/>
                     <constraint firstItem="LiE-x4-xmp" firstAttribute="leading" secondItem="oHt-Zh-DYM" secondAttribute="leading" id="FiG-3Z-hc3"/>
+                    <constraint firstItem="jre-ba-pTE" firstAttribute="top" secondItem="oHt-Zh-DYM" secondAttribute="top" id="GJ4-H6-PGp"/>
                     <constraint firstItem="7cr-IC-vIk" firstAttribute="top" secondItem="oHt-Zh-DYM" secondAttribute="top" id="GUu-ik-xGT"/>
                     <constraint firstAttribute="bottom" secondItem="LiE-x4-xmp" secondAttribute="bottom" id="WEy-lN-eCb"/>
                     <constraint firstItem="W9z-Kk-y12" firstAttribute="top" secondItem="oHt-Zh-DYM" secondAttribute="topMargin" constant="45" id="XeO-4b-zyJ"/>
                     <constraint firstItem="W9z-Kk-y12" firstAttribute="trailing" secondItem="oHt-Zh-DYM" secondAttribute="trailingMargin" constant="8" id="YW7-OY-xve"/>
                     <constraint firstItem="7cr-IC-vIk" firstAttribute="leading" secondItem="oHt-Zh-DYM" secondAttribute="leading" id="cFG-Dp-sxf"/>
+                    <constraint firstAttribute="bottom" secondItem="jre-ba-pTE" secondAttribute="bottom" id="fS1-Z2-W8y"/>
                     <constraint firstAttribute="trailing" secondItem="7cr-IC-vIk" secondAttribute="trailing" id="nrT-GL-MWy"/>
                     <constraint firstAttribute="bottom" secondItem="7cr-IC-vIk" secondAttribute="bottom" id="pai-sV-ftl"/>
+                    <constraint firstAttribute="trailing" secondItem="jre-ba-pTE" secondAttribute="trailing" id="sra-qH-EyC"/>
                     <constraint firstItem="W9z-Kk-y12" firstAttribute="leading" secondItem="oHt-Zh-DYM" secondAttribute="leadingMargin" constant="8" id="vFI-hB-Ajs"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="7cr-IC-vIk"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="address" destination="Q8w-88-7rw" id="e0B-vW-QQD"/>
                 <outlet property="infoView" destination="LiE-x4-xmp" id="suv-KO-8Iw"/>
                 <outlet property="nameLabel" destination="W9z-Kk-y12" id="doe-n5-8VN"/>
                 <outlet property="price" destination="uCz-Po-RVt" id="VS2-TK-59h"/>
-                <outlet property="scrollView" destination="7cr-IC-vIk" id="eDw-Lj-nuV"/>
+                <outlet property="swipeView" destination="jre-ba-pTE" id="8DH-Ib-BX2"/>
                 <outlet property="type" destination="ir7-K8-71j" id="me5-3L-hzU"/>
                 <outletCollection property="icons" destination="NEU-e1-Q61" collectionClass="NSMutableArray" id="LbA-lV-jjq"/>
                 <outletCollection property="icons" destination="FaT-Nz-bGr" collectionClass="NSMutableArray" id="TxV-Ao-1Yv"/>

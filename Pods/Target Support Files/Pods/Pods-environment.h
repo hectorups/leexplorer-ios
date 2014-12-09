@@ -96,12 +96,6 @@
 #define COCOAPODS_VERSION_MINOR_LBBlurredImage 2
 #define COCOAPODS_VERSION_PATCH_LBBlurredImage 1
 
-// MBProgressHUD
-#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
-#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
-#define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
-#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
-
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
 #define COCOAPODS_VERSION_MAJOR_MRProgress 0
@@ -191,6 +185,12 @@
 #define COCOAPODS_VERSION_MAJOR_SCLAlertView_Objective_C 0
 #define COCOAPODS_VERSION_MINOR_SCLAlertView_Objective_C 3
 #define COCOAPODS_VERSION_PATCH_SCLAlertView_Objective_C 5
+
+// SwipeView
+#define COCOAPODS_POD_AVAILABLE_SwipeView
+#define COCOAPODS_VERSION_MAJOR_SwipeView 1
+#define COCOAPODS_VERSION_MINOR_SwipeView 3
+#define COCOAPODS_VERSION_PATCH_SwipeView 2
 
 // TWRDownloadManager
 #define COCOAPODS_POD_AVAILABLE_TWRDownloadManager

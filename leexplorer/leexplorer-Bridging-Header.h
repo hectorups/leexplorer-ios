@@ -16,3 +16,4 @@
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <TWRDownloadManager/TWRDownloadManager.h>
 #import <MRProgress/MRProgress.h>
+#import <SwipeView/SwipeView.h>
