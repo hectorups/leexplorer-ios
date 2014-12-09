@@ -48,12 +48,22 @@ class MediaPlayerService: NSObject {
             stop()
         }
         
-        let url = MediaProcessor.urlForAudio(artwork.audio!)
-        LELog.d(url)
         
         self.artwork = artwork
+        let audio = artwork.audio!
         
-        playerItem = AVPlayerItem(URL: url)
+        if MediaManager.audioExists(audio, galleryId: artwork.galleryId) {
+            LELog.d("Audio streaming from file")
+            let path = MediaManager.localUrlForAudio(audio, galleryId: artwork.galleryId)!
+            let url = NSURL(fileURLWithPath: path)
+            let asset: AVAsset = AVURLAsset(URL: url, options: nil)
+            playerItem = AVPlayerItem(asset: asset)
+        } else {
+            LELog.d("Audio streaming from net")
+            let url = MediaProcessor.urlForAudio(audio)
+            playerItem = AVPlayerItem(URL: url)
+        }
+        
         notificationManager.registerObserverName(AVPlayerItemDidPlayToEndTimeNotification, forObject: playerItem!) {[weak self] (notification) -> Void in
             LELog.d("Audio finished playing")
             if let strongSelf = self {

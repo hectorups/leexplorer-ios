@@ -48,12 +48,22 @@ class MediaManager {
         return TWRDownloadManager.sharedManager().localPathForFile(name, inDirectory: folderFromGalleryId(galleryId))
     }
     
+    class func localUrlForAudio(audio: Audio, galleryId: String) -> String? {
+        let name = audioName(audio)
+        return TWRDownloadManager.sharedManager().localPathForFile(name, inDirectory: folderFromGalleryId(galleryId))
+    }
+    
     class func folderFromGalleryId(galleryId: String) -> String {
         return galleryId
     }
     
     class func imageExists(image: Image, size: Size, galleryId: String) -> Bool {
         let name = imageName(image, size: size)
+        return TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folderFromGalleryId(galleryId))
+    }
+    
+    class func audioExists(audio: Audio, galleryId: String) -> Bool {
+        let name = audioName(audio)
         return TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folderFromGalleryId(galleryId))
     }
     
