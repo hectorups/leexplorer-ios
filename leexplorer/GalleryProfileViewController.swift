@@ -14,7 +14,6 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var exploreCollectionButton: MKButton!
     @IBOutlet weak var downloadButton: MKButton!
     @IBOutlet weak var downloadIcon: UIImageView!
-    @IBOutlet weak var circularProgress: MRCircularProgressView!
     
     var gallery: Gallery!
     
@@ -106,8 +105,6 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         downloadButton.layer.shadowRadius = 2.5
         downloadButton.layer.shadowColor = UIColor.blackColor().CGColor
         downloadButton.layer.shadowOffset = CGSize(width: 1.0, height: 3.5)
-        
-        circularProgress.hidden = true
         
         if let downloadedAt = gallery.downloadedAt() {
             downloadButton.hidden = true
@@ -231,19 +228,19 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         println("download progress: \(progress)")
         if let circularProgress2 = self.circularProgress2 {
             circularProgress2.progress = progress
+            
+            if progress == 1.0 {
+                circularProgress2.dismiss(true)
+                self.circularProgress2 = nil
+                let successView = MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+                successView.mode = .Checkmark
+                successView.titleLabelText = NSLocalizedString("GALLERY_DOWNLOADED", comment: "")
+                performBlockAfterDelay(4, block: { () -> Void in
+                    successView.dismiss(true)
+                })
+            }
         }
-        circularProgress.progress = progress
-        
-        if progress == 1.0 {
-            circularProgress.hidden = true
-            circularProgress2?.dismiss(true)
-            let successView = MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
-            successView.mode = .Checkmark
-            successView.titleLabelText = NSLocalizedString("GALLERY_DOWNLOADED", comment: "")
-            performBlockAfterDelay(4, block: { () -> Void in
-                successView.dismiss(true)
-            })
-        }
+
     }
 
     @IBAction func didTabDownload(sender: AnyObject) {
