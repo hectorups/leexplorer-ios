@@ -16,7 +16,7 @@ struct AppConstant {
         static let OFFLINE_MODE = false
     #else
         static let DEBUG = false
-        static let LEEXPLORER_ENDPOINT = "http://leexplorer.herokuapp.com"
+        static let LEEXPLORER_ENDPOINT = "https://leexplorer.herokuapp.com"
         static let OFFLINE_MODE = false
     #endif
 
@@ -51,5 +51,6 @@ enum AppNotification: String {
     AudioStarted="AudioStarted",
     BeaconsFound="BeaconsFound",
     AutoPlayTrackStarted="AutoPlayTrackStarted",
-    DownloadProgress="DownloadProgress"
+    DownloadProgress="DownloadProgress",
+    LocationUpdate="LocationUpdate"
 }

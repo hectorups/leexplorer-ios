@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         LELog.d("APP VERSION: \(AppConstant.CLIENT_VERSION)")
-        setup3rdPartyPlugins()
+        
+        setup3rdPartyPlugins() // This has to be first
+        setupLocationService()
         setupReachability()
         setupNotifications()
         setupImageCache()
@@ -36,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Setups
+    
+    func setupLocationService() {
+        LocationService.shared.requestLocation()
+    }
     
     func setup3rdPartyPlugins() {
         Fabric.with([Crashlytics()])
@@ -75,7 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if SDKVersion.greaterOrEqualTo("8.0") {
             navigationBar.translucent = true
         }
-        
         
         navigationBar.barStyle = .Default
         navigationBar.tintColor = ColorPallete.Blue.get()

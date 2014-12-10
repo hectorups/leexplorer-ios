@@ -26,7 +26,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>366</string>
+	<string>369</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -51,6 +51,8 @@
 	<string>monitoring and ranging</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Beacon monitoring and ranging</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Discover artworks when you are near them</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

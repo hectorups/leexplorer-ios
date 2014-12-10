@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class GalleryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GalleryCellDelegate {
 
@@ -15,14 +16,22 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     let GALLERY_CELL_HEIGHT: CGFloat = 240
     
     var galleries: [Gallery] = []
+    var notificationManager = NotificationManager()
+    var waitingForLocation = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("GALLERY_LIST_TITLE", comment: "")
         
+        setupNotifications()
         setupTableView()
-        loadGalleries()
+        
+        if LocationService.shared.locationPresent() {
+            loadGalleries()
+        }
     }
+    
+    // MARK: - Setup
     
     func setupTableView() {
         tableView.backgroundColor = ColorPallete.AppBg.get()
@@ -32,11 +41,19 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         let cellNib = UINib(nibName: "GalleryCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "GalleryCell")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupNotifications() {
+        notificationManager.registerObserverType(.LocationUpdate) { [weak self] (notification) -> Void in
+            if let strongSelf = self {
+                if strongSelf.waitingForLocation {
+                    strongSelf.loadGalleries()
+                }
+                strongSelf.waitingForLocation = false
+            }
+        }
     }
+    
+    // MARK: - TableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.galleries.count
@@ -54,6 +71,8 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         return GALLERY_CELL_HEIGHT
     }
     
+    // MARK: - Load Galleries
+    
     func loadGalleries() {
         if LeexplorerApi.shared.isInternetReachable() && !AppConstant.OFFLINE_MODE {
             loadGalleriesFromAPI()
@@ -64,16 +83,15 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func loadGalleriesFromDB() {
         LELog.d("Load galleries from DB")
-        self.galleries = Gallery.allGalleries().filter(){ $0.downloadedAt() != nil }
-        self.tableView.reloadData()
+        let galleries = Gallery.allGalleries().filter(){ $0.downloadedAt() != nil }
+        sortAndShowGalleries(galleries)
     }
     
     func loadGalleriesFromAPI() {
         progressStartAnimatingWithTitle(NSLocalizedString("LOADING_GALLERIES", comment: ""))
         LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
             LELog.d(galleries.count)
-            self.galleries = galleries
-            self.tableView.reloadData()
+            self.sortAndShowGalleries(galleries)
             self.progressStopAnimating()
         }, failure: { (operation, error) -> Void in
             LELog.e(error)
@@ -82,6 +100,22 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         })
         
     }
+    
+    func sortAndShowGalleries(galleries: [Gallery]) {
+        let currentLocation = LocationService.shared.location!
+        self.galleries = galleries.sorted({ (gallery1, gallery2) -> Bool in
+            let gallery1Location = CLLocation(latitude: gallery1.latitude, longitude: gallery1.longitude)
+            let gallery2Location = CLLocation(latitude: gallery2.latitude, longitude: gallery2.longitude)
+            let gallery1ToCurrent = gallery1Location.distanceFromLocation(currentLocation)
+            let gallery2ToCurrent = gallery2Location.distanceFromLocation(currentLocation)
+            
+            return gallery1ToCurrent < gallery2ToCurrent
+        })
+        
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - Segue
     
     func handleGalleryTab(sender: GalleryCell) {
         performSegueWithIdentifier(Segue.ShowGalleryProfile.rawValue, sender: sender)

@@ -30,8 +30,8 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
-        if locationManager.respondsToSelector("requestAlwaysAuthorization") ?? false {
-            locationManager.requestAlwaysAuthorization()
+        if locationManager.respondsToSelector("requestWhenInUseAuthorization") ?? false {
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     

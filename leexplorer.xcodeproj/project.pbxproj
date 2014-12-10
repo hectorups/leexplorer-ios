@@ -17,6 +17,7 @@
 		9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */; };
 		9527155F1A2F8ADA008D43EF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */; };
 		95308B931A36BA5D00436738 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95308B921A36BA5D00436738 /* MediaManager.swift */; };
+		95308B951A37C98C00436738 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95308B941A37C98C00436738 /* LocationService.swift */; };
 		9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9539DFF61A30FCAF002E32AE /* NotificationManager.swift */; };
 		95449A261A3659380077657F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E921A2E8C09009F8554 /* Accelerate.framework */; };
 		95449A271A3659430077657F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F78E901A2E8C01009F8554 /* CoreGraphics.framework */; };
@@ -100,6 +101,7 @@
 		9527155C1A2F89D5008D43EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		9527155E1A2F8ADA008D43EF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		95308B921A36BA5D00436738 /* MediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
+		95308B941A37C98C00436738 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		9539DFF61A30FCAF002E32AE /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		95449A281A365BE90077657F /* UINavigationController+Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Progress.swift"; sourceTree = "<group>"; };
 		95449A2A1A366B2A0077657F /* UIViewController+Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Progress.swift"; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				955936281A3107BE007CAD89 /* BLEService.swift */,
 				959A9D271A327786002FBFB6 /* AutoPlayService.swift */,
 				955CD85A1A355FA300653B6D /* DownloadService.swift */,
+				95308B941A37C98C00436738 /* LocationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				9574A3691A24417400399531 /* GalleryCell.swift in Sources */,
 				9574A3351A24261B00399531 /* AppDelegate.swift in Sources */,
 				95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */,
+				95308B951A37C98C00436738 /* LocationService.swift in Sources */,
 				95308B931A36BA5D00436738 /* MediaManager.swift in Sources */,
 				95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */,
 				95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */,
