@@ -45,6 +45,11 @@ extension UIImageView {
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
             dispatch_async(queue) { () -> Void in
                 let uiImage = UIImage(contentsOfFile: localUrl)!
+                UIGraphicsBeginImageContext(CGSizeMake(1, 1))
+                let context = UIGraphicsGetCurrentContext()
+                CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), uiImage.CGImage)
+                UIGraphicsEndImageContext()
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if self.imageLoading == image {
                         block(image: uiImage)
