@@ -64,7 +64,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func loadGalleriesFromDB() {
         LELog.d("Load galleries from DB")
-        self.galleries = Gallery.allGalleries()
+        self.galleries = Gallery.allGalleries().filter(){ $0.downloadedAt() != nil }
         self.tableView.reloadData()
     }
     

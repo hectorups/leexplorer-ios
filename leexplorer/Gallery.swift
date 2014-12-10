@@ -24,7 +24,7 @@ class Gallery: RLMObject, Equatable {
     dynamic var priceDescription = ""
     dynamic var priceReference = 0
     
-    var updatedAt: NSDate = NSDate()
+    var updatedAt = NSDate()
     
     func ignoredProperties() -> NSArray {
         return [updatedAt]

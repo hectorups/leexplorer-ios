@@ -41,9 +41,9 @@ extension UIImageView {
         imageLoading = image
         if MediaManager.imageExists(image, size: bestSize, galleryId: galleryId) {
             LELog.d("image loaded from file \(bestSize.hashValue)")
+            let localUrl = MediaManager.localUrlForImage(image, size: bestSize, galleryId: galleryId)!
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
             dispatch_async(queue) { () -> Void in
-                let localUrl = MediaManager.localUrlForImage(image, size: bestSize, galleryId: galleryId)!
                 let uiImage = UIImage(contentsOfFile: localUrl)!
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if self.imageLoading == image {

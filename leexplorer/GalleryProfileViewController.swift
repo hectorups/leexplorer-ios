@@ -109,12 +109,9 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         
         circularProgress.hidden = true
         
-        println("\(gallery.downloadedAt()) > \(gallery.updatedAt) ?")
         if let downloadedAt = gallery.downloadedAt() {
-            if downloadedAt.compare(gallery.updatedAt) == .OrderedDescending {
-                downloadButton.hidden = true
-                downloadIcon.hidden = true
-            }
+            downloadButton.hidden = true
+            downloadIcon.hidden = true
         }
     }
     
