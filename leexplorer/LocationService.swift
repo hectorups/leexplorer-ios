@@ -29,8 +29,8 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         
-        if locationManager.respondsToSelector("requestWhenInUseAuthorization") ?? false {
-            locationManager.requestWhenInUseAuthorization()
+        if locationManager.respondsToSelector("requestAlwaysAuthorization") ?? false {
+            locationManager.requestAlwaysAuthorization()
         }
     }
     
@@ -39,9 +39,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func requestLocation() {
-        if self.requested {
+        if self.requested || !isAuthorized()  {
             return
         }
+        
         locationManager.startUpdatingLocation()
         requested = true
     }
@@ -72,5 +73,15 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         dispatch_after(time, dispatch_get_main_queue(), {
             self.locationManager.startUpdatingLocation()
         })
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        LELog.d("Authorization status for gps updated")
+        requestLocation()
+    }
+    
+    func isAuthorized() -> Bool {
+        let currentStatus = CLLocationManager.authorizationStatus()
+        return currentStatus == .AuthorizedWhenInUse || currentStatus == .Authorized
     }
 }
