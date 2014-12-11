@@ -94,13 +94,11 @@ class MediaPlayerView: NibDesignable {
     }
     
     @IBAction func didTouchUp(sender: AnyObject) {
-        println("didEndEditing")
         delegate?.mediaPlayerView(self, updatedValue: progressSlider.value)
         editing = false
     }
     
     @IBAction func didTouchDown(sender: AnyObject) {
-        println("didBegingEditing")
         editing = true
     }
     

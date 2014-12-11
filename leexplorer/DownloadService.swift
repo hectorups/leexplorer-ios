@@ -29,7 +29,6 @@ class DownloadService {
     func downloaded(artworks: [Artwork]) -> Bool {
         let urls = artworksMediaUrls(artworks)
         for (name,url) in urls {
-            println("Check file url \(url)")
             if !TWRDownloadManager.sharedManager().fileExistsWithName(name, inDirectory: folder()) {
                 return false
             }

@@ -42,7 +42,7 @@ extension UIImageView {
         
         imageLoading = image
         if MediaManager.imageExists(image, size: bestSize, galleryId: galleryId) {
-            LELog.d("image loaded from file \(bestSize.hashValue)")
+            // LELog.d("image loaded from file \(bestSize.hashValue)")
             let localUrl = MediaManager.localUrlForImage(image, size: bestSize, galleryId: galleryId)!
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
             dispatch_async(queue) { () -> Void in
@@ -60,7 +60,7 @@ extension UIImageView {
                 })
             }
         } else {
-            LELog.d("image loaded from net")
+            //LELog.d("image loaded from net")
             let imageUrl = MediaProcessor.urlForImageFill(image, width: width, height: height)
             let urlRequest = NSURLRequest(URL: imageUrl)
             self.setImageWithURLRequest(NSURLRequest(URL: imageUrl)
@@ -80,7 +80,6 @@ extension UIImageView {
         let sizes = MediaManager.Size.allValues.reverse() // From small to big
         
         for size in sizes {
-            println("File \(size.hashValue) -> \(size.width()) - \(size.height())  > \(width) - \(height) ?")
             if size.width() >= CGFloat(width) && size.height() >= CGFloat(height) {
                 return size
             }

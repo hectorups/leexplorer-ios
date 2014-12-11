@@ -30,13 +30,13 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
-        if locationManager.respondsToSelector("requestWhenInUseAuthorization") ?? false {
-            locationManager.requestWhenInUseAuthorization()
+        if locationManager.respondsToSelector("requestAlwaysAuthorization") ?? false {
+            locationManager.requestAlwaysAuthorization()
         }
     }
     
     func monitorRegion() {
-        println("Start monitoring ---")
+        LELog.d("Start monitoring ---")
         
         Region.notifyEntryStateOnDisplay = true
         Region.notifyOnEntry = true
@@ -46,12 +46,17 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
         locationManager.requestStateForRegion(Region)
     }
     
+    func isAuthorized() -> Bool {
+        let currentStatus = CLLocationManager.authorizationStatus()
+        return currentStatus == .AuthorizedWhenInUse || currentStatus == .Authorized
+    }
+    
     
     // MARK: CBCentralManagerDelegate
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         LELog.d("ble status changed: \(central.state.rawValue)")
-        if central.state == .PoweredOn {
+        if central.state == .PoweredOn && isAuthorized() {
             monitorRegion()
         }
     }
@@ -82,6 +87,21 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         LELog.d("exit region \(region.identifier)")
         locationManager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        LELog.e("Location manager failed: \(error)")
+    }
+    
+    func locationManager(manager: CLLocationManager!, rangingBeaconsDidFailForRegion region: CLBeaconRegion!, withError error: NSError!) {
+        LELog.e("Location manager failed: \(error)")
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        LELog.d("Authorization for ble updated")
+        if isAuthorized() {
+            monitorRegion()
+        }
     }
 
 }
