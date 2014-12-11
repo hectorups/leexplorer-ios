@@ -17,6 +17,6 @@ class LELog {
     }
     
     class func e(object: AnyObject!) {
-        LELog.d(object)
+        LELog.d("🔥 \(object)")
     }
 }
