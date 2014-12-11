@@ -1,0 +1,18 @@
+
+/* Class = "IBUILabel"; text = "Date"; ObjectID = "IBc-8R-jUt"; */
+"IBc-8R-jUt.text" = "Fecha";
+
+/* Class = "IBUILabel"; text = "-"; ObjectID = "QIT-jk-fch"; */
+"QIT-jk-fch.text" = "-";
+
+/* Class = "IBUILabel"; text = "10.2"; ObjectID = "U7P-sK-4IK"; */
+"U7P-sK-4IK.text" = "10.2";
+
+/* Class = "IBUILabel"; text = "Author Name"; ObjectID = "ZLy-Lb-vZA"; */
+"ZLy-Lb-vZA.text" = "Nombre del autor";
+
+/* Class = "IBUILabel"; text = "Artwork Name"; ObjectID = "ssg-TH-xns"; */
+"ssg-TH-xns.text" = "Nombre de la obra";
+
+/* Class = "IBUIButton"; normalTitle = "Explore Collection"; ObjectID = "uO8-eB-kKQ"; */
+"uO8-eB-kKQ.normalTitle" = "Explora la Galería";

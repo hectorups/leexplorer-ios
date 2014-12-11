@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  leexplorer
+
+  Created by Hector Monserrate on 25/11/14.
+  Copyright (c) 2014 leexplorer. All rights reserved.
+*/
+
+// Autoplay
+"AUTOPLAY_TITLE" = "Nueva Obra";
+"AUTOPLAY_SUBTITLE" = "Autoguía lista para el próximo audio. Para cancelar autoguía presione cancelar";
+"AUTOPLAY_OK" = "Ok";
+"AUTOPLAY_CANCEL" = "cancelar";
+
+// Gallery List VC
+"LOADING_GALLERIES" = "Cargando galerías...";
+"GALLERY_LIST_TITLE" = "Galerías Leexplorer";
+
+// Gallery Profile VC
+"HOURS" = "Horas de apertura";
+"PRICE" = "Precio";
+"DESCRIPTION" = "Descripción";
+"EXPLORE_COLLECTION" = "Explorar Galería";
+"DOWNLOADING_GALLERY" = "Bajando galería...";
+"GALLERY_DOWNLOADED" = "Galería bajada correctamente!";
+
+// Artwork List VC
+"LOADING_ARTWORKS" = "Cargando obras...";
+"ARTWORKS" = "Obras";
+
+
+// Artwork Profile VC
