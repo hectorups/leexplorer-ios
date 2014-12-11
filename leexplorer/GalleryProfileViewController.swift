@@ -225,7 +225,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Download
     
     func downloadProgress(progress: Float) {
-        println("download progress: \(progress)")
+        LELog.d("download progress: \(progress)")
         if let circularProgress2 = self.circularProgress2 {
             circularProgress2.progress = progress
             
@@ -234,6 +234,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
                 self.circularProgress2 = nil
                 let successView = MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
                 successView.mode = .Checkmark
+                successView.tintColor = ColorPallete.Blue.get()
                 successView.titleLabelText = NSLocalizedString("GALLERY_DOWNLOADED", comment: "")
                 performBlockAfterDelay(4, block: { () -> Void in
                     successView.dismiss(true)
@@ -256,6 +257,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
                 self.circularProgress2?.titleLabelText = NSLocalizedString("DOWNLOADING_GALLERY", comment: "")
                 self.circularProgress2?.mode = .DeterminateCircular
                 self.circularProgress2?.progress = 0.0
+                self.circularProgress2?.tintColor = ColorPallete.Blue.get()
                 self.navigationController?.view.addSubview(self.circularProgress2!)
                 self.circularProgress2?.show(true)
         }
