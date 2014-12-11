@@ -18,6 +18,12 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet var separatorLabel: UILabel!
     @IBOutlet weak var signalImageView: UIImageView!
     @IBOutlet weak var accuracyLabel: UILabel!
+    @IBOutlet weak var playIndicator: UIImageView!
+    
+    enum AudioStatus {
+        case Playing, Paused, NotPlaying
+    }
+    
     
     var accuracy: Double? {
         didSet {
@@ -32,6 +38,24 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
             if !AppConstant.DEBUG {
                 accuracyLabel.hidden = true
             }
+        }
+    }
+    
+    var status: AudioStatus = .NotPlaying {
+        didSet {
+            switch status {
+            case .NotPlaying:
+                playIndicator.hidden = true
+                return
+            case .Playing:
+                playIndicator.image = UIImage(named: "play_icon")
+            case .Paused:
+                playIndicator.image = UIImage(named: "pause_icon")
+            }
+            
+            playIndicator.fixTemplateImage()
+            playIndicator.tintColor = ColorPallete.White.get()
+            playIndicator.hidden = false
         }
     }
     
@@ -51,12 +75,14 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
                 dateLabel.hidden = true
                 separatorLabel.hidden = true
             }
-            signalImageView.hidden = true
+            
+            setupPlayIndicator()
             setupSignal()
         }
     }
     
     func setupSignal() {
+        signalImageView.hidden = true
         var animationImages = [UIImage]()
         for index in (1...4) {
             animationImages.append(UIImage(named: "ble\(index)")!)
@@ -68,8 +94,29 @@ class ArtworkCollectionViewCell: UICollectionViewCell {
         startAnimating()
     }
     
+    func setupPlayIndicator() {
+        playIndicator.hidden = true
+        playIndicator.layer.shadowColor = ColorPallete.Black.get().CGColor
+        playIndicator.layer.shadowOpacity = 0.65
+        playIndicator.layer.shadowRadius = 1.0
+        playIndicator.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        playIndicator.clipsToBounds = false
+        
+        playingUpdateStatus()
+    }
+    
     func startAnimating() {
         signalImageView.startAnimating()
+    }
+    
+    func playingUpdateStatus() {
+        if !MediaPlayerService.shared.isPlayingArtwork(artwork) {
+            status = .NotPlaying
+        } else if MediaPlayerService.shared.paused {
+            status = .Paused
+        } else {
+            status = .Playing
+        }
     }
     
 }

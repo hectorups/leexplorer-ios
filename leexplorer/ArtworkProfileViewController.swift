@@ -81,6 +81,9 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             mediaPlayerBottomConstraint.constant = -1 * mediaPlayerView.bounds.height
         } else {
             mediaPlayerView.paused = MediaPlayerService.shared.paused
+            let time = MediaPlayerService.shared.time!
+            let duration = MediaPlayerService.shared.duration!
+            self.showMediaPlayerTime(time, duration: duration)
         }
     }
     
@@ -229,8 +232,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     }
     
     func showMediaPlayerTime(time: Float, duration: Float) {
-        self.mediaPlayerView.currentPosition = time
         self.mediaPlayerView.duration = duration
+        self.mediaPlayerView.currentPosition = time
         
         if mediaPlayerBottomConstraint.constant != 0 {
             UIView.animateWithDuration(0.6, delay: 0, options: .CurveEaseOut, animations: { () -> Void in

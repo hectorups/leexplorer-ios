@@ -80,6 +80,17 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
                 }
             }
         }
+        
+        let audioNotifications: [AppNotification] = [.AudioStarted, .AudioCompleted, .AudioPaused, .AudioResumed]
+        for notification in audioNotifications {
+            notificationManager.registerObserverType(notification) { [weak self] (notification) -> Void in
+                var artworkId = notification.userInfo!["artworkId"] as String
+                if let strongSelf = self {
+                    strongSelf.updateCellPlayingforArtwork()
+                }
+            }
+        }
+        
     }
     
     func setupCollectionView() {
@@ -164,6 +175,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         cell.artwork = artwork
         cell.accuracy = artwork.findFromBeacons(beacons)?.accuracy
         
+        
         return cell
     }
     
@@ -206,6 +218,15 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             }) { (_) -> Void in
                 self.autoPlayButton.hidden = true
                 self.autoPlayIcon.hidden = self.autoPlayButton.hidden
+        }
+    }
+    
+    // MARK: - Update Cell playing 
+    
+    func updateCellPlayingforArtwork() {
+        for cell in artworksCollectionView.visibleCells() {
+            let artworkCell = cell as ArtworkCollectionViewCell
+            artworkCell.playingUpdateStatus()
         }
     }
     

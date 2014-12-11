@@ -21,6 +21,8 @@ class MediaPlayerService: NSObject {
     private var notificationManager: NotificationManager
     
     var paused = false
+    var time: Float?
+    var duration: Float?
     
     class var shared : MediaPlayerService {
         struct Static {
@@ -67,9 +69,10 @@ class MediaPlayerService: NSObject {
         notificationManager.registerObserverName(AVPlayerItemDidPlayToEndTimeNotification, forObject: playerItem!) {[weak self] (notification) -> Void in
             LELog.d("Audio finished playing")
             if let strongSelf = self {
-                let data = ["artworkId": strongSelf.artwork!.id]
-                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioCompleted.rawValue, object: strongSelf, userInfo: data)
+                let completedArtwork = strongSelf.artwork!
                 strongSelf.stop()
+                let data = ["artworkId": completedArtwork.id]
+                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioCompleted.rawValue, object: strongSelf, userInfo: data)
             }
         }
         
@@ -115,6 +118,7 @@ class MediaPlayerService: NSObject {
         playerItem = nil
         playbackObserver = nil
         artwork = nil
+        time = nil
     }
     
     
@@ -170,13 +174,12 @@ class MediaPlayerService: NSObject {
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
             MPMediaItemPropertyArtist: artwork!.author ?? "unknown",
             MPMediaItemPropertyTitle: artwork!.name,
-//            MPNowPlayingInfoPropertyPlaybackRate: 1.0,
             MPMediaItemPropertyPlaybackDuration: CMTimeGetSeconds(self.currentTrackDuration())
         ]
         
         trackTime()
         
-        //        [audioInfo setObject:[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:_artwork.artworkImage]] forKey:MPMediaItemPropertyArtwork];
+        // [audioInfo setObject:[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageWithData:_artwork.artworkImage]] forKey:MPMediaItemPropertyArtwork];
     }
     
     private func trackTime() {
@@ -191,7 +194,9 @@ class MediaPlayerService: NSObject {
                 let time = Float(CMTimeGetSeconds(strongSelf.playerItem!.currentTime()))
                 let duration = Float(CMTimeGetSeconds(strongSelf.currentTrackDuration()))
                 let rate = strongSelf.paused ? 0.0 : 1.0
-                //LELog.d("Time: \(time) of \(duration)")
+                // LELog.d("Time: \(time) of \(duration)")
+                strongSelf.time = time
+                strongSelf.duration = duration
                 
                 var playingInfo = NSMutableDictionary(dictionary: MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo)
                 playingInfo.setValue(time, forKey: MPNowPlayingInfoPropertyElapsedPlaybackTime)
