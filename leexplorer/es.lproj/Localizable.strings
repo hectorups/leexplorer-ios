@@ -30,3 +30,10 @@
 
 
 // Artwork Profile VC
+
+
+// Settings VC
+"SVC_CANCEL" = "Cancelar";
+"SVC_NO_EMAIL" = "No hay cuentas de email configuradas en este dispositivo";
+"SVC_OK" = "Ok";
+"SVC_FEEDBACK" = "Comentarios acerca de la aplicación Leexplorer";

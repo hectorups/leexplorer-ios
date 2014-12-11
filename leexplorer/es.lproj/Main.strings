@@ -16,3 +16,9 @@
 
 /* Class = "IBUIButton"; normalTitle = "Explore Collection"; ObjectID = "uO8-eB-kKQ"; */
 "uO8-eB-kKQ.normalTitle" = "Explora la Galería";
+
+/* Class = "IBUILabel"; text = "Send Feedback"; ObjectID = "vgt-zt-tKo";*/
+"vgt-zt-tKo.text" = "Tú opinión de Leexplorer";
+
+/* Class = "IBUILabel"; text = "Version"; ObjectID = "uW8-9p-cPU";*/
+"uW8-9p-cPU.text" = "Versión";

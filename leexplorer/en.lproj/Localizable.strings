@@ -28,5 +28,10 @@
 "LOADING_ARTWORKS" = "Loading artworks...";
 "ARTWORKS" = "Artworks";
 
-
 // Artwork Profile VC
+
+// Settings VC
+"SVC_CANCEL" = "Cancel";
+"SVC_NO_EMAIL" = "No mail account setup on device";
+"SVC_OK" = "Ok";
+"SVC_FEEDBACK" = "Leexplorer feedback";

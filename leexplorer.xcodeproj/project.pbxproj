@@ -53,6 +53,7 @@
 		95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */; };
 		95B7D27E1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */; };
 		95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */; };
+		95C4337F1A3A190400629540 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C4337E1A3A190400629540 /* SettingsTableViewController.swift */; };
 		95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */; };
 		95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CABB031A2AA55B00F354B2 /* AVFoundation.framework */; };
 		95CD75461A24FBEE00974B3C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD75451A24FBEE00974B3C /* Image.swift */; };
@@ -143,6 +144,7 @@
 		95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkProfileHeaderView.swift; sourceTree = "<group>"; };
 		95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtworkProfileHeaderView.xib; sourceTree = "<group>"; };
 		95B7D27F1A279C8E00F0764C /* NSDateFormatter+leShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+leShared.swift"; sourceTree = "<group>"; };
+		95C4337E1A3A190400629540 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		95CABB011A2AA47F00F354B2 /* MediaPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerService.swift; sourceTree = "<group>"; };
 		95CABB031A2AA55B00F354B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		95CD75451A24FBEE00974B3C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				95D00FEB1A25692A00E3B655 /* GalleryProfileViewController.swift */,
 				95D010011A266BD200E3B655 /* ArtworkListViewController.swift */,
 				95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */,
+				95C4337E1A3A190400629540 /* SettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				95CD75461A24FBEE00974B3C /* Image.swift in Sources */,
 				95D010061A266FBB00E3B655 /* Artwork.swift in Sources */,
 				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
+				95C4337F1A3A190400629540 /* SettingsTableViewController.swift in Sources */,
 				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,
