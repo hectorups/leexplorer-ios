@@ -19,7 +19,9 @@ extension UIImageView {
     
     func setImageWithImageModel(image: Image, width: Int, height: Int, galleryId: String) {
         setImageWithImageModel(image, width: width, height: height, galleryId: galleryId) { (image) -> Void in
+            self.alpha = 0.0
             self.image = image
+            UIView.animateWithDuration(0.3, animations: {self.alpha = 1.0})
         }
     }
     
