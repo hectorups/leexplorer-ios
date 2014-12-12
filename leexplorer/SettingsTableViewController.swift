@@ -16,7 +16,7 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         super.viewWillAppear(animated)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem()
-        navigationItem.leftBarButtonItem?.tintColor = ColorPallete.White.get()
+        navigationItem.leftBarButtonItem?.tintColor = ColorPallete.Blue.get()
         navigationItem.leftBarButtonItem?.title = NSLocalizedString("SVC_CANCEL", comment: "")
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = "handleCloseButton"
