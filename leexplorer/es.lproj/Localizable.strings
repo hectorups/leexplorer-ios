@@ -7,10 +7,11 @@
 */
 
 // Autoplay
-"AUTOPLAY_TITLE" = "Nueva Obra";
-"AUTOPLAY_SUBTITLE" = "Autoguía lista para el próximo audio. Para cancelar autoguía presione cancelar";
+"AUTOPLAY_TITLE" = "Autoguia";
+"AUTOPLAY_SUBTITLE" = "El audio de %@ esta listo. Quieres escucharlo?";
 "AUTOPLAY_OK" = "Ok";
-"AUTOPLAY_CANCEL" = "cancelar";
+"AUTOPLAY_SKIP" = "Siguiente Audio";
+"AUTOPLAY_CANCEL" = "Cancelar Autoguía";
 
 // Gallery List VC
 "LOADING_GALLERIES" = "Cargando galerías...";

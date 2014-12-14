@@ -77,6 +77,7 @@
 		95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E7E1A2CECC6009F8554 /* MediaPlayerView.swift */; };
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
 		95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E981A2EA08D009F8554 /* EventReporter.swift */; };
+		95FB6BA81A3E4438008063D2 /* CLBeacon+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB6BA71A3E4438008063D2 /* CLBeacon+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		95F78E901A2E8C01009F8554 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		95F78E921A2E8C09009F8554 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		95F78E981A2EA08D009F8554 /* EventReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReporter.swift; sourceTree = "<group>"; };
+		95FB6BA71A3E4438008063D2 /* CLBeacon+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLBeacon+Extensions.swift"; sourceTree = "<group>"; };
 		B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-leexplorer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -423,6 +425,7 @@
 				95E283171A32F3C700BF37FB /* UIImage+Extensions.swift */,
 				95449A281A365BE90077657F /* UINavigationController+Progress.swift */,
 				95449A2A1A366B2A0077657F /* UIViewController+Progress.swift */,
+				95FB6BA71A3E4438008063D2 /* CLBeacon+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
 				95C4337F1A3A190400629540 /* SettingsTableViewController.swift in Sources */,
 				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
+				95FB6BA81A3E4438008063D2 /* CLBeacon+Extensions.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,
 			);

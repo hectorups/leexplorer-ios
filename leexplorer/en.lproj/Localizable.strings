@@ -7,10 +7,11 @@
 */
 
 // Autoplay
-"AUTOPLAY_TITLE" = "New Artwork Playing";
-"AUTOPLAY_SUBTITLE" = "Autoplaying artwork. To disable this autoplay press on cancel";
-"AUTOPLAY_OK" = "ok";
-"AUTOPLAY_CANCEL" = "cancel";
+"AUTOPLAY_TITLE" = "New Artwork Ready";
+"AUTOPLAY_SUBTITLE" = "%@ is ready. Do you want to listen to it ?";
+"AUTOPLAY_OK" = "Play";
+"AUTOPLAY_SKIP" = "Skip Audio";
+"AUTOPLAY_CANCEL" = "Cancel Autoplay";
 
 // Gallery List VC
 "LOADING_GALLERIES" = "Loading galleries...";

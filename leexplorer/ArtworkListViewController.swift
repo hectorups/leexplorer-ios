@@ -81,16 +81,20 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             }
         }
         
-        let audioNotifications: [AppNotification] = [.AudioStarted, .AudioCompleted, .AudioPaused, .AudioResumed]
-        for notification in audioNotifications {
-            notificationManager.registerObserverType(notification) { [weak self] (notification) -> Void in
-                var artworkId = notification.userInfo!["artworkId"] as String
-                if let strongSelf = self {
-                    strongSelf.updateCellPlayingforArtwork()
-                }
+        notificationManager.registerObserverType(.AutoPlayEnded) { [weak self] (notification) -> Void in
+            if let strongSelf = self {
+                strongSelf.autoPlayButton.hidden = false
+                strongSelf.autoPlayButton.alpha = 1.0
             }
         }
         
+        let audioNotifications: [AppNotification] = [.AudioStarted, .AudioCompleted, .AudioPaused, .AudioResumed]
+        notificationManager.registerObserverType(audioNotifications) { [weak self] (notification) -> Void in
+            var artworkId = notification.userInfo!["artworkId"] as String
+            if let strongSelf = self {
+                strongSelf.updateCellPlayingforArtwork()
+            }
+        }
     }
     
     func setupCollectionView() {

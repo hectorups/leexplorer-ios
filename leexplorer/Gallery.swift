@@ -85,7 +85,7 @@ class Gallery: RLMObject, Equatable {
         return "gallery_\(id)_downloadedAt"
     }
     
-    class func galleryId(id: String) -> Gallery? {
+    class func findById(id: String) -> Gallery? {
         return Artwork.objectsWhere("id = '\(id)'").firstObject() as Gallery?
     }
 

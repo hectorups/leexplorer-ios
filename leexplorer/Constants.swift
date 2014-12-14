@@ -34,7 +34,7 @@ struct AppConstant {
     
     static let CRASHLYTICS_KEY = "1025a1bd270d6c18391090e2fe20649783aa84e2"
     
-    static let MAX_BEACON_PROXIMITY = 30.0
+    static let MAX_BEACON_PROXIMITY = 25.0
     
     static let FEEDBACK_EMAIL = "hector@leexplorer.com"
 }
@@ -53,6 +53,8 @@ enum AppNotification: String {
     AudioStarted="AudioStarted",
     BeaconsFound="BeaconsFound",
     AutoPlayTrackStarted="AutoPlayTrackStarted",
+    AutoPlayEnded="AutoPlayEnded",
     DownloadProgress="DownloadProgress",
-    LocationUpdate="LocationUpdate"
+    LocationUpdate="LocationUpdate",
+    LocationNotAvailable="LocationNotAvailable"
 }

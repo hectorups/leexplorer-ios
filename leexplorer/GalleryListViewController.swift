@@ -43,7 +43,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setupNotifications() {
-        notificationManager.registerObserverType(.LocationUpdate) { [weak self] (notification) -> Void in
+        notificationManager.registerObserverType([.LocationUpdate, .LocationNotAvailable]) { [weak self] (notification) -> Void in
             if let strongSelf = self {
                 if strongSelf.waitingForLocation {
                     strongSelf.loadGalleries()
@@ -84,6 +84,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     func loadGalleriesFromDB() {
         LELog.d("Load galleries from DB")
         let galleries = Gallery.allGalleries().filter(){ $0.downloadedAt() != nil }
+        LELog.d("galleries found in db: \(galleries.count)")
         sortAndShowGalleries(galleries)
     }
     
@@ -102,15 +103,17 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func sortAndShowGalleries(galleries: [Gallery]) {
-        let currentLocation = LocationService.shared.location!
-        self.galleries = galleries.sorted({ (gallery1, gallery2) -> Bool in
-            let gallery1Location = CLLocation(latitude: gallery1.latitude, longitude: gallery1.longitude)
-            let gallery2Location = CLLocation(latitude: gallery2.latitude, longitude: gallery2.longitude)
-            let gallery1ToCurrent = gallery1Location.distanceFromLocation(currentLocation)
-            let gallery2ToCurrent = gallery2Location.distanceFromLocation(currentLocation)
-            
-            return gallery1ToCurrent < gallery2ToCurrent
-        })
+        self.galleries = galleries
+        if let currentLocation = LocationService.shared.location {
+            self.galleries.sort({ (gallery1, gallery2) -> Bool in
+                let gallery1Location = CLLocation(latitude: gallery1.latitude, longitude: gallery1.longitude)
+                let gallery2Location = CLLocation(latitude: gallery2.latitude, longitude: gallery2.longitude)
+                let gallery1ToCurrent = gallery1Location.distanceFromLocation(currentLocation)
+                let gallery2ToCurrent = gallery2Location.distanceFromLocation(currentLocation)
+                
+                return gallery1ToCurrent < gallery2ToCurrent
+            })
+        }
         
         self.tableView.reloadData()
     }

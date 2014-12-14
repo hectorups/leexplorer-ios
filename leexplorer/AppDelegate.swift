@@ -66,7 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationManager.registerObserverType(.AutoPlayTrackStarted) { [weak self] (notification) in
             LELog.d("appdelegate: autoplay started")
             if let strongSelf = self {
-                strongSelf.notifyNewAudio()
+                let artworkId = notification.userInfo!["artworkId"] as String
+                let artwork = Artwork.findById(artworkId)!
+                strongSelf.notifyNewAudio(artwork)
             }
         }
     }
@@ -118,22 +120,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - AutoPlay notifications
     
-    func notifyNewAudio() {
+    func notifyNewAudio(artwork: Artwork) {
         if let window = self.window {
-            let viewController = (window.rootViewController as UINavigationController).visibleViewController
-            notifyWighAlert(viewController)
+            let viewController = window.rootViewController as UINavigationController
+            notifyWighAlert(viewController, artwork: artwork)
         }
     }
     
-    func notifyWighAlert(viewController: UIViewController) {
+    func notifyWighAlert(viewController: UIViewController, artwork: Artwork) {
         LELog.d("appdelegate: show alert")
         
         let alert = SCLAlertView()
         alert.backgroundType = .Blur
-        alert.shouldDismissOnTapOutside = true
+        alert.shouldDismissOnTapOutside = false
+
+        alert.addButton(NSLocalizedString("AUTOPLAY_OK", comment: ""), actionBlock: { () -> Void in
+            AutoPlayService.shared.confirm()
+        })
+        
+        alert.addButton(NSLocalizedString("AUTOPLAY_SKIP", comment: ""), actionBlock: { () -> Void in
+            AutoPlayService.shared.skip()
+        })
+        
         alert.addButton(NSLocalizedString("AUTOPLAY_CANCEL", comment: ""), actionBlock: { () -> Void in
             AutoPlayService.shared.stop()
-            MediaPlayerService.shared.stop()
         })
         
         var image = UIImage(named: "autoplay_icon")!.withColorTint(ColorPallete.White.get())
@@ -142,9 +152,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             image: image,
             color: ColorPallete.Blue.get(),
             title: NSLocalizedString("AUTOPLAY_TITLE", comment: ""),
-            subTitle: NSLocalizedString("AUTOPLAY_SUBTITLE", comment: ""),
-            closeButtonTitle: NSLocalizedString("AUTOPLAY_OK", comment: ""),
-            duration: 10.0)
+            subTitle: NSString(format: NSLocalizedString("AUTOPLAY_SUBTITLE", comment: ""), artwork.name),
+            closeButtonTitle: nil,
+            duration: 0.0)
     }
     
     // MARK: - Background Downloads

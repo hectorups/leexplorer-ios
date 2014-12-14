@@ -14,6 +14,7 @@ class AutoPlayService: NSObject {
     private var artworks: [Artwork]?
     private var playedArtworks: [Artwork] = []
     private var notificationManager: NotificationManager
+    private var artworkToConfirm: Artwork?
     
     class var shared : AutoPlayService {
         struct Static {
@@ -76,23 +77,39 @@ class AutoPlayService: NSObject {
     }
     
     func stop() {
+
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AutoPlayEnded.rawValue,
+            object: self, userInfo: nil)
+        
         notificationManager.deregisterAll()
         gallery = nil
         artworks = nil
         playedArtworks = []
+        artworkToConfirm = nil
+    }
+    
+    func confirm() {
+        confirmPlayArtwork()
+    }
+    
+    func skip() {
+        artworkToConfirm = nil
     }
     
     // MARK: - Logic
     
     private func findNextArtworkToPlay(beacons: [CLBeacon]) {
-        if beacons.count == 0 || artworks == nil || !MediaPlayerService.shared.isAvailable() {
-            return
+        if beacons.count == 0
+            || artworks == nil
+            || artworkToConfirm != nil
+            || !MediaPlayerService.shared.isAvailable() {
+                return
         }
         
         var presentArtworks: [Artwork] = artworks!.filter(){ find(self.playedArtworks, $0) == nil }
             .filter() {
                 if let beacon = $0.findFromBeacons(beacons) {
-                    return beacon.accuracy < AppConstant.MAX_BEACON_PROXIMITY
+                    return beacon.leNormalizedAccuracy() < AppConstant.MAX_BEACON_PROXIMITY
                 } else {
                     return false
                 }
@@ -101,7 +118,7 @@ class AutoPlayService: NSObject {
         Artwork.sortArtworks(&presentArtworks, beacons: beacons)
         
         if let nextArtwork = presentArtworks.first {
-            playArtwork(nextArtwork)
+            prepareToPlayArtwork(nextArtwork)
         }
     }
     
@@ -117,13 +134,20 @@ class AutoPlayService: NSObject {
         }
     }
     
-    private func playArtwork(artwork: Artwork) {
-        MediaPlayerService.shared.playArtwork(artwork)
+    private func prepareToPlayArtwork(artwork: Artwork) {
         addToPlayedArtworks(artwork)
+        artworkToConfirm = artwork
         
         let data = ["artworkId": artwork.id]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AutoPlayTrackStarted.rawValue,
             object: self, userInfo: data)
+    }
+    
+    private func confirmPlayArtwork() {
+        if let artwork = artworkToConfirm {
+            artworkToConfirm = nil
+            MediaPlayerService.shared.playArtwork(artwork)
+        }
     }
     
     private func addToPlayedArtworks(artwork: Artwork) {

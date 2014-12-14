@@ -23,6 +23,12 @@ class NotificationManager {
         observerTokens = []
     }
     
+    func registerObserverType(types: [AppNotification], block: (NSNotification! -> Void)) {
+        for notification in types {
+            registerObserverType(notification, block: block)
+        }
+    }
+    
     func registerObserverType(type: AppNotification, block: (NSNotification! -> Void)) {
         registerObserverType(type, forObject: nil, block: block)
     }

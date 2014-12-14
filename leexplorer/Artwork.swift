@@ -63,8 +63,8 @@ class Artwork: RLMObject, Equatable {
     
     class func sortArtworks(inout artworks: [Artwork], beacons: [CLBeacon]) {
         artworks.sort { (artwork1, artwork2) -> Bool in
-            let accuracy1 = artwork1.findFromBeacons(beacons)?.accuracy ?? DBL_MAX
-            let accuracy2 = artwork2.findFromBeacons(beacons)?.accuracy ?? DBL_MAX
+            let accuracy1 = artwork1.findFromBeacons(beacons)?.leNormalizedAccuracy() ?? DBL_MAX
+            let accuracy2 = artwork2.findFromBeacons(beacons)?.leNormalizedAccuracy() ?? DBL_MAX
             
             return accuracy2 > accuracy1
         }
@@ -97,7 +97,7 @@ class Artwork: RLMObject, Equatable {
         return artworks
     }
     
-    class func artworkId(id: String) -> Artwork? {
+    class func findById(id: String) -> Artwork? {
         return Artwork.objectsWhere("id = '\(id)'").firstObject() as Artwork?
     }
 }

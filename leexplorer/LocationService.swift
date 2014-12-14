@@ -48,7 +48,9 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        LELog.e("error = \(error)")
+        LELog.e("location manager error = \(error)")
+        NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.LocationNotAvailable.rawValue,
+            object: self, userInfo: nil)
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
