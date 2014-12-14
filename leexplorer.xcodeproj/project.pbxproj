@@ -825,7 +825,7 @@
 				);
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d17ff5b3-04ec-46b5-9ab3-7f0b7be27aa4";
 				SWIFT_OBJC_BRIDGING_HEADER = "leexplorer/leexplorer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -852,7 +852,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d17ff5b3-04ec-46b5-9ab3-7f0b7be27aa4";
 				SWIFT_OBJC_BRIDGING_HEADER = "leexplorer/leexplorer-Bridging-Header.h";
 			};
 			name = Release;
