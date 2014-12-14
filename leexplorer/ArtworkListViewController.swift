@@ -15,7 +15,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     @IBOutlet weak var autoPlayButton: MKButton!
     @IBOutlet weak var autoPlayIcon: UIImageView!
     
-    let REFRESH_INTERVAL = 30 // seconds
+    let REFRESH_INTERVAL = 25.0 // seconds
     var gallery: Gallery!
     var artworks: [Artwork] = []
     var beacons: [CLBeacon] = []
@@ -28,6 +28,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         
         setupAutoplay()
+        setupBeaconUpdates()
         setupCollectionView()
         setupNotifications()
         loadArtworks()
@@ -62,11 +63,11 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func setupBeaconUpdates() {
-        Timer(duration: REFRESH_INTERVAL) { [weak self] (_) -> () in
+        Timer(interval: REFRESH_INTERVAL) { [weak self] () -> () in
             if let strongSelf = self {
                 strongSelf.waitingForBeacons = true
             }
-        }
+        }.start()
     }
     
     func setupNotifications() {

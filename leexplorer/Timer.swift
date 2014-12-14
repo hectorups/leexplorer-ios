@@ -10,18 +10,17 @@ import Foundation
 
 class Timer {
     var timer = NSTimer()
-    var handler: (Int) -> ()
+    var handler: () -> ()
     
-    let duration: Int
-    var elapsedTime: Int = 0
+    let interval: Double
     
-    init(duration: Int, handler: (Int) -> ()) {
-        self.duration = duration
+    init(interval: Double, handler: () -> ()) {
+        self.interval = interval
         self.handler = handler
     }
     
     func start() {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(interval,
             target: self,
             selector: Selector("tick"),
             userInfo: nil,
@@ -33,13 +32,7 @@ class Timer {
     }
     
     @objc func tick() {
-        self.elapsedTime++
-        
-        self.handler(elapsedTime)
-        
-        if self.elapsedTime == self.duration {
-            self.stop()
-        }
+        self.handler()
     }
     
     deinit {
