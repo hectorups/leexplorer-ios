@@ -36,7 +36,7 @@ struct AppConstant {
     
     static let MAX_BEACON_PROXIMITY = 25.0
     
-    static let FEEDBACK_EMAIL = "hector@leexplorer.com"
+    static let FEEDBACK_EMAIL = "feedback@leexplorer.com"
 }
 
 enum Segue: String {
