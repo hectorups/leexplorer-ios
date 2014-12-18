@@ -66,6 +66,12 @@
 #define COCOAPODS_VERSION_MINOR_CHTCollectionViewWaterfallLayout 8
 #define COCOAPODS_VERSION_PATCH_CHTCollectionViewWaterfallLayout 0
 
+// COSTouchVisualizer
+#define COCOAPODS_POD_AVAILABLE_COSTouchVisualizer
+#define COCOAPODS_VERSION_MAJOR_COSTouchVisualizer 1
+#define COCOAPODS_VERSION_MINOR_COSTouchVisualizer 0
+#define COCOAPODS_VERSION_PATCH_COSTouchVisualizer 3
+
 // Cloudinary
 #define COCOAPODS_POD_AVAILABLE_Cloudinary
 #define COCOAPODS_VERSION_MAJOR_Cloudinary 1

@@ -17,3 +17,4 @@
 #import <TWRDownloadManager/TWRDownloadManager.h>
 #import <MRProgress/MRProgress.h>
 #import <SwipeView/SwipeView.h>
+#import <COSTouchVisualizer/COSTouchVisualizerWindow.h>

@@ -14,14 +14,17 @@ import CoreBluetooth
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
     var notificationManager = NotificationManager()
+    lazy var window: COSTouchVisualizerWindow? = {
+        COSTouchVisualizerWindow(frame: UIScreen.mainScreen().bounds)
+    }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         LELog.d("APP VERSION: \(AppConstant.CLIENT_VERSION)")
         
         setup3rdPartyPlugins() // This has to be first
+        setupCosTouch()
         setupLocationService()
         setupReachability()
         setupNotifications()
@@ -38,6 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Setups
+    func setupCosTouch() {
+        window?.strokeColor = ColorPallete.Blue.get()
+        window?.fillColor = ColorPallete.Blue.get()
+        window?.rippleStrokeColor = ColorPallete.Blue.get()
+        window?.rippleFillColor = ColorPallete.Blue.get()
+    }
     
     func setupLocationService() {
         LocationService.shared.requestLocation()
