@@ -86,6 +86,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
             if let strongSelf = self {
                 strongSelf.autoPlayButton.hidden = false
                 strongSelf.autoPlayButton.alpha = 1.0
+                strongSelf.autoPlayIcon.hidden = false
             }
         }
         
