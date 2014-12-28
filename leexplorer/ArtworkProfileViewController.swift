@@ -81,8 +81,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             mediaPlayerBottomConstraint.constant = -1 * mediaPlayerView.bounds.height
         } else {
             mediaPlayerView.paused = MediaPlayerService.shared.paused
-            let time = MediaPlayerService.shared.time!
-            let duration = MediaPlayerService.shared.duration!
+            let time = MediaPlayerService.shared.time? ?? 0.0
+            let duration = MediaPlayerService.shared.duration? ?? 0.0
             self.showMediaPlayerTime(time, duration: duration)
         }
     }

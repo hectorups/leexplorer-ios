@@ -38,14 +38,17 @@ class MediaPlayerView: NibDesignable {
     
     var paused: Bool! {
         didSet {
-            var image = UIImage(named: "pause_icon") as UIImage?
+            var imageName = "pause_icon";
             if let paused = self.paused{
                 if paused {
-                    image = UIImage(named: "play_icon") as UIImage?
+                    imageName = "play_icon"
                 }
             }
             
-            playButton.setImage(image, forState: .Normal)
+            let image = UIImage(named: imageName) as UIImage?
+            playButton.setImage(image!.fixTemplateImage(), forState: .Normal)
+            playButton.tintColor = ColorPallete.Blue.get()
+            
         }
     }
     
