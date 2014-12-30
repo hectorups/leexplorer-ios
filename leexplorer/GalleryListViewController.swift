@@ -18,6 +18,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     var galleries: [Gallery] = []
     var notificationManager = NotificationManager()
     var waitingForLocation = true
+    var refreshControl: UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,15 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.backgroundColor = ColorPallete.AppBg.get()
         tableView.delegate = self
         tableView.dataSource = self
+        let refreshAttributes = [
+            NSForegroundColorAttributeName: ColorPallete.Blue.get()
+        ]
+        var title = NSMutableAttributedString(string: NSLocalizedString("GALLERY_PULL_TO_REFRESH", comment: ""))
+        title.setAttributes(refreshAttributes, range: NSMakeRange(0, title.length))
+        refreshControl.attributedTitle = title
+        refreshControl.addTarget(self, action: "onPullToRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.tintColor = ColorPallete.Blue.get()
+        tableView.addSubview(refreshControl)
         
         let cellNib = UINib(nibName: "GalleryCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "GalleryCell")
@@ -71,6 +81,10 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         return GALLERY_CELL_HEIGHT
     }
     
+    func onPullToRefresh() {
+        loadGalleries()
+    }
+    
     // MARK: - Load Galleries
     
     func loadGalleries() {
@@ -86,14 +100,18 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
         let galleries = Gallery.allGalleries().filter(){ $0.downloadedAt() != nil }
         LELog.d("galleries found in db: \(galleries.count)")
         sortAndShowGalleries(galleries)
+        self.refreshControl.endRefreshing()
     }
     
     func loadGalleriesFromAPI() {
-        progressStartAnimatingWithTitle(NSLocalizedString("LOADING_GALLERIES", comment: ""))
+        if !refreshControl.refreshing {
+            progressStartAnimatingWithTitle(NSLocalizedString("LOADING_GALLERIES", comment: ""))
+        }
         LeexplorerApi.shared.getGalleries({ (galleries) -> Void in
             LELog.d(galleries.count)
             self.sortAndShowGalleries(galleries)
             self.progressStopAnimating()
+            self.refreshControl.endRefreshing()
         }, failure: { (operation, error) -> Void in
             LELog.e(error)
             self.loadGalleriesFromDB()

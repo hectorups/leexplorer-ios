@@ -16,6 +16,7 @@
 // Gallery List VC
 "LOADING_GALLERIES" = "Cargando galerías...";
 "GALLERY_LIST_TITLE" = "Galerías Leexplorer";
+"GALLERY_PULL_TO_REFRESH" = "Recargar galerías";
 
 // Gallery Profile VC
 "HOURS" = "Horas de apertura";
