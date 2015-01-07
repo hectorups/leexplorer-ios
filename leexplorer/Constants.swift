@@ -12,11 +12,11 @@ struct AppConstant {
 
     #if DEBUG
         static let DEBUG = true
-        static let LEEXPLORER_ENDPOINT = "http://leexplorer.herokuapp.com"
+        static let LEEXPLORER_ENDPOINT = "http://api.leexplorer.com"
         static let OFFLINE_MODE = false
     #else
         static let DEBUG = false
-        static let LEEXPLORER_ENDPOINT = "https://leexplorer.herokuapp.com"
+        static let LEEXPLORER_ENDPOINT = "https://api.leexplorer.com"
         static let OFFLINE_MODE = false
     #endif
 
