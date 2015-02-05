@@ -26,7 +26,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>599</string>
+	<string>609</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -55,10 +55,7 @@
 	<string>Discover artworks when you are near them</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>bluetooth-central</string>
-		<string>external-accessory</string>
 		<string>fetch</string>
-		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
