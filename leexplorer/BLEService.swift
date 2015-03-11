@@ -54,7 +54,7 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
     
     func isAuthorized() -> Bool {
         let currentStatus = CLLocationManager.authorizationStatus()
-        return currentStatus == .AuthorizedWhenInUse || currentStatus == .Authorized
+        return currentStatus == CLAuthorizationStatus.AuthorizedWhenInUse || currentStatus == CLAuthorizationStatus.AuthorizedAlways
     }
     
     
