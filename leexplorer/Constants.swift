@@ -37,6 +37,8 @@ struct AppConstant {
     static let MAX_BEACON_PROXIMITY = 25.0
     
     static let FEEDBACK_EMAIL = "feedback@leexplorer.com"
+    
+    static let PLACEHOLDER_NAME = "placeholder-pattern-gray"
 }
 
 enum Segue: String {

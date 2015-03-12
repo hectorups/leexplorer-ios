@@ -44,7 +44,6 @@ extension UIImageView {
         let imageUrl = MediaProcessor.urlForImageFill(image, width: width, height: height)
         let urlRequest = NSURLRequest(URL: imageUrl)
         
-        
         // Cached ?
         if let cachedImage = UIImageView.sharedImageCache().cachedImageForRequest(urlRequest) {
             block(image: cachedImage)
@@ -73,7 +72,7 @@ extension UIImageView {
         } else {
             //LELog.d("image loaded from net")
             self.setImageWithURLRequest(NSURLRequest(URL: imageUrl)
-                , placeholderImage: nil
+                , placeholderImage: UIImage(named: AppConstant.PLACEHOLDER_NAME)!
                 , success: {(request, response, uiImage) -> Void in
                     if self.imageLoading == image {
                         block(image: uiImage)
