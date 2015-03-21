@@ -59,7 +59,7 @@ class MediaPlayerView: NibDesignable {
         
         progressSlider.tintColor = self.tintColor
         
-        if NSClassFromString("UIBlurEffect") != nil {
+        if NSClassFromString("UIBlurEffect") != nil && SDKVersion.greaterOrEqualTo("8.0") {
             blurBg()
         } else {
             self.backgroundColor = ColorPallete.White.get()
