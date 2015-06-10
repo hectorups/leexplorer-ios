@@ -11,7 +11,7 @@ import Foundation
 class SDKVersion {
     
     class func greaterOrEqualTo(version: NSString) -> Bool {
-        return UIDevice.currentDevice().systemVersion.compare(version,
+        return UIDevice.currentDevice().systemVersion.compare(version as String,
             options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
     }
     

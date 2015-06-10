@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50639E2347B4C9610E85F6F3 /* libPods.a */; };
 		95112EE21A34269C00F83138 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95112EE11A34269C00F83138 /* Realm.framework */; };
 		95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95112EE31A3426B400F83138 /* RLMSupport.swift */; };
 		952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952715541A2ED001008D43EF /* Crashlytics.framework */; };
@@ -43,12 +42,14 @@
 		9574A3701A24526A00399531 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9574A36F1A24526A00399531 /* Gallery.swift */; };
 		959A9D281A327786002FBFB6 /* AutoPlayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A9D271A327786002FBFB6 /* AutoPlayService.swift */; };
 		95A459F11A3146EF00CCF6FA /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A459F01A3146EF00CCF6FA /* Timer.swift */; };
-		95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93771A27A5ED001F4DD9 /* MKButton.swift */; };
-		95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93781A27A5ED001F4DD9 /* MKColor.swift */; };
-		95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD93791A27A5ED001F4DD9 /* MKLayer.swift */; };
-		95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */; };
-		95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */; };
 		95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AD937D1A27A5ED001F4DD9 /* NibDesignable.swift */; };
+		95B421441B28DE62003AAACC /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4213D1B28DE62003AAACC /* MKButton.swift */; };
+		95B421451B28DE62003AAACC /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4213E1B28DE62003AAACC /* MKColor.swift */; };
+		95B421461B28DE62003AAACC /* MKImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B4213F1B28DE62003AAACC /* MKImageView.swift */; };
+		95B421471B28DE62003AAACC /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B421401B28DE62003AAACC /* MKLabel.swift */; };
+		95B421481B28DE62003AAACC /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B421411B28DE62003AAACC /* MKLayer.swift */; };
+		95B421491B28DE62003AAACC /* MKTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B421421B28DE62003AAACC /* MKTableViewCell.swift */; };
+		95B4214A1B28DE62003AAACC /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B421431B28DE62003AAACC /* MKTextField.swift */; };
 		95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */; };
 		95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */; };
 		95B7D27E1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */; };
@@ -78,6 +79,7 @@
 		95F78E811A2CEEB1009F8554 /* MediaPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F78E801A2CEEB1009F8554 /* MediaPlayerView.xib */; };
 		95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F78E981A2EA08D009F8554 /* EventReporter.swift */; };
 		95FB6BA81A3E4438008063D2 /* CLBeacon+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB6BA71A3E4438008063D2 /* CLBeacon+Extensions.swift */; };
+		C0F44ED4526B9A836C3ACEE4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 928D1E9CC4660DD04A86DB8A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +95,7 @@
 /* Begin PBXFileReference section */
 		44558FA7805968D613F04293 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		499297CF2F19DE4C5A5B4425 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		50639E2347B4C9610E85F6F3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		928D1E9CC4660DD04A86DB8A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		95112EE11A34269C00F83138 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		95112EE31A3426B400F83138 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RLMSupport.swift; path = ../RLMSupport.swift; sourceTree = "<group>"; };
 		952715541A2ED001008D43EF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -135,12 +137,14 @@
 		9574A36F1A24526A00399531 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		959A9D271A327786002FBFB6 /* AutoPlayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayService.swift; sourceTree = "<group>"; };
 		95A459F01A3146EF00CCF6FA /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		95AD93771A27A5ED001F4DD9 /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
-		95AD93781A27A5ED001F4DD9 /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
-		95AD93791A27A5ED001F4DD9 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
-		95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
-		95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		95AD937D1A27A5ED001F4DD9 /* NibDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibDesignable.swift; sourceTree = "<group>"; };
+		95B4213D1B28DE62003AAACC /* MKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
+		95B4213E1B28DE62003AAACC /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKColor.swift; sourceTree = "<group>"; };
+		95B4213F1B28DE62003AAACC /* MKImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImageView.swift; sourceTree = "<group>"; };
+		95B421401B28DE62003AAACC /* MKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLabel.swift; sourceTree = "<group>"; };
+		95B421411B28DE62003AAACC /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		95B421421B28DE62003AAACC /* MKTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTableViewCell.swift; sourceTree = "<group>"; };
+		95B421431B28DE62003AAACC /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		95B7D2791A26D8D000F0764C /* ArtworkProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkProfileViewController.swift; sourceTree = "<group>"; };
 		95B7D27B1A26EC4800F0764C /* ArtworkProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkProfileHeaderView.swift; sourceTree = "<group>"; };
 		95B7D27D1A26EC8D00F0764C /* ArtworkProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtworkProfileHeaderView.xib; sourceTree = "<group>"; };
@@ -192,8 +196,8 @@
 				95F78E7D1A2AB029009F8554 /* MediaPlayer.framework in Frameworks */,
 				952715561A2ED001008D43EF /* Crashlytics.framework in Frameworks */,
 				95CABB041A2AA55B00F354B2 /* AVFoundation.framework in Frameworks */,
-				5CC4D440937A5D576C300EAA /* libPods.a in Frameworks */,
 				952715571A2ED001008D43EF /* Fabric.framework in Frameworks */,
+				C0F44ED4526B9A836C3ACEE4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +223,8 @@
 				95F78E7C1A2AB029009F8554 /* MediaPlayer.framework */,
 				95CABB031A2AA55B00F354B2 /* AVFoundation.framework */,
 				95D00FFD1A25B11700E3B655 /* QuartzCore.framework */,
-				50639E2347B4C9610E85F6F3 /* libPods.a */,
 				B18F21E57C7947C4584BA14B /* libPods-leexplorer.a */,
+				928D1E9CC4660DD04A86DB8A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -374,24 +378,11 @@
 		9574A3651A2440F100399531 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				95B4213C1B28DE62003AAACC /* MaterialKit */,
 				95112EE31A3426B400F83138 /* RLMSupport.swift */,
-				95AD93761A27A5ED001F4DD9 /* MaterialKit */,
 				95AD937C1A27A5ED001F4DD9 /* NibDesignable */,
 			);
 			name = Libs;
-			sourceTree = "<group>";
-		};
-		95AD93761A27A5ED001F4DD9 /* MaterialKit */ = {
-			isa = PBXGroup;
-			children = (
-				95AD93771A27A5ED001F4DD9 /* MKButton.swift */,
-				95AD93781A27A5ED001F4DD9 /* MKColor.swift */,
-				95AD93791A27A5ED001F4DD9 /* MKLayer.swift */,
-				95AD937A1A27A5ED001F4DD9 /* MKTableViewCell.swift */,
-				95AD937B1A27A5ED001F4DD9 /* MKTextField.swift */,
-			);
-			name = MaterialKit;
-			path = Libs/MaterialKit;
 			sourceTree = "<group>";
 		};
 		95AD937C1A27A5ED001F4DD9 /* NibDesignable */ = {
@@ -401,6 +392,20 @@
 			);
 			name = NibDesignable;
 			path = Libs/NibDesignable;
+			sourceTree = "<group>";
+		};
+		95B4213C1B28DE62003AAACC /* MaterialKit */ = {
+			isa = PBXGroup;
+			children = (
+				95B4213D1B28DE62003AAACC /* MKButton.swift */,
+				95B4213E1B28DE62003AAACC /* MKColor.swift */,
+				95B4213F1B28DE62003AAACC /* MKImageView.swift */,
+				95B421401B28DE62003AAACC /* MKLabel.swift */,
+				95B421411B28DE62003AAACC /* MKLayer.swift */,
+				95B421421B28DE62003AAACC /* MKTableViewCell.swift */,
+				95B421431B28DE62003AAACC /* MKTextField.swift */,
+			);
+			path = MaterialKit;
 			sourceTree = "<group>";
 		};
 		95CABB001A2AA46B00F354B2 /* Services */ = {
@@ -625,24 +630,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B421471B28DE62003AAACC /* MKLabel.swift in Sources */,
 				95449A291A365BE90077657F /* UINavigationController+Progress.swift in Sources */,
 				95D010021A266BD200E3B655 /* ArtworkListViewController.swift in Sources */,
+				95B421481B28DE62003AAACC /* MKLayer.swift in Sources */,
 				95E2831C1A33858500BF37FB /* OverShareHelper.m in Sources */,
 				95CABB021A2AA47F00F354B2 /* MediaPlayerService.swift in Sources */,
-				95AD93801A27A5ED001F4DD9 /* MKLayer.swift in Sources */,
 				9574A3621A2430CF00399531 /* Constants.swift in Sources */,
 				95CD75481A25369200974B3C /* MediaProcessor.swift in Sources */,
 				9527155B1A2EDF58008D43EF /* SDKVersion.swift in Sources */,
+				95B4214A1B28DE62003AAACC /* MKTextField.swift in Sources */,
 				95D00FF91A2588B200E3B655 /* GalleryProfileHeaderView.swift in Sources */,
 				95B7D2801A279C8E00F0764C /* NSDateFormatter+leShared.swift in Sources */,
 				9539DFF71A30FCAF002E32AE /* NotificationManager.swift in Sources */,
 				9527155D1A2F89D5008D43EF /* UIButton+Extensions.swift in Sources */,
 				95AD93831A27A5ED001F4DD9 /* NibDesignable.swift in Sources */,
+				95B421441B28DE62003AAACC /* MKButton.swift in Sources */,
 				95B7D27C1A26EC4800F0764C /* ArtworkProfileHeaderView.swift in Sources */,
 				9574A3701A24526A00399531 /* Gallery.swift in Sources */,
+				95B421491B28DE62003AAACC /* MKTableViewCell.swift in Sources */,
+				95B421451B28DE62003AAACC /* MKColor.swift in Sources */,
 				955CD8591A35214500653B6D /* PersistantManager.swift in Sources */,
 				9574A3641A243CBC00399531 /* LELog.swift in Sources */,
-				95AD93821A27A5ED001F4DD9 /* MKTextField.swift in Sources */,
 				95449A2B1A366B2A0077657F /* UIViewController+Progress.swift in Sources */,
 				95E283181A32F3C700BF37FB /* UIImage+Extensions.swift in Sources */,
 				95112EE41A3426B400F83138 /* RLMSupport.swift in Sources */,
@@ -656,6 +665,7 @@
 				95D0100D1A26A3A700E3B655 /* ArtworkCollectionViewCell.swift in Sources */,
 				955936291A3107BE007CAD89 /* BLEService.swift in Sources */,
 				95F78E7F1A2CECC6009F8554 /* MediaPlayerView.swift in Sources */,
+				95B421461B28DE62003AAACC /* MKImageView.swift in Sources */,
 				9574A3691A24417400399531 /* GalleryCell.swift in Sources */,
 				9574A3351A24261B00399531 /* AppDelegate.swift in Sources */,
 				95F78E991A2EA08D009F8554 /* EventReporter.swift in Sources */,
@@ -664,13 +674,10 @@
 				95D00FF51A256BD700E3B655 /* ProfileSectionCell.swift in Sources */,
 				95D0100B1A268E2F00E3B655 /* NSDate+leDateFromString.swift in Sources */,
 				9574A3601A24301F00399531 /* LeexplorerApi.swift in Sources */,
-				95AD937F1A27A5ED001F4DD9 /* MKColor.swift in Sources */,
 				959A9D281A327786002FBFB6 /* AutoPlayService.swift in Sources */,
 				95CD75461A24FBEE00974B3C /* Image.swift in Sources */,
 				95D010061A266FBB00E3B655 /* Artwork.swift in Sources */,
-				95AD93811A27A5ED001F4DD9 /* MKTableViewCell.swift in Sources */,
 				95C4337F1A3A190400629540 /* SettingsTableViewController.swift in Sources */,
-				95AD937E1A27A5ED001F4DD9 /* MKButton.swift in Sources */,
 				95FB6BA81A3E4438008063D2 /* CLBeacon+Extensions.swift in Sources */,
 				95D00FE21A25439C00E3B655 /* ColorPalette.swift in Sources */,
 				95B7D27A1A26D8D000F0764C /* ArtworkProfileViewController.swift in Sources */,

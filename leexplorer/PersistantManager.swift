@@ -39,7 +39,7 @@ class PersistantManager {
         let results = T.allObjects()
         var collection = [T]()
         for result in results {
-            collection.append(result as T)
+            collection.append(result as! T)
         }
         
         return collection

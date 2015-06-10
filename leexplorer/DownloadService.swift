@@ -93,7 +93,7 @@ class DownloadService {
         
         let data = ["galleryId": gallery.id , "progress": progress ]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.DownloadProgress.rawValue,
-            object: self, userInfo: data)
+            object: self, userInfo: data as [NSObject : AnyObject])
     }
     
     func createFolder(name: String) -> NSURL? {

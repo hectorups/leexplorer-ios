@@ -39,12 +39,6 @@ extern "C" {
 
 extern NSString *const kGTMOAuth2KeychainErrorDomain;
 
-// Notifications that the view controller is swapping out and back in cookies.
-// Apps may use this to avoid relying on the cookie store while view controller
-// has them swapped out.
-extern NSString *const kGTMOAuth2CookiesWillSwapOut;
-extern NSString *const kGTMOAuth2CookiesDidSwapIn;
-
 #ifdef __cplusplus
 }
 #endif
@@ -181,8 +175,8 @@ typedef void (^GTMOAuth2ViewControllerCompletionHandler)(GTMOAuth2ViewController
 
 // if set, cookies are deleted for this URL when the view is hidden
 //
-// This is now vestigial and ignored; all cookies are temporarily removed
-// from cookie storage when sign-in begins.
+// For Google sign-ins, this is set by default to https://google.com/accounts
+// but it may be explicitly set to nil to disable clearing of browser cookies
 @property (nonatomic, retain) NSURL *browserCookiesURL;
 
 // userData is retained for the convenience of the caller

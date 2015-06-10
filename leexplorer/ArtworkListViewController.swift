@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 leexplorer. All rights reserved.
 //
 
-import UIkit
+import UIKit
 import CoreLocation
 
 class ArtworkListViewController: UIViewController, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
@@ -47,9 +47,8 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         autoPlayButton.cornerRadius = 40.0
         autoPlayButton.backgroundLayerCornerRadius = 40.0
         autoPlayButton.maskEnabled = false
-        autoPlayButton.circleGrowRatioMax = 1.75
         autoPlayButton.rippleLocation = .Center
-        autoPlayButton.aniDuration = 0.85
+        autoPlayButton.rippleAniDuration = 0.85
         autoPlayButton.fixTemplateImage()
         autoPlayButton.tintColor = ColorPallete.Blue.get()
         
@@ -73,7 +72,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     func setupNotifications() {
         notificationManager.registerObserverType(.BeaconsFound) { [weak self] (notification) -> Void in
             if let strongSelf = self {
-                strongSelf.beacons = notification.userInfo!["beacons"] as [CLBeacon]
+                strongSelf.beacons = notification.userInfo!["beacons"] as! [CLBeacon]
                 
                 if strongSelf.waitingForBeacons && strongSelf.beacons.count > 0 {
                     strongSelf.waitingForBeacons = false
@@ -94,7 +93,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
         
         let audioNotifications: [AppNotification] = [.AudioStarted, .AudioCompleted, .AudioPaused, .AudioResumed]
         notificationManager.registerObserverType(audioNotifications) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 strongSelf.updateCellPlayingforArtwork()
             }
@@ -102,7 +101,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func setupCollectionView() {
-        var layout = artworksCollectionView.collectionViewLayout as CHTCollectionViewWaterfallLayout
+        var layout = artworksCollectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         layout.columnCount = 2
         layout.minimumColumnSpacing = 2
         layout.minimumInteritemSpacing = 1
@@ -177,7 +176,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArtworkCollectionViewCell", forIndexPath: indexPath) as ArtworkCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ArtworkCollectionViewCell", forIndexPath: indexPath) as! ArtworkCollectionViewCell
         
         let artwork = artworks[indexPath.row]
         cell.artwork = artwork
@@ -188,18 +187,18 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ArtworkCollectionViewCell
         cell.startAnimating()
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ArtworkCollectionViewCell
         cell.startAnimating()
     }
     
     
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as ArtworkCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ArtworkCollectionViewCell
         cell.startAnimating()
     }
     
@@ -207,8 +206,8 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segue.ShowArtworkProfile.rawValue {
-            var controller = segue.destinationViewController as ArtworkProfileViewController
-            let cell = sender as ArtworkCollectionViewCell
+            var controller = segue.destinationViewController as! ArtworkProfileViewController
+            let cell = sender as! ArtworkCollectionViewCell
             controller.artwork = cell.artwork
             controller.gallery = gallery
         }
@@ -233,7 +232,7 @@ class ArtworkListViewController: UIViewController, UICollectionViewDataSource, C
     
     func updateCellPlayingforArtwork() {
         for cell in artworksCollectionView.visibleCells() {
-            let artworkCell = cell as ArtworkCollectionViewCell
+            let artworkCell = cell as! ArtworkCollectionViewCell
             artworkCell.playingUpdateStatus()
         }
     }

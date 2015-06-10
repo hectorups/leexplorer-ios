@@ -22,11 +22,11 @@ class Image: RLMObject {
     
     class func createFromJSON(data: NSDictionary) -> Image {
         var image = Image()
-        image.publicId = data["public_id"] as String
-        image.height = data["height"] as Int
-        image.width = data["width"] as Int
-        image.format = data["format"] as String
-        image.bytes = data["bytes"] as Int
+        image.publicId = data["public_id"] as! String
+        image.height = data["height"] as! Int
+        image.width = data["width"] as! Int
+        image.format = data["format"] as! String
+        image.bytes = data["bytes"] as! Int
         
         return image
     }

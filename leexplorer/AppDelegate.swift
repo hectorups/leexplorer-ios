@@ -12,10 +12,10 @@ import Crashlytics
 import CoreBluetooth
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, COSTouchVisualizerWindowDelegate {
 
     var notificationManager = NotificationManager()
-    lazy var window: COSTouchVisualizerWindow? = {
+    lazy var window: UIWindow? = {
         COSTouchVisualizerWindow(frame: UIScreen.mainScreen().bounds)
     }()
 
@@ -42,10 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Setups
     func setupCosTouch() {
-        window?.strokeColor = ColorPallete.Blue.get()
-        window?.fillColor = ColorPallete.Blue.get()
-        window?.rippleStrokeColor = ColorPallete.Blue.get()
-        window?.rippleFillColor = ColorPallete.Blue.get()
+        if let cosWindow = window as? COSTouchVisualizerWindow {
+            cosWindow.strokeColor = UIColor(hexString: "#e9e9e9")
+            cosWindow.fillColor = UIColor(hexString: "#333333")
+            cosWindow.rippleStrokeColor = UIColor(hexString: "#e9e9e9")
+            cosWindow.rippleFillColor = UIColor(hexString: "#333333")
+            cosWindow.touchVisualizerWindowDelegate = self
+        }
     }
     
     func setupLocationService() {
@@ -75,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationManager.registerObserverType(.AutoPlayTrackStarted) { [weak self] (notification) in
             LELog.d("appdelegate: autoplay started")
             if let strongSelf = self {
-                let artworkId = notification.userInfo!["artworkId"] as String
+                let artworkId = notification.userInfo!["artworkId"] as! String
                 let artwork = Artwork.findById(artworkId)!
                 strongSelf.notifyNewAudio(artwork)
             }
@@ -131,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func notifyNewAudio(artwork: Artwork) {
         if let window = self.window {
-            let viewController = window.rootViewController as UINavigationController
+            let viewController = window.rootViewController as! UINavigationController
             notifyWighAlert(viewController, artwork: artwork)
         }
     }
@@ -161,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             image: image,
             color: ColorPallete.Blue.get(),
             title: NSLocalizedString("AUTOPLAY_TITLE", comment: ""),
-            subTitle: NSString(format: NSLocalizedString("AUTOPLAY_SUBTITLE", comment: ""), artwork.name),
+            subTitle: NSString(format: NSLocalizedString("AUTOPLAY_SUBTITLE", comment: ""), artwork.name) as String,
             closeButtonTitle: nil,
             duration: 0.0)
     }
@@ -170,6 +173,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
         TWRDownloadManager.sharedManager().backgroundTransferCompletionHandler = completionHandler
+    }
+    
+    // MARK: COSTouchVisualizerWindowDelegate
+    
+    func touchVisualizerWindowShouldAlwaysShowFingertip(window: COSTouchVisualizerWindow!) -> Bool {
+        return true
+    }
+    
+    func touchVisualizerWindowShouldShowFingertip(window: COSTouchVisualizerWindow!) -> Bool {
+        return DEBUG == 1
     }
 
 }

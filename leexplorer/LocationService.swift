@@ -59,7 +59,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         if location.horizontalAccuracy > 0 {
             self.location = location
             locationManager.stopUpdatingLocation()

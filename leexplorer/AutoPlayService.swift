@@ -33,13 +33,13 @@ class AutoPlayService: NSObject {
     func setupNotifications() {
         notificationManager.registerObserverType(.BeaconsFound) { [weak self] (notification) -> Void in
             if let strongSelf = self {
-                var beacons = notification.userInfo!["beacons"] as [CLBeacon]
+                var beacons = notification.userInfo!["beacons"] as! [CLBeacon]
                 strongSelf.findNextArtworkToPlay(beacons)
             }
         }
         
         notificationManager.registerObserverType(.AudioStarted) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 if let artworks = strongSelf.artworks {
                     var artwork = artworks.filter({ (artwork) -> Bool in

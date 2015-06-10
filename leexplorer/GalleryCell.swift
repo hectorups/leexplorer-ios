@@ -64,7 +64,7 @@ class GalleryCell: UITableViewCell, SwipeViewDataSource, SwipeViewDelegate {
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         let screenBounds = UIScreen.mainScreen().bounds
-        let image = gallery.images[UInt(index)] as Image
+        let image = gallery.images[UInt(index)] as! Image
         if view == nil || view.tag != index{
             let rect = CGRectMake(CGFloat(index) * screenBounds.size.width, 0, screenBounds.size.width, height)
             var imageView = UIImageView(frame: rect)

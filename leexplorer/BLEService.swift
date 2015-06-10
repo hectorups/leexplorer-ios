@@ -72,7 +72,7 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
 //        LELog.d("Beacons found: \(beacons.count)")
-        let foundBeacons = (beacons as [CLBeacon])
+        let foundBeacons = (beacons as! [CLBeacon])
         let data = ["beacons": foundBeacons]
         NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.BeaconsFound.rawValue, object: self, userInfo: data)
     }
@@ -81,18 +81,18 @@ class BLEService: NSObject, CBCentralManagerDelegate, CLLocationManagerDelegate 
         // Updated state
         LELog.d("Region state: \(state.rawValue)")
         if state == .Inside {
-            locationManager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+            locationManager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         }
     }
     
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         LELog.d("enter region \(region.identifier)")
-        locationManager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+        locationManager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         LELog.d("exit region \(region.identifier)")
-        locationManager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+        locationManager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {

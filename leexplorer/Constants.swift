@@ -7,8 +7,8 @@
 //
 
 struct AppConstant {
-    static let App = UIApplication.sharedApplication().delegate as AppDelegate
-    static let CLIENT_VERSION = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+    static let App = UIApplication.sharedApplication().delegate as! AppDelegate
+    static let CLIENT_VERSION = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
 
     #if DEBUG
         static let DEBUG = true

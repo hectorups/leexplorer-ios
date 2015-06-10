@@ -90,7 +90,7 @@ class MediaPlayerView: NibDesignable {
         let roundedMinutes = lroundf(minutes)
         let roundedSeconds = lroundf(seconds)
         
-        return NSString(format: "%ld:%02ld", roundedMinutes, roundedSeconds)
+        return NSString(format: "%ld:%02ld", roundedMinutes, roundedSeconds) as String
     }
     
     @IBAction func didTabPlayButton(sender: AnyObject) {

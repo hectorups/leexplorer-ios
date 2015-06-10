@@ -70,7 +70,7 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("GalleryCell") as GalleryCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("GalleryCell") as! GalleryCell
         cell.height = GALLERY_CELL_HEIGHT
         cell.gallery = self.galleries[indexPath.row]
         cell.delegate = self
@@ -144,8 +144,8 @@ class GalleryListViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segue.ShowGalleryProfile.rawValue {
-            var controller = segue.destinationViewController as GalleryProfileViewController
-            var cell = sender as GalleryCell
+            var controller = segue.destinationViewController as! GalleryProfileViewController
+            var cell = sender as! GalleryCell
             controller.gallery = cell.gallery
         }
     }

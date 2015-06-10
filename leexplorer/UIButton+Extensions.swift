@@ -10,7 +10,7 @@ import Foundation
 
 extension UIButton {
     func fixTemplateImage() {
-        if let image = imageView?.image? {
+        if let image = imageView?.image {
             setImage(
                 image.fixTemplateImage(),
                 forState: .Normal)

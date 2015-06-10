@@ -81,8 +81,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
             mediaPlayerBottomConstraint.constant = -1 * mediaPlayerView.bounds.height
         } else {
             mediaPlayerView.paused = MediaPlayerService.shared.paused
-            let time = MediaPlayerService.shared.time? ?? 0.0
-            let duration = MediaPlayerService.shared.duration? ?? 0.0
+            let time = MediaPlayerService.shared.time ?? 0.0
+            let duration = MediaPlayerService.shared.duration ?? 0.0
             self.showMediaPlayerTime(time, duration: duration)
         }
     }
@@ -93,9 +93,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         playButton.cornerRadius = 40.0
         playButton.backgroundLayerCornerRadius = 40.0
         playButton.maskEnabled = false
-        playButton.circleGrowRatioMax = 1.75
         playButton.rippleLocation = .Center
-        playButton.aniDuration = 0.85
+        playButton.rippleAniDuration = 0.85
         playButton.fixTemplateImage()
         playButton.tintColor = ColorPallete.Blue.get()
         
@@ -145,8 +144,8 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     
     func setupNotifications() {
         notificationManager.registerObserverType(.AudioProgressUpdate) { [weak self] (notification) -> Void in
-            var time = notification.userInfo!["time"] as Float
-            var duration = notification.userInfo!["duration"] as Float
+            var time = notification.userInfo!["time"] as! Float
+            var duration = notification.userInfo!["duration"] as! Float
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
                     strongSelf.showMediaPlayerTime(time, duration: duration)
@@ -155,7 +154,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         }
         
         notificationManager.registerObserverType(.AudioStarted) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
                     strongSelf.mediaPlayerAudioStarted()
@@ -164,7 +163,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         }
         
         notificationManager.registerObserverType(.AudioCompleted) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
                     strongSelf.mediaPlayerAudioCompleted()
@@ -173,7 +172,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         }
         
         notificationManager.registerObserverType(.AudioPaused) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
                     strongSelf.mediaPlayerAudioPaused()
@@ -182,7 +181,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
         }
         
         notificationManager.registerObserverType(.AudioResumed) { [weak self] (notification) -> Void in
-            var artworkId = notification.userInfo!["artworkId"] as String
+            var artworkId = notification.userInfo!["artworkId"] as! String
             if let strongSelf = self {
                 if MediaPlayerService.shared.isPlayingArtwork(strongSelf.artwork) {
                     strongSelf.mediaPlayerAudioResumed()
@@ -199,7 +198,7 @@ class ArtworkProfileViewController: UIViewController, UITableViewDelegate,
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as ProfileSectionCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as! ProfileSectionCell
         cell.backgroundColor =  ColorPallete.AppBg.get()
         cell.title = NSLocalizedString("DESCRIPTION", comment: "")
         cell.sectionText = artwork.desc

@@ -44,7 +44,7 @@ class MediaProcessor {
     
     private class func urlForImage(image: Image, width: Int, height: Int, crop: Crop, scaleForDevice: Bool = true) -> NSURL {
         var scale = scaleForDevice ? Int(UIScreen.mainScreen().scale) : 1
-        var transformation = CLTransformation.transformation() as CLTransformation
+        var transformation = CLTransformation.transformation() as! CLTransformation
         transformation.setWidthWithInt(Int32(width * scale))
         transformation.setHeightWithInt(Int32(height * scale))
         transformation.crop = crop.rawValue

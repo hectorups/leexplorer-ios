@@ -82,7 +82,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segue.ShowArtworkList.rawValue {
-            var controller = segue.destinationViewController as ArtworkListViewController
+            var controller = segue.destinationViewController as! ArtworkListViewController
             controller.gallery = gallery
         }
     }
@@ -95,9 +95,8 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         downloadButton.cornerRadius = 40.0
         downloadButton.backgroundLayerCornerRadius = 40.0
         downloadButton.maskEnabled = false
-        downloadButton.circleGrowRatioMax = 1.75
         downloadButton.rippleLocation = .Center
-        downloadButton.aniDuration = 0.85
+        downloadButton.rippleAniDuration = 0.85
         downloadButton.fixTemplateImage()
         downloadButton.tintColor = ColorPallete.Blue.get()
         
@@ -115,8 +114,8 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
     func setupNotifications() {
         notificationManager.registerObserverType(.DownloadProgress) { [weak self] (notification) -> Void in
             if let strongSelf = self {
-                let galleryId = notification.userInfo!["galleryId"] as String
-                let progress = notification.userInfo!["progress"] as Float
+                let galleryId = notification.userInfo!["galleryId"] as! String
+                let progress = notification.userInfo!["progress"] as! Float
                 
                 if galleryId == strongSelf.gallery.id {
                     strongSelf.downloadProgress(progress)
@@ -136,7 +135,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
         shareImageView = UIImageView()
-        let imageModel = gallery.images.firstObject() as Image
+        let imageModel = gallery.images.firstObject() as! Image
         shareImageView?.setImageWithImageModel(imageModel
             , width: Int(200)
             , height: Int(200)
@@ -154,7 +153,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
         exploreCollectionButton.titleLabel?.text = NSLocalizedString("EXPLORE_COLLECTION", comment: "")
         exploreCollectionButton.maskEnabled = true
         exploreCollectionButton.rippleLocation = .TapLocation
-        exploreCollectionButton.circleLayerColor = ColorPallete.Blue.get()
+        exploreCollectionButton.backgroundLayerColor = ColorPallete.Blue.get()
     }
     
     func setupTableView() {
@@ -189,7 +188,7 @@ class GalleryProfileViewController: UIViewController, UITableViewDelegate, UITab
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as ProfileSectionCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileSectionCell", forIndexPath: indexPath) as! ProfileSectionCell
         cell.backgroundColor =  ColorPallete.AppBg.get()
         let section = Section(rawValue: indexPath.item)!
         cell.title = section.title()

@@ -30,19 +30,19 @@ class Artwork: RLMObject, Equatable {
     class func createFromJSON(data: NSDictionary) -> Artwork {
         var artwork = Artwork()
         
-        artwork.id = data["id"] as String
+        artwork.id = data["id"] as! String
         if let audioData = data["audio"] as? NSDictionary {
             artwork.audio = Audio.createFromJSON(audioData)
         }
         artwork.author = data["author"] as? String ?? ""
         artwork.desc = data["description"] as? String ?? ""
-        artwork.image = Image.createFromJSON(data["image"] as NSDictionary)
-        artwork.likesCount = data["likes_count"] as Int
-        artwork.name = data["name"] as String
+        artwork.image = Image.createFromJSON(data["image"] as! NSDictionary)
+        artwork.likesCount = data["likes_count"] as! Int
+        artwork.name = data["name"] as! String
         
         artwork.publishedAtString = data["published_at"] as? String ?? ""
         
-        artwork.galleryId = data["gallery_id"] as String
+        artwork.galleryId = data["gallery_id"] as! String
         artwork.major = data["major"] as? Int ?? 0
         artwork.minor = data["minor"] as? Int ?? 0
         
@@ -91,14 +91,14 @@ class Artwork: RLMObject, Equatable {
     class func allFromGallery(gallery: Gallery) -> [Artwork] {
         var artworks = [Artwork]()
         for object in Artwork.objectsWhere("galleryId = '\(gallery.id)'") {
-            artworks.append(object as Artwork)
+            artworks.append(object as! Artwork)
         }
         
         return artworks
     }
     
     class func findById(id: String) -> Artwork? {
-        return Artwork.objectsWhere("id = '\(id)'").firstObject() as Artwork?
+        return Artwork.objectsWhere("id = '\(id)'").firstObject() as! Artwork?
     }
 }
 

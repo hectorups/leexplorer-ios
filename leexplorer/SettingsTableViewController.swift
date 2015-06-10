@@ -21,8 +21,8 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = "handleCloseButton"
         
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
-        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as String
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as! String
         versionLabel.text = "\(version) (\(build))"
     }
     

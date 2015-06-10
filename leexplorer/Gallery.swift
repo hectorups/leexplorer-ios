@@ -37,22 +37,22 @@ class Gallery: RLMObject, Equatable {
     class func createFromJSON(data: NSDictionary) -> Gallery {
         var gallery = Gallery()
         
-        gallery.id =  data["id"] as String
-        gallery.address = data["address"] as String
-        gallery.desc = data["description"] as String
-        gallery.name = data["name"] as String
-        gallery.type = data["type"] as String
-        gallery.latitude = data["latitude"] as Double
-        gallery.longitude = data["longitude"] as Double
+        gallery.id =  data["id"] as! String
+        gallery.address = data["address"] as! String
+        gallery.desc = data["description"] as! String
+        gallery.name = data["name"] as! String
+        gallery.type = data["type"] as! String
+        gallery.latitude = data["latitude"] as! Double
+        gallery.longitude = data["longitude"] as! Double
         
-        gallery.setLanguages(data["languages"] as [String] )
+        gallery.setLanguages(data["languages"] as! [String] )
         
-        gallery.hours = data["hours"] as String
-        gallery.priceDescription = data["price_description"] as String
-        gallery.priceReference = data["price_reference"] as Int
-        gallery.updatedAt = NSDate.leDateFromString(data["updatedAt"] as String)!
+        gallery.hours = data["hours"] as! String
+        gallery.priceDescription = data["price_description"] as! String
+        gallery.priceReference = data["price_reference"] as! Int
+        gallery.updatedAt = NSDate.leDateFromString(data["updatedAt"] as! String)!
         
-        let imagesData = data["images"] as [NSDictionary]
+        let imagesData = data["images"] as! [NSDictionary]
         for imageData in imagesData as [NSDictionary] {
             let image = Image.createFromJSON(imageData)
             gallery.images.addObject(image)
@@ -74,7 +74,7 @@ class Gallery: RLMObject, Equatable {
     }
     
     func downloadedAt() -> NSDate? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(downloadedAtKey()) as NSDate?
+        return NSUserDefaults.standardUserDefaults().objectForKey(downloadedAtKey()) as? NSDate
     }
     
     func setDownloadedAt(date: NSDate) {
@@ -86,7 +86,7 @@ class Gallery: RLMObject, Equatable {
     }
     
     class func findById(id: String) -> Gallery? {
-        return Artwork.objectsWhere("id = '\(id)'").firstObject() as Gallery?
+        return Artwork.objectsWhere("id = '\(id)'").firstObject() as? Gallery
     }
 
 }

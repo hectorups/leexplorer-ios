@@ -39,7 +39,7 @@ class EventReporter {
         attributes.setValue(gallery.id, forKey: EventAttribute.GalleryId.rawValue)
         attributes.setValue(gallery.name, forKey: EventAttribute.GalleryName.rawValue)
         
-        logEvent(.ArtworkAudioPlayed, attributes: attributes)
+        logEvent(.ArtworkAudioPlayed, attributes: attributes as [NSObject : AnyObject])
     }
     
     

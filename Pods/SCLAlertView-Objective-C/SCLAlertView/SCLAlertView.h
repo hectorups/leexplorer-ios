@@ -6,7 +6,11 @@
 //  Copyright (c) 2014 AnyKey Entertainment. All rights reserved.
 //
 
+#if defined(__has_feature) && __has_feature(modules)
+@import UIKit;
+#else
 #import <UIKit/UIKit.h>
+#endif
 #import "SCLButton.h"
 
 typedef NSAttributedString* (^SCLAttributedFormatBlock)(NSString *value);
@@ -26,6 +30,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewStyle)
     Warning,
     Info,
     Edit,
+    Waiting,
     Custom
 };
 
@@ -39,7 +44,9 @@ typedef NS_ENUM(NSInteger, SCLAlertViewHideAnimation)
     SlideOutToBottom,
     SlideOutToTop,
     SlideOutToLeft,
-    SlideOutToRight
+    SlideOutToRight,
+    SlideOutToCenter,
+    SlideOutFromCenter
 };
 
 /** Alert show animation styles
@@ -52,7 +59,9 @@ typedef NS_ENUM(NSInteger, SCLAlertViewShowAnimation)
     SlideInFromBottom,
     SlideInFromTop,
     SlideInFromLeft,
-    SlideInFromRight
+    SlideInFromRight,
+    SlideInFromCenter,
+    SlideInToCenter
 };
 
 /** Alert background styles
@@ -62,7 +71,8 @@ typedef NS_ENUM(NSInteger, SCLAlertViewShowAnimation)
 typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
 {
     Shadow,
-    Blur
+    Blur,
+    Transparent
 };
 
 /** Title Label
@@ -76,6 +86,12 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * Holds the textview.
  */
 @property UITextView *viewText;
+
+/** Activity Indicator
+ *
+ * Holds the activityIndicator.
+ */
+@property UIActivityIndicatorView *activityIndicatorView;
 
 /** Dismiss on tap outside
  *
@@ -96,12 +112,19 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, copy) SCLAttributedFormatBlock attributedFormatBlock;
 
-/** Set button format block.
+/** Set Complete button format block.
  *
- * Holds the button format block. 
- * Support keys : backgroundColor, textColor
+ * Holds the button format block.
+ * Support keys : backgroundColor, borderWidth, borderColor, textColor
  */
 @property (nonatomic, copy) CompleteButtonFormatBlock completeButtonFormatBlock;
+
+/** Set button format block.
+ *
+ * Holds the button format block.
+ * Support keys : backgroundColor, borderWidth, borderColor, textColor
+ */
+@property (nonatomic, copy) ButtonFormatBlock buttonFormatBlock;
 
 /** Hide animation type
  *
@@ -124,6 +147,43 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic) SCLAlertViewBackground backgroundType;
 
+/** Set custom color to SCLAlertView.
+ *
+ * SCLAlertView custom color.
+ * (Buttons, top circle and borders)
+ */
+@property (nonatomic, strong) UIColor *customViewColor;
+
+/** Set custom color to SCLAlertView background.
+ *
+ * SCLAlertView background custom color.
+ */
+@property (nonatomic, strong) UIColor *backgroundViewColor;
+
+/** Set custom tint color for icon image.
+ *
+ * SCLAlertView icon tint color
+ */
+@property (nonatomic, strong) UIColor *iconTintColor;
+
+/** Set custom circle icon height.
+ *
+ * Circle icon height
+ */
+@property (nonatomic) CGFloat circleIconHeight;
+
+/** Set SCLAlertView extension bounds.
+ *
+ * Set new bounds (EXTENSION ONLY)
+ */
+@property (nonatomic) CGRect extensionBounds;
+
+/** Initialize SCLAlertView using a new window.
+ *
+ * Init with new window
+ */
+- (instancetype)initWithNewWindow;
+
 /** Warns that alerts is gone
  *
  * Warns that alerts is gone using block
@@ -136,11 +196,57 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 - (void)hideView;
 
+/** SCLAlertView visibility
+ *
+ * Returns if the alert is visible or not.
+ */
+- (BOOL)isVisible;
+
+/** Remove Top Circle
+ *
+ * Remove top circle from SCLAlertView.
+ */
+- (void)removeTopCircle;
+
 /** Add Text Field
  *
  * @param title The text displayed on the textfield.
  */
 - (UITextField *)addTextField:(NSString *)title;
+
+/** Add a custom Text Field
+ *
+ * @param textField The custom textfield provided by the programmer.
+ */
+- (void)addCustomTextField:(UITextField *)textField;
+
+/** Set SubTitle Height
+ *
+ * @deprecated Deprecated since 0.5.2+ .
+ * @param value Height of scrollable subtitle text field.
+ */
+- (void)setSubTitleHeight:(CGFloat)value __deprecated;
+
+/** Set Title font family and size
+ *
+ * @param titleFontFamily The family name used to displayed the title.
+ * @param size Font size.
+ */
+- (void)setTitleFontFamily:(NSString *)titleFontFamily withSize:(CGFloat)size;
+
+/** Set Text field font family and size
+ *
+ * @param bodyTextFontFamily The family name used to displayed the text field.
+ * @param size Font size.
+ */
+- (void)setBodyTextFontFamily:(NSString *)bodyTextFontFamily withSize:(CGFloat)size;
+
+/** Set Buttons font family and size
+ *
+ * @param buttonsFontFamily The family name used to displayed the buttons.
+ * @param size Font size.
+ */
+- (void)setButtonsTextFontFamily:(NSString *)buttonsFontFamily withSize:(CGFloat)size;
 
 /** Add a Button with a title and a block to handle when the button is pressed.
  *
@@ -174,6 +280,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showSuccess:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showSuccess:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Error SCLAlertView
  *
@@ -184,6 +291,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showError:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showError:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Notice SCLAlertView
  *
@@ -194,6 +302,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showNotice:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showNotice:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Warning SCLAlertView
  *
@@ -204,6 +313,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showWarning:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showWarning:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Info SCLAlertView
  *
@@ -214,6 +324,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showInfo:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showInfo:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Edit SCLAlertView
  *
@@ -224,6 +335,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showEdit:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showEdit:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Show Title SCLAlertView using a predefined type
  *
@@ -235,6 +347,7 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showTitle:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle style:(SCLAlertViewStyle)style closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showTitle:(NSString *)title subTitle:(NSString *)subTitle style:(SCLAlertViewStyle)style closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 /** Shows a custom SCLAlertView without using a predefined type, allowing for a custom image and color to be specified.
  *
@@ -247,6 +360,18 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
  */
 - (void)showCustom:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showCustom:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+
+/** Show Waiting SCLAlertView with UIActityIndicator.
+ *
+ * @param vc The view controller the alert view will be displayed in.
+ * @param title The text displayed on the button.
+ * @param subTitle The subtitle text of the alert view.
+ * @param closeButtonTitle The text for the close button.
+ * @param duration The amount of time the alert will remain on screen until it is automatically dismissed. If automatic dismissal is not desired, set to 0.
+ */
+- (void)showWaiting:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
+- (void)showWaiting:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
 
 @end

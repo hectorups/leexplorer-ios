@@ -33,7 +33,7 @@ class GalleryProfileHeaderView: NibDesignable {
     
     func updateUI() {
         
-        let imageModel = gallery.images.firstObject() as Image
+        let imageModel = gallery.images.firstObject() as! Image
         imageView.setImageWithImageModel(imageModel, width: Int(bounds.width), height: Int(bounds.height)
             , galleryId: gallery.id) { (image) -> Void in
                 self.imageView.image = image
@@ -53,9 +53,9 @@ class GalleryProfileHeaderView: NibDesignable {
     }
     
     func setupGradient() {
-        var layer = infoView.layer as CAGradientLayer
+        var layer = infoView.layer as! CAGradientLayer
         layer.opacity = 0.8
-        let colors: CFArray = [ColorPallete.Black.get().CGColor!, ColorPallete.Clear.get().CGColor!]
+        let colors: [AnyObject] = [ColorPallete.Black.get().CGColor!, ColorPallete.Clear.get().CGColor!]
         layer.colors = colors
         layer.startPoint = CGPoint(x: 0.0, y: 0.5)
         layer.endPoint = CGPoint(x: 1.0, y: 0.5)

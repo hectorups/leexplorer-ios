@@ -42,7 +42,7 @@ class LeexplorerApi: AFHTTPSessionManager {
     // MARK - REQUEST INTERCEPTOR
 
     override func dataTaskWithRequest(request: NSURLRequest!, completionHandler: ((NSURLResponse!, AnyObject!, NSError!) -> Void)!) -> NSURLSessionDataTask! {
-        var mutableRequest = request as NSMutableURLRequest
+        var mutableRequest = request as! NSMutableURLRequest
         
         mutableRequest.addValue("\(AppConstant.CLIENT_NAME)/\(AppConstant.CLIENT_VERSION)",
             forHTTPHeaderField: AppConstant.CLIENT_BUILD_HEADER_KEY)
@@ -58,7 +58,7 @@ class LeexplorerApi: AFHTTPSessionManager {
             
             let jsonToGalleries: () -> [Gallery] = {
                 var galleries: [Gallery] = []
-                for galleryData in collection as [NSDictionary] {
+                for galleryData in collection as! [NSDictionary] {
                     galleries.append(Gallery.createFromJSON(galleryData))
                 }
                 return galleries
@@ -69,7 +69,7 @@ class LeexplorerApi: AFHTTPSessionManager {
             let galleries = jsonToGalleries()
             success(galleries: galleries)
             
-        }, failure)
+        }, failure: failure)
     }
     
     func getGalleryArtworks(gallery: Gallery, success: (artworks: [Artwork]) -> Void, failure: FailHandler) {
@@ -77,7 +77,7 @@ class LeexplorerApi: AFHTTPSessionManager {
             
             let jsonToArtworks: () -> [Artwork] = {
                 var artworks: [Artwork] = []
-                for artworkData in collection as [NSDictionary] {
+                for artworkData in collection as! [NSDictionary] {
                     artworks.append(Artwork.createFromJSON(artworkData))
                 }
                 
@@ -89,7 +89,7 @@ class LeexplorerApi: AFHTTPSessionManager {
             let artworks = jsonToArtworks()
             success(artworks: artworks)
             
-        }, failure)
+        }, failure: failure)
     }
     
     func isInternetReachable() -> Bool {

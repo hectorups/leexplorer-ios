@@ -20,9 +20,9 @@ class Audio: RLMObject {
     
     class func createFromJSON(data: NSDictionary) -> Audio {
         var audio = Audio()
-        audio.locale = data["locale"] as String
-        audio.publicId = data["public_id"] as String
-        audio.bytes = data["bytes"] as Int
+        audio.locale = data["locale"] as! String
+        audio.publicId = data["public_id"] as! String
+        audio.bytes = data["bytes"] as! Int
         
         return audio
     }

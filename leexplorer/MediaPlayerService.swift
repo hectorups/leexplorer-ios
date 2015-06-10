@@ -201,14 +201,14 @@ class MediaPlayerService: NSObject {
                 var playingInfo = NSMutableDictionary(dictionary: MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo)
                 playingInfo.setValue(time, forKey: MPNowPlayingInfoPropertyElapsedPlaybackTime)
                 playingInfo.setValue(rate, forKey: MPNowPlayingInfoPropertyPlaybackRate)
-                MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = playingInfo
+                MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = playingInfo as [NSObject : AnyObject]
                 
                 let data = [
                     "time": time,
                     "duration": duration,
                     "artworkId": strongSelf.artwork!.id
                 ]
-                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioProgressUpdate.rawValue, object: strongSelf, userInfo: data)
+                NSNotificationCenter.defaultCenter().postNotificationName(AppNotification.AudioProgressUpdate.rawValue, object: strongSelf, userInfo: data as [NSObject : AnyObject])
             }
         })
     }
