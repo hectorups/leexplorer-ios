@@ -5,7 +5,7 @@
 #import <Availability.h>
 #import <QuartzCore/QuartzCore.h>
 #import "MPCategoryHelpers.h"
-#import "MPLogging.h"
+#import "MPLogger.h"
 #import "MPSurvey.h"
 #import "MPSurveyNavigationController.h"
 #import "MPSurveyQuestion.h"
@@ -34,6 +34,9 @@
 
 @implementation MPSurveyNavigationController
 
+// Since view is declared as a different class in superclass UIViewController,
+// indicate dynamic to use parent accessors.
+@dynamic view;
 
 - (void)viewDidLoad
 {

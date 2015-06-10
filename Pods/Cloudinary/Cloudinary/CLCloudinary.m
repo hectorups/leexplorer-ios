@@ -12,7 +12,7 @@
 #import "NSString+CLURLEncoding.h"
 #import "NSDictionary+CLUtilities.h"
 
-NSString * const CL_VERSION = @"1.0.12";
+NSString * const CL_VERSION = @"1.0.13";
 
 NSString * const CL_CF_SHARED_CDN = @"d3jpl91pxevbkh.cloudfront.net";
 NSString * const CL_OLD_AKAMAI_SHARED_CDN = @"cloudinary-a.akamaihd.net";
@@ -87,11 +87,18 @@ NSString * const CL_SHARED_CDN = @"res.cloudinary.com";
 
 - (NSString *)cloudinaryApiUrl:(NSString *)action options:(NSDictionary *)options
 {
+    NSMutableArray* components = [NSMutableArray arrayWithCapacity:5];
     NSString *upload_prefix = [self get:@"upload_prefix" options:options defaultValue: @"https://api.cloudinary.com"];
+    [components addObject:upload_prefix];
+    [components addObject:@"v1_1"];
     NSString *cloud_name = [self get:@"cloud_name" options:options defaultValue: nil];
     if (cloud_name == nil)[NSException raise:@"CloudinaryError" format:@"Must supply cloud_name in tag or in configuration"];
-    NSString *resource_type = [options cl_valueForKey:@"resource_type" defaultValue:@"image"];
-    NSArray* components = @[upload_prefix, @"v1_1", cloud_name, resource_type, action];
+    [components addObject:cloud_name];
+    if (![action isEqualToString:@"delete_by_token"]) {
+        NSString *resource_type = [options cl_valueForKey:@"resource_type" defaultValue:@"image"];
+        [components addObject:resource_type];
+    }
+    [components addObject:action];
     return [components componentsJoinedByString:@"/"];
 }
 
@@ -168,23 +175,115 @@ NSString * const CL_SHARED_CDN = @"res.cloudinary.com";
     
 }
 
-- (NSString *)url:(NSString *)source options:(NSDictionary *)options
+- (NSString*) finalizeResourceType:(NSString*)resourceType type:(NSString*)type options:(NSDictionary*) options
+{
+    NSString* urlSuffix = [self get:@"url_suffix" options:options defaultValue:nil];
+    NSNumber* useRootPath = [self get:@"use_root_path" options:options defaultValue:@NO];
+    NSNumber* privateCdn = [self get:@"private_cdn" options:options defaultValue:@NO];
+    NSNumber* shorten = [self get:@"shorten" options:options defaultValue:@NO];
+    if (![privateCdn boolValue]) {
+        if ([urlSuffix length] > 0) {
+            [NSException raise:@"CloudinaryError" format:@"URL Suffix only supported in private CDN"];
+        }
+        if ([useRootPath boolValue]) {
+            [NSException raise:@"CloudinaryError" format:@"Root path only supported in private CDN"];
+        }
+    }
+    
+    NSString* resourceTypeAndType = [NSString stringWithFormat:@"%@/%@", resourceType, type];
+    if ([urlSuffix length] > 0) {
+        if ([resourceTypeAndType isEqualToString:@"image/upload"]) {
+            resourceTypeAndType = @"images";
+        } else if ([resourceTypeAndType isEqualToString:@"raw/upload"]) {
+            resourceTypeAndType = @"files";
+        } else {
+            [NSException raise:@"CloudinaryError" format:@"URL Suffix only supported for image/upload and raw/upload"];
+        }
+    }
+    if ([useRootPath boolValue]) {
+        if ([resourceTypeAndType isEqualToString:@"image/upload"] || [resourceTypeAndType isEqualToString:@"images"]) {
+            resourceTypeAndType = @"";
+        } else {
+            [NSException raise:@"CloudinaryError" format:@"Root path only supported for image/upload"];
+        }
+    }
+    if ([shorten boolValue] && [resourceTypeAndType isEqualToString:@"image/upload"])
+    {
+        resourceTypeAndType = @"iu";
+    }
+    return resourceTypeAndType;
+}
+
+- (NSString*)finalizePrefix:(NSString*)source options:(NSDictionary*)options
 {
     NSString *cloudName = [self get:@"cloud_name" options:options defaultValue:nil];
     if ([cloudName length] == 0) {
         [NSException raise:@"CloudinaryError" format:@"Must supply cloud_name in tag or in configuration"];
     }
-
-    NSString *type = [options cl_valueForKey:@"type" defaultValue:@"upload"];
-    NSString *resourceType = [options cl_valueForKey:@"resource_type" defaultValue:@"image"];
-    NSString *format = [options valueForKey:@"format"];
     NSNumber* secure = [self get:@"secure" options:options defaultValue:@NO];
     NSNumber* privateCdn = [self get:@"private_cdn" options:options defaultValue:@NO];
     NSNumber* cdnSubdomain = [self get:@"cdn_subdomain" options:options defaultValue:@NO];
+    NSNumber* secureCdnSubdomain = [self get:@"secure_cdn_subdomain" options:options defaultValue:nil];
     NSString *secureDistribution = [self get:@"secure_distribution" options:options defaultValue:nil];
     NSString *cname = [self get:@"cname" options:options defaultValue:nil];
+
+    NSMutableString* prefix = [NSMutableString string];
+    BOOL sharedDomain = ![privateCdn boolValue];
+    if ([secure boolValue])
+    {
+        if ([secureDistribution length] == 0 || [secureDistribution isEqualToString:CL_OLD_AKAMAI_SHARED_CDN])
+        {
+            secureDistribution = [privateCdn boolValue] ? [NSString stringWithFormat:@"%@-res.cloudinary.com", cloudName] : CL_SHARED_CDN;
+        }
+        sharedDomain = sharedDomain || [secureDistribution isEqualToString:CL_SHARED_CDN];
+        if (secureCdnSubdomain == nil && sharedDomain) {
+            secureCdnSubdomain = cdnSubdomain;
+        }
+        if ([secureCdnSubdomain boolValue]) {
+            NSString* shardedDomain = [NSString stringWithFormat:@"res-%d.cloudinary.com", [self crc32:source] % 5 + 1];
+            secureDistribution = [secureDistribution stringByReplacingOccurrencesOfString:@"res.cloudinary.com" withString:shardedDomain];
+        }
+
+        [prefix appendFormat:@"https://%@", secureDistribution];
+    }
+    else if ([cname length] > 0)
+    {
+        [prefix appendString:@"http://"];
+        if ([cdnSubdomain boolValue])
+        {
+            [prefix appendFormat:@"a%d.", [self crc32:source] % 5 + 1];
+        }
+        [prefix appendString:cname];
+    }
+    else
+    {
+        [prefix appendString:@"http://"];
+        if ([privateCdn boolValue])
+        {
+            [prefix appendFormat:@"%@-", cloudName];
+        }
+        [prefix appendString:@"res"];
+        if ([cdnSubdomain boolValue])
+        {
+            [prefix appendFormat:@"-%d", [self crc32:source] % 5 + 1];
+        }
+        [prefix appendString:@".cloudinary.com"];
+    }
+    if (sharedDomain)
+    {
+        [prefix appendString:@"/"];
+        [prefix appendString:cloudName];
+    }
+    return prefix;
+}
+
+- (NSString *)url:(NSString *)source options:(NSDictionary *)options
+{
+    NSString *type = [options cl_valueForKey:@"type" defaultValue:@"upload"];
+    NSString *resourceType = [options cl_valueForKey:@"resource_type" defaultValue:@"image"];
+    NSString *format = [options valueForKey:@"format"];
     NSString *version = [CLCloudinary asString:[options cl_valueForKey:@"version" defaultValue:@""]];
-    NSNumber* shorten = [self get:@"shorten" options:options defaultValue:@NO];
+    NSString* urlSuffix = [self get:@"url_suffix" options:options defaultValue:nil];
     NSNumber* signUrl = [self get:@"sign_url" options:options defaultValue:@NO];
     NSString* apiSecret = [self get:@"api_secret" options:options defaultValue:nil];
     if ([signUrl boolValue] && apiSecret == NULL) {
@@ -211,63 +310,7 @@ NSString * const CL_SHARED_CDN = @"res.cloudinary.com";
     NSString *transformationStr = [transformation generate];
     
     if (source == nil) return nil;
-    NSString *originalSource = source;
     
-    if ([source rangeOfString:@"^https?:/.*" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)
-    {
-        if ([type isEqualToString:@"upload"] || [type isEqualToString:@"asset"])
-        {
-            return originalSource;
-        }
-        source = [source cl_smartEncodeUrl:NSUTF8StringEncoding];
-    } else {
-        source = [[source stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] cl_smartEncodeUrl:NSUTF8StringEncoding];        
-        if (format != nil) {
-            source = [NSString stringWithFormat:@"%@.%@", source, format];
-        }
-    }
-    NSMutableString* prefix = [NSMutableString string];
-    BOOL sharedDomain = ![privateCdn boolValue];
-    if ([secure boolValue])
-    {
-        if ([secureDistribution length] == 0 || [secureDistribution isEqualToString:CL_OLD_AKAMAI_SHARED_CDN])
-        {
-            secureDistribution = [privateCdn boolValue] ? [NSString stringWithFormat:@"%@-res.cloudinary.com", cloudName] : CL_SHARED_CDN;
-        }
-        sharedDomain = sharedDomain || [secureDistribution isEqualToString:CL_SHARED_CDN];
-        [prefix appendFormat:@"https://%@", secureDistribution];
-    }
-    else
-    {
-        [prefix appendString:@"http://"];
-        if ([cdnSubdomain boolValue])
-        {
-            [prefix appendFormat:@"a%d.", [self crc32:source] % 5 + 1];
-        }
-        if ([cname length] > 0)
-        {
-            [prefix appendString:cname];
-        }
-        else if ([privateCdn boolValue])
-        {
-            [prefix appendFormat:@"%@-res.cloudinary.com", cloudName];
-        }
-        else
-        {
-            [prefix appendString:@"res.cloudinary.com"];
-        }
-    }
-    if (sharedDomain)
-    {
-        [prefix appendString:@"/"];
-        [prefix appendString:cloudName];
-    }
-
-    if ([shorten boolValue] && [resourceType isEqualToString:@"image"] && [type isEqualToString:@"upload"])
-    {
-        resourceType = @"iu";
-        type = @"";
-    }
     if ([source rangeOfString:@"/"].location != NSNotFound &&
         [source rangeOfString:@"^v[0-9]+/.*" options:NSRegularExpressionSearch].location == NSNotFound &&
         [source rangeOfString:@"^https?:/.*" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location == NSNotFound &&
@@ -280,20 +323,48 @@ NSString * const CL_SHARED_CDN = @"res.cloudinary.com";
     {
         version = [NSString stringWithFormat:@"v%@", version];
     }
-    NSString *rest = [@[transformationStr, version, source] componentsJoinedByString:@"/"];
+
+    NSMutableString *toSign = [NSMutableString string];
+    if ([transformationStr length] > 0) {
+        [toSign appendString:transformationStr];
+        [toSign appendString:@"/"];
+    }
+    if ([source rangeOfString:@"^https?:/.*" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)
+    {
+        source = [source cl_smartEncodeUrl:NSUTF8StringEncoding];
+        [toSign appendString:source];
+    } else {
+        source = [[source stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] cl_smartEncodeUrl:NSUTF8StringEncoding];
+        [toSign appendString:source];
+        if ([urlSuffix length] > 0) {
+            if ([urlSuffix rangeOfString:@"[/\\.]" options:NSRegularExpressionSearch].location != NSNotFound) {
+                [NSException raise:@"CloudinaryError" format:@"url_suffix should not include . or /"];
+            }
+            source = [NSString stringWithFormat:@"%@/%@", source, urlSuffix];
+        }
+        if (format != nil) {
+            source = [NSString stringWithFormat:@"%@.%@", source, format];
+            [toSign appendString:@"."];
+            [toSign appendString:format];
+        }
+    }
+
+    NSString* prefix = [self finalizePrefix:source options:options];
+    NSString* resourceTypeAndType = [self finalizeResourceType:resourceType type:type options:options];
+    
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([^:])\\/+"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:nil];
-    rest = [regex stringByReplacingMatchesInString:rest options:0 range:NSMakeRange(0, [rest length]) withTemplate:@"$1/"];
     NSString* signature = @"";
     if ([signUrl boolValue])
     {
-        NSString *encoded = [self sha1Base64:[rest stringByAppendingString:apiSecret]];
+        [toSign appendString:apiSecret];
+        NSString *encoded = [self sha1Base64:toSign];
 
         signature = [NSString stringWithFormat:@"s--%@--", [encoded substringWithRange:NSMakeRange(0, 8)]];
     }
     
-    NSString *url = [@[prefix, resourceType, type, signature, rest] componentsJoinedByString:@"/"];
+    NSString *url = [@[prefix, resourceTypeAndType, signature, transformationStr, version, source] componentsJoinedByString:@"/"];
     
     return [regex stringByReplacingMatchesInString:url options:0 range:NSMakeRange(0, [url length]) withTemplate:@"$1/"];
 }

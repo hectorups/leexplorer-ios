@@ -15,7 +15,7 @@ For iOS, Cloudinary provides an SDK for simplifying the integration even further
 
 Download the latest SDK version from the following URL: 
 
-[http://res.cloudinary.com/cloudinary/raw/upload/cloudinary_ios_v1.0.12.zip](http://res.cloudinary.com/cloudinary/raw/upload/cloudinary_ios_v1.0.12.zip)
+[http://res.cloudinary.com/cloudinary/raw/upload/cloudinary_ios_v1.0.13.zip](http://res.cloudinary.com/cloudinary/raw/upload/cloudinary_ios_v1.0.13.zip)
     
 
 Extract the ZIP file and drag `libCloudinary.a` to the `Frameworks` folder of your Xcode project. Drag the `Cloudinary` folder that contains all .h include files to your Xcode project.
@@ -126,6 +126,7 @@ Embedding a Facebook profile to match your graphic design is very simple:
                            
 See [our documentation](http://cloudinary.com/documentation/image_transformations) for more information about displaying and transforming images.                                         
 
+*Note: Until version 1.0.11 there was an issue in setWidthWithFloat (and similar methods) that caused round floats to be serialized as integers (e.g. setWidthWithFloat(2.0) => w_2) this was fixed in version 1.0.12.*
 
 ### Upload
 
@@ -196,6 +197,13 @@ You can also specify your own public ID. In the following example the actual dat
 The following example uploads an image based on a given remote URL:
 
     [uploader upload:@"http://cloudinary.com/images/logo.png" options:@{}];
+
+In order to upload a raw file, set the `resource_type` parameter to `raw`:
+
+    CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+    [uploader upload:[self file] options:@{@"resource_type": @"raw"}];
+    
+Alternatively, you can set the `resource_type` parameter to `auto`, as demonstrated in the [blog post](http://cloudinary.com/blog/using_cloudinary_to_manage_all_your_website_s_assets_in_the_cloud).
 
 Instead of implementing the `CLUploaderDelegate` you can provide block parameters for receiving uploading progress and completion events. The following example uploaded a local image while providing `withCompletion` & `andProgress` blocks:
 

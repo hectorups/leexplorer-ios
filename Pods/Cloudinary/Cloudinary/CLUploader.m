@@ -145,6 +145,8 @@
     [params setValue:publicId forKey:@"public_id"];
     [params setValue:[options valueForKey:@"type"] forKey:@"type"];
     [params setValue:[self buildEager:[options valueForKey:@"eager"]] forKey:@"eager"];
+    [params setValue:[options valueForKey:@"eager_notification_url"] forKey:@"eager_notification_url"];
+    [params setValue:[CLCloudinary asBool:[options valueForKey:@"eager_async"]] forKey: @"eager_async"];
     [params setValue:[self buildCustomHeaders:[options valueForKey:@"headers"]] forKey:@"headers"];
     NSArray* tags = [CLCloudinary asArray:[options valueForKey:@"tags"]];
     [params setValue:[tags componentsJoinedByString:@","] forKey:@"tags"];
@@ -249,6 +251,20 @@
     [_responseData setLength:0];
 }
 
+- (void)deleteByToken:(NSString*)token options:(NSDictionary *)options
+{
+    [self deleteByToken:token options:options withCompletion:nil];
+}
+
+- (void)deleteByToken:(NSString*)token options:(NSDictionary *)options withCompletion:(CLUploaderCompletion)completionBlock
+{
+    [self setCompletion:completionBlock andProgress:nil];
+    if (options == nil) options = @{};
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:token forKey:@"token"];
+    
+    [self callApi:@"delete_by_token" file:nil params:params options:options];
+}
+
 // internal
 - (void)callApi:(NSString *)action file:(id)file params:(NSMutableDictionary *)params options:(NSDictionary *)options
 {
@@ -275,7 +291,7 @@
     
     NSString* apiUrl = [_cloudinary cloudinaryApiUrl:action options:options];
 
-    NSURLRequest *req = [self request:apiUrl params:params file:file];
+    NSURLRequest *req = [self request:apiUrl params:params file:file timeout:[options valueForKey:@"timeout"]];
     // create the connection with the request and start loading the data
     if ([[_cloudinary get:@"sync" options:options defaultValue:@NO] boolValue]) {
         NSError* nserror = nil;
@@ -376,13 +392,14 @@
     [postBody appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
-- (NSURLRequest *)request:(NSString *)url params:(NSDictionary *)params file:(id)file
+- (NSURLRequest *)request:(NSString *)url params:(NSDictionary *)params file:(id)file timeout:(NSNumber*)timeout
 {
     NSString *boundary = [_cloudinary randomPublicId];
+    float timeoutInternal = timeout ? [timeout floatValue] : 60.0;
     
     NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
                                                   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                  timeoutInterval:60.0];
+                                                  timeoutInterval:timeoutInternal];
 
     [req setHTTPMethod:@"POST"];
     
@@ -411,7 +428,7 @@
         NSData *data;
         if ([file isKindOfClass:[NSString class]])
         {
-            if ([(NSString *)file rangeOfString:@"^https?:|^s3:|^data:[^;]*;base64,([a-zA-Z0-9/+\n=]+)$" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)
+            if ([(NSString *)file rangeOfString:@"^ftp:|^https?:|^s3:|^data:[^;]*;base64,([a-zA-Z0-9/+\n=]+)$" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)
             {
                 [self encodeParam:postBody param:@"file" paramValue:file boundary:boundary];
                 data = nil;
@@ -498,25 +515,23 @@
     }
     return [contextStrings componentsJoinedByString:@"|"];
 }
-- (NSString *)buildFaceCoordinates:(id) faceCoordinates
+- (NSString *)buildCoordinates:(id) coordinates
 {
-    if (faceCoordinates == nil){
+    if (coordinates == nil){
         return nil;
     }
-    faceCoordinates = [CLCloudinary asArray:faceCoordinates];
-    NSMutableArray* coordinates = [NSMutableArray arrayWithCapacity:[faceCoordinates count]];
-    for (id face in faceCoordinates){
-        if ([face isKindOfClass:[NSString class]])
-        {
-            [coordinates addObject:face];
+    coordinates = [CLCloudinary asArray:coordinates];
+    if ([coordinates count] > 0 && [coordinates[0] isKindOfClass:[NSString class]]) {
+        return [coordinates componentsJoinedByString:@","];
+    } else {
+        NSMutableArray* coordinate_strings = [NSMutableArray arrayWithCapacity:[coordinates count]];
+        for (id tuple in coordinates) {
+            [coordinate_strings addObject:[tuple componentsJoinedByString:@","]];
         }
-        else
-        {
-            [coordinates addObject:[face componentsJoinedByString:@","]];
-        }
+        return [coordinate_strings componentsJoinedByString:@"|"];
     }
-    return [coordinates componentsJoinedByString:@"|"];
 }
+                                    
 - (NSString *)buildCustomHeaders:(id)headers
 {
     if (headers == nil)
@@ -551,7 +566,7 @@
 {
     static NSArray * CL_BOOLEAN_UPLOAD_OPTIONS = nil;
     if (CL_BOOLEAN_UPLOAD_OPTIONS == nil)
-        CL_BOOLEAN_UPLOAD_OPTIONS = @[@"backup", @"exif", @"faces", @"colors", @"image_metadata", @"use_filename", @"unique_filename", @"discard_original_filename", @"eager_async", @"invalidate", @"overwrite", @"phash"];
+        CL_BOOLEAN_UPLOAD_OPTIONS = @[@"backup", @"exif", @"faces", @"colors", @"image_metadata", @"use_filename", @"unique_filename", @"discard_original_filename", @"eager_async", @"invalidate", @"overwrite", @"phash", @"return_delete_token"];
     static NSArray * CL_SIMPLE_UPLOAD_OPTIONS = nil;
     if (CL_SIMPLE_UPLOAD_OPTIONS == nil)
         CL_SIMPLE_UPLOAD_OPTIONS = @[@"public_id", @"callback", @"format", @"type", @"notification_url", @"eager_notification_url", @"proxy", @"folder", @"moderation", @"raw_convert", @"ocr", @"categorization", @"detection", @"similarity_search", @"auto_tagging", @"upload_preset"];
@@ -577,7 +592,8 @@
         NSArray* allowedFormats = [CLCloudinary asArray:options[@"allowed_formats"]];
         [params setValue:[allowedFormats componentsJoinedByString:@","] forKey:@"allowed_formats"];
         [params setValue:[self buildContext:options[@"context"]] forKey:@"context"];
-        [params setValue:[self buildFaceCoordinates:options[@"face_coordinates"]] forKey:@"face_coordinates"];
+        [params setValue:[self buildCoordinates:options[@"face_coordinates"]] forKey:@"face_coordinates"];
+        [params setValue:[self buildCoordinates:options[@"custom_coordinates"]] forKey:@"custom_coordinates"];
         [params setValue:[self buildEager:options[@"eager"]] forKey:@"eager"];
         [params setValue:[self buildCustomHeaders:options[@"headers"]] forKey:@"headers"];
     } else {
@@ -586,6 +602,7 @@
         [params setValue:options[@"allowed_formats"] forKey:@"allowed_formats"];
         [params setValue:options[@"context"] forKey:@"context"];
         [params setValue:options[@"face_coordinates"] forKey:@"face_coordinates"];
+        [params setValue:options[@"custom_coordinates"] forKey:@"custom_coordinates"];
         [params setValue:options[@"eager"] forKey:@"eager"];
         [params setValue:options[@"headers"] forKey:@"headers"];
     }
